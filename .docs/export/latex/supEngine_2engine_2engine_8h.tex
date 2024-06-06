@@ -1,0 +1,77 @@
+\doxysection{engine/engine.h File Reference}
+\hypertarget{supEngine_2engine_2engine_8h}{}\label{supEngine_2engine_2engine_8h}\index{engine/engine.h@{engine/engine.h}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classVector3}{Vector3}}
+\item 
+class \mbox{\hyperlink{classColor}{Color}}
+\item 
+class \mbox{\hyperlink{classComponent_1_1Transform}{Component\+::\+Transform}}
+\item 
+class \mbox{\hyperlink{classComponent_1_1Rigidbody}{Component\+::\+Rigidbody}}
+\item 
+class \mbox{\hyperlink{classComponent_1_1Renderer}{Component\+::\+Renderer}}
+\item 
+class \mbox{\hyperlink{classGameObject}{Game\+Object}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{supEngine_2engine_2engine_8h_a1d8d3041fe292f12f196441ba0f12e8a}{Render\+Engine\+::\+Enabled}} (bool state)
+\begin{DoxyCompactList}\small\item\em Enable or disable the rendering engine. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{supEngine_2engine_2engine_8h_a71c0f84a773857d497e651bfd059ed8d}{Render\+Engine\+::set\+Start}} (void(\texorpdfstring{$\ast$}{*}func)())
+\begin{DoxyCompactList}\small\item\em Set the start function callback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{supEngine_2engine_2engine_8h_a9bad3b9f93a0a22a4e6b636721bea85a}{Render\+Engine\+::set\+Update}} (void(\texorpdfstring{$\ast$}{*}func)())
+\begin{DoxyCompactList}\small\item\em Set the update function callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file contains the definitions for a simple rendering engine, vector mathematics, color representation, and game object components. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{supEngine_2engine_2engine_8h_a1d8d3041fe292f12f196441ba0f12e8a}\index{engine.h@{engine.h}!Enabled@{Enabled}}
+\index{Enabled@{Enabled}!engine.h@{engine.h}}
+\doxysubsubsection{\texorpdfstring{Enabled()}{Enabled()}}
+{\footnotesize\ttfamily \label{supEngine_2engine_2engine_8h_a1d8d3041fe292f12f196441ba0f12e8a} 
+void Render\+Engine\+::\+Enabled (\begin{DoxyParamCaption}\item[{bool}]{state}{}\end{DoxyParamCaption})}
+
+
+
+Enable or disable the rendering engine. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & Boolean flag to enable or disable the engine. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{supEngine_2engine_2engine_8h_a71c0f84a773857d497e651bfd059ed8d}\index{engine.h@{engine.h}!setStart@{setStart}}
+\index{setStart@{setStart}!engine.h@{engine.h}}
+\doxysubsubsection{\texorpdfstring{setStart()}{setStart()}}
+{\footnotesize\ttfamily \label{supEngine_2engine_2engine_8h_a71c0f84a773857d497e651bfd059ed8d} 
+void Render\+Engine\+::set\+Start (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{func~}{)()}\end{DoxyParamCaption})}
+
+
+
+Set the start function callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func} & Pointer to the start function. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{supEngine_2engine_2engine_8h_a9bad3b9f93a0a22a4e6b636721bea85a}\index{engine.h@{engine.h}!setUpdate@{setUpdate}}
+\index{setUpdate@{setUpdate}!engine.h@{engine.h}}
+\doxysubsubsection{\texorpdfstring{setUpdate()}{setUpdate()}}
+{\footnotesize\ttfamily \label{supEngine_2engine_2engine_8h_a9bad3b9f93a0a22a4e6b636721bea85a} 
+void Render\+Engine\+::set\+Update (\begin{DoxyParamCaption}\item[{void(\texorpdfstring{$\ast$}{*}}]{func~}{)()}\end{DoxyParamCaption})}
+
+
+
+Set the update function callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em func} & Pointer to the update function. \\
+\hline
+\end{DoxyParams}

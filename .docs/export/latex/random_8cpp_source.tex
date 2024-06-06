@@ -1,0 +1,92 @@
+\doxysection{random.\+cpp}
+\hypertarget{random_8cpp_source}{}\label{random_8cpp_source}\index{/home/admin/github/pugEngine/engine/core/math/random.cpp@{/home/admin/github/pugEngine/engine/core/math/random.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//\ \#include\ <random>}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{namespace\ }core}
+\DoxyCodeLine{00004\ \{}
+\DoxyCodeLine{00005\ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcore_1_1random}{random}}\{\};}
+\DoxyCodeLine{00006\ \}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \textcolor{comment}{//\ static\ double\ randomRange(double\ min,\ double\ max)\ \{}}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ //\ Random\ number\ generator}}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ static\ std::random\_device\ rd;\ \ \ //\ Non-\/deterministic\ generator}}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ static\ std::mt19937\ gen(rd());\ \ //\ Seed\ the\ generator}}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ std::uniform\_real\_distribution<>\ dis(min,\ max);}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ //\ Generate\ and\ return\ a\ random\ value}}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ return\ dis(gen);}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ \#include\ <random>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{comment}{/*****\ *****\ *****\ *****\ *****\ *****}}
+\DoxyCodeLine{00021\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ RANDOM}}
+\DoxyCodeLine{00022\ \textcolor{comment}{\ *****\ *****\ *****\ *****\ *****\ *****/}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ static\ Vector3\ getRandom()\ \{}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ static\ std::random\_device\ rd;\ \ //\ Non-\/deterministic\ generator}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ static\ std::mt19937\ gen(rd());\ //\ Seed\ the\ generator}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ static\ std::uniform\_real\_distribution<>\ dis(0.0,\ 1.0);}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_x\ =\ dis(gen);}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_y\ =\ dis(gen);}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_z\ =\ dis(gen);}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ return\ Vector3(\_x,\ \_y,\ \_z,\ 1.0);}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ static\ Vector3\ generateRandomVector()\ \{}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ static\ std::random\_device\ rd;\ \ //\ Non-\/deterministic\ generator}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ static\ std::mt19937\ gen(rd());\ //\ Seed\ the\ generator}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ static\ std::uniform\_real\_distribution<>\ dis(0.0,\ 1.0);}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_x\ =\ dis(gen);}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_y\ =\ dis(gen);}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_z\ =\ dis(gen);}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ return\ Vector3(\_x,\ \_y,\ \_z,\ 1.0);}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00047\ \textcolor{comment}{//}}
+\DoxyCodeLine{00048\ \textcolor{comment}{//}}
+\DoxyCodeLine{00049\ \textcolor{comment}{//}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{comment}{/*****\ *****\ *****\ *****\ *****\ *****}}
+\DoxyCodeLine{00054\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ RANDOM}}
+\DoxyCodeLine{00055\ \textcolor{comment}{\ *****\ *****\ *****\ *****\ *****\ *****/}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ static\ Color\ generateRandomColor()\ \{}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ static\ std::random\_device\ rd;\ \ //\ Non-\/deterministic\ generator}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ static\ std::mt19937\ gen(rd());\ //\ Seed\ the\ generator}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ static\ std::uniform\_real\_distribution<>\ dis(0.0,\ 1.0);}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_r\ =\ dis(gen);}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_g\ =\ dis(gen);}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_b\ =\ dis(gen);}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_a\ =\ dis(gen);}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ return\ Color(\_r,\ \_g,\ \_b,\ \_a);}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ static\ Color\ getRandom()\ \{}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ static\ std::random\_device\ rd;\ \ //\ Non-\/deterministic\ generator}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ static\ std::mt19937\ gen(rd());\ //\ Seed\ the\ generator}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ static\ std::uniform\_real\_distribution<>\ dis(0.0,\ 1.0);}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_r\ =\ dis(gen);}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_g\ =\ dis(gen);}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_b\ =\ dis(gen);}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ double\ \_a\ =\ dis(gen);}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ return\ Color(\_r,\ \_g,\ \_b,\ \_a);}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ \}}}
+\DoxyCodeLine{00082\ \textcolor{comment}{//}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \textcolor{comment}{//\ Vector3\ Vector3::random\ =\ Vector3::generateRandomVector();}}
+
+\end{DoxyCode}

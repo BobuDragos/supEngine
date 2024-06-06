@@ -1,0 +1,75 @@
+\doxysection{Particle Class Reference}
+\hypertarget{classParticle}{}\label{classParticle}\index{Particle@{Particle}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classParticle_a47a05cf48e916db2a403b16613a45fb3}\label{classParticle_a47a05cf48e916db2a403b16613a45fb3} 
+void {\bfseries update} (float x, float y)
+\item 
+\Hypertarget{classParticle_a6e0dbe0bccf65e78ece6ef37353cf448}\label{classParticle_a6e0dbe0bccf65e78ece6ef37353cf448} 
+void {\bfseries look} (const std\+::vector$<$ \mbox{\hyperlink{classBoundary}{Boundary}} $>$ \&walls)
+\item 
+\Hypertarget{classParticle_a24b053c7ce9ba85bb7034b768a6f1b0f}\label{classParticle_a24b053c7ce9ba85bb7034b768a6f1b0f} 
+void {\bfseries show} () const
+\item 
+\Hypertarget{classParticle_a47a05cf48e916db2a403b16613a45fb3}\label{classParticle_a47a05cf48e916db2a403b16613a45fb3} 
+void {\bfseries update} (float x, float y)
+\item 
+\Hypertarget{classParticle_a9eb01e0139ac3fc68233ce6324c216fe}\label{classParticle_a9eb01e0139ac3fc68233ce6324c216fe} 
+void {\bfseries move} (float dx, float dy)
+\item 
+\Hypertarget{classParticle_a6e0dbe0bccf65e78ece6ef37353cf448}\label{classParticle_a6e0dbe0bccf65e78ece6ef37353cf448} 
+void {\bfseries look} (const std\+::vector$<$ \mbox{\hyperlink{classBoundary}{Boundary}} $>$ \&walls)
+\item 
+\Hypertarget{classParticle_a24b053c7ce9ba85bb7034b768a6f1b0f}\label{classParticle_a24b053c7ce9ba85bb7034b768a6f1b0f} 
+void {\bfseries show} () const
+\item 
+\Hypertarget{classParticle_aeb4fa2d437e8de118b89bb69d6a98ed5}\label{classParticle_aeb4fa2d437e8de118b89bb69d6a98ed5} 
+void {\bfseries update\+FOV} (float fov)
+\item 
+\Hypertarget{classParticle_a4db0e56fb94d030b6c28bf9b9caf768b}\label{classParticle_a4db0e56fb94d030b6c28bf9b9caf768b} 
+void {\bfseries rotate} (float angle)
+\item 
+\Hypertarget{classParticle_a6ee37c55a8e16e79e4fda9b5604c000a}\label{classParticle_a6ee37c55a8e16e79e4fda9b5604c000a} 
+void {\bfseries move} (float amt)
+\item 
+\Hypertarget{classParticle_a970ca3add6fa92913d83f818636dddc4}\label{classParticle_a970ca3add6fa92913d83f818636dddc4} 
+std\+::vector$<$ float $>$ {\bfseries look} (std\+::vector$<$ \mbox{\hyperlink{classBoundary}{Boundary}} $>$ \&walls)
+\item 
+\Hypertarget{classParticle_a7fb6d1df65d2d706e0a25b6d14d377fa}\label{classParticle_a7fb6d1df65d2d706e0a25b6d14d377fa} 
+void {\bfseries show} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classParticle_a69e8c6aa1c736e22cdc62217c751d7aa}\label{classParticle_a69e8c6aa1c736e22cdc62217c751d7aa} 
+\mbox{\hyperlink{structBoundary_1_1Point}{Boundary\+::\+Point}} {\bfseries cast} (const \mbox{\hyperlink{classRay}{Ray}} \&ray, const \mbox{\hyperlink{classBoundary}{Boundary}} \&wall) const
+\item 
+\Hypertarget{classParticle_a69e8c6aa1c736e22cdc62217c751d7aa}\label{classParticle_a69e8c6aa1c736e22cdc62217c751d7aa} 
+\mbox{\hyperlink{structBoundary_1_1Point}{Boundary\+::\+Point}} {\bfseries cast} (const \mbox{\hyperlink{classRay}{Ray}} \&ray, const \mbox{\hyperlink{classBoundary}{Boundary}} \&wall) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classParticle_ad1acd67993764eceba5eadf544c48a26}\label{classParticle_ad1acd67993764eceba5eadf544c48a26} 
+std\+::vector$<$ \mbox{\hyperlink{classRay}{Ray}} $>$ {\bfseries rays}
+\item 
+\Hypertarget{classParticle_a346b0d89a3d188a855d7e37bdf538967}\label{classParticle_a346b0d89a3d188a855d7e37bdf538967} 
+\mbox{\hyperlink{structBoundary_1_1Point}{Boundary\+::\+Point}} {\bfseries pos}
+\item 
+\Hypertarget{classParticle_a76c71fa655c66235d3560064cfdeb0c5}\label{classParticle_a76c71fa655c66235d3560064cfdeb0c5} 
+float {\bfseries fov}
+\item 
+\Hypertarget{classParticle_ab4c7666b543c1805e1d4d610c84e625c}\label{classParticle_ab4c7666b543c1805e1d4d610c84e625c} 
+float {\bfseries pos} \mbox{[}2\mbox{]}
+\item 
+\Hypertarget{classParticle_a42942cd32de1b234ee8aec80435b59b3}\label{classParticle_a42942cd32de1b234ee8aec80435b59b3} 
+float {\bfseries heading}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/admin/github/doomer/doomy/1/main.\+cpp\item 
+/home/admin/github/doomer/doomy/2/main.\+cpp\item 
+/home/admin/github/doomer/doomy/3/main.\+cpp\end{DoxyCompactItemize}

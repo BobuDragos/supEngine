@@ -1,0 +1,56 @@
+\doxysection{ogl\+Data\+Cache.\+h}
+\hypertarget{oglDataCache_8h_source}{}\label{oglDataCache_8h_source}\index{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/oglDataCache.h@{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/oglDataCache.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_OGLDATACACHE\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_OGLDATACACHE\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}proxyGl.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}dataStructures.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}objLoader.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}vector3.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }SdimpleRocket\{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSdimpleRocket_1_1DataObject}{DataObject}}\ \{}
+\DoxyCodeLine{00015\ \ \ GLuint\ vId,\ tId,\ nId,\ tdId;\ \textcolor{comment}{//vertex\ VBO\ id,\ texture\ coordinates\ VBO\ id,\ normals\ VBO\ id,\ texture\ data\ id;\ it\ corelates\ multiple\ disparate\ elements\ in\ a\ single\ visual\ object.\ This\ allows\ for\ re-\/using\ texture\ data\ for\ multiple\ objects,\ for\ instance.}}
+\DoxyCodeLine{00016\ \ \ GLuint\ vpf;\ \textcolor{comment}{//verticesPerFace}}
+\DoxyCodeLine{00017\ \ \ GLuint\ vn;\ \textcolor{comment}{//number\ of\ vertices}}
+\DoxyCodeLine{00018\ \ \ \textcolor{keywordtype}{bool}\ hasUv,\ hasNorm;\ \textcolor{comment}{//does\ it\ have\ texture\ coordinates;\ does\ it\ have\ normals?}}
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSdimpleRocket_1_1OglDataCache}{OglDataCache}}\ \{}
+\DoxyCodeLine{00023\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ loadGlTexture(std::string\ texturePath);}
+\DoxyCodeLine{00025\ \ \ \mbox{\hyperlink{structSdimpleRocket_1_1DataObject}{DataObject}}\ loadObject(std::string\ objPath,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \ tdI);}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{void}\ deleteBuffers(std::vector<GLuint>::iterator\ begin,\ std::vector<GLuint>::iterator\ end);}
+\DoxyCodeLine{00027\ \ \ }
+\DoxyCodeLine{00028\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ std::vector<GLuint>\ m\_vbo,\ m\_tbo,\ m\_nbo,\ m\_tex;\ \textcolor{comment}{//ids\ for:\ vertex\ buffer\ objects,\ texture\ buffer\ objects,\ normals\ buffer\ objects,\ texture\ data.\ A\ certain\ vbo,\ tbo,\ nbo\ and\ vpf\ index\ points\ to\ the\ same\ object;\ however,\ m\_tex\ can\ be\ mixed\ and\ matched\ with\ objects,\ allowing\ to\ reuse\ textures.}}
+\DoxyCodeLine{00030\ \ \ std::vector<GLuint>\ m\_vpf;\ \textcolor{comment}{//vertices\ per\ face}}
+\DoxyCodeLine{00031\ \ \ std::vector<GLuint>\ m\_vn;\ \textcolor{comment}{//number\ of\ vertices}}
+\DoxyCodeLine{00032\ \ \ std::vector<DataObject>\ m\_objects;\ \textcolor{comment}{//\ we\ need\ not\ store\ DataObjects\ here.\ Was\ left\ here\ during\ development/testing.}}
+\DoxyCodeLine{00033\ \ \ \textcolor{comment}{//these\ maps\ let\ us\ interact\ with\ the\ dataCache\ using\ object\ and\ texture\ pathnames,\ while\ allowind\ the\ code\ to\ use\ faster\ array\ indices}}
+\DoxyCodeLine{00034\ \ \ std::map<std::string,\ unsigned\ int>\ m\_vertexMap;}
+\DoxyCodeLine{00035\ \ \ std::map<std::string,\ unsigned\ int>\ m\_textureMap;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ }
+\DoxyCodeLine{00039\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1OglDataCache}{OglDataCache}}()\ \{\}}
+\DoxyCodeLine{00040\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1OglDataCache}{\string~OglDataCache}}();}
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{structSdimpleRocket_1_1DataObject}{DataObject}}\ addObject(std::string\ objPath,\ std::string\ texturePath);}
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{structSdimpleRocket_1_1DataObject}{DataObject}}\ \textcolor{keyword}{inline}\ addObject(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ objPath,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ texturePath)\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordflow}{return}\ addObject(std::string(objPath),\ std::string(texturePath));}
+\DoxyCodeLine{00044\ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{void}\ renderObject(\mbox{\hyperlink{structSdimpleRocket_1_1DataObject}{DataObject}}\ o);}
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

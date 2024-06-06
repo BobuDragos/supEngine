@@ -1,0 +1,40 @@
+\doxysection{Ray\+Caster Class Reference}
+\hypertarget{classRayCaster}{}\label{classRayCaster}\index{RayCaster@{RayCaster}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRayCaster_a2794506cbffd7dfde8a7aa86b1cf7312}\label{classRayCaster_a2794506cbffd7dfde8a7aa86b1cf7312} 
+void {\bfseries update} (float x, float y)
+\item 
+\Hypertarget{classRayCaster_a2423aa6af495270fa14ba2404f696c96}\label{classRayCaster_a2423aa6af495270fa14ba2404f696c96} 
+void {\bfseries rotate} (float angle)
+\item 
+\Hypertarget{classRayCaster_add7dddaed65847e729da3de579945339}\label{classRayCaster_add7dddaed65847e729da3de579945339} 
+void {\bfseries move} (float dx, float dy)
+\item 
+\Hypertarget{classRayCaster_a2dda9f855de8c7fde7a3180ad7fa19e4}\label{classRayCaster_a2dda9f855de8c7fde7a3180ad7fa19e4} 
+void {\bfseries look} (const std\+::vector$<$ \mbox{\hyperlink{classLine}{Line}} $>$ \&walls)
+\item 
+\Hypertarget{classRayCaster_aacd5a73e1b1327571a7e5aeb77c51943}\label{classRayCaster_aacd5a73e1b1327571a7e5aeb77c51943} 
+void {\bfseries show} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRayCaster_afa4c20ad07271e994b21494d68acd34b}\label{classRayCaster_afa4c20ad07271e994b21494d68acd34b} 
+\mbox{\hyperlink{structPoint}{Point}} {\bfseries cast} (const \mbox{\hyperlink{classRay}{Ray}} \&ray, const \mbox{\hyperlink{classLine}{Line}} \&wall) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classRayCaster_a31ded9365bc09bf4be031285bf2c3d8e}\label{classRayCaster_a31ded9365bc09bf4be031285bf2c3d8e} 
+std\+::vector$<$ \mbox{\hyperlink{classRay}{Ray}} $>$ {\bfseries rays}
+\item 
+\Hypertarget{classRayCaster_ae0ba7677c555f2cd80ae7c121b227947}\label{classRayCaster_ae0ba7677c555f2cd80ae7c121b227947} 
+\mbox{\hyperlink{structPoint}{Point}} {\bfseries pos}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/admin/github/doomer/raycaster.\+cpp\end{DoxyCompactItemize}

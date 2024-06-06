@@ -1,0 +1,27 @@
+\doxysection{line.\+cpp}
+\hypertarget{line_8cpp_source}{}\label{line_8cpp_source}\index{/home/admin/github/doomer/line.cpp@{/home/admin/github/doomer/line.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLine}{Line}}}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPoint}{Point}}\ a,\ b;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLine}{Line}}(\textcolor{keywordtype}{float}\ x1,\ \textcolor{keywordtype}{float}\ y1,\ \textcolor{keywordtype}{float}\ x2,\ \textcolor{keywordtype}{float}\ y2)\ :\ a(\mbox{\hyperlink{structPoint}{Point}}(x1,\ y1)),\ b(\mbox{\hyperlink{structPoint}{Point}}(x2,\ y2))\ \{\}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ show()\textcolor{keyword}{\ const\ }}
+\DoxyCodeLine{00012\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \ \ \ \ glColor3f(1.0,\ 1.0,\ 1.0);}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \ \ \ \ glBegin(GL\_LINES);}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glVertex2f(a.x,\ a.y);}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ glVertex2f(b.x,\ b.y);}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ glEnd();}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ printf("{}\%f,\ \%f,\ \%f,\ \%f"{},\ a.x,\ a.y,\ b.x,\ b.y);}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00021\ \};}
+
+\end{DoxyCode}

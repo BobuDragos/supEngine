@@ -1,0 +1,121 @@
+\doxysection{engine.\+h}
+\hypertarget{engine_8h_source}{}\label{engine_8h_source}\index{engine/engine.h@{engine/engine.h}}
+\mbox{\hyperlink{engine_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }RenderEngine}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{engine_8h_a1d8d3041fe292f12f196441ba0f12e8a}{Enabled}}(\textcolor{keywordtype}{bool}\ state);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{engine_8h_a71c0f84a773857d497e651bfd059ed8d}{setStart}}\ (\textcolor{keywordtype}{void}\ (*func)());}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{engine_8h_a9bad3b9f93a0a22a4e6b636721bea85a}{setUpdate}}(\textcolor{keywordtype}{void}\ (*func)());}
+\DoxyCodeLine{00032\ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVector3}{Vector3}}}
+\DoxyCodeLine{00039\ \{}
+\DoxyCodeLine{00040\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{double}\ x,\ y,\ z,\ w;}
+\DoxyCodeLine{00042\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classVector3}{Vector3}}\ zero;}
+\DoxyCodeLine{00043\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classVector3}{Vector3}}\ \ one;}
+\DoxyCodeLine{00044\ \ \ \textcolor{comment}{//\ static\ Vector3\ random;}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \mbox{\hyperlink{classVector3_a0f49191f7e001e7f7ae1cb49522118b4}{Vector3}}()\ :\ \mbox{\hyperlink{classVector3}{Vector3}}(0,0,0,1)\ \{\}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00060\ \ \ \mbox{\hyperlink{classVector3_a6ae111fc1e771ea180b09a1afa3cdf7e}{Vector3}}(\textcolor{keywordtype}{double}\ \_x,\ \textcolor{keywordtype}{double}\ \_y\ =\ 0.0f,\ \textcolor{keywordtype}{double}\ \_z\ =\ 0.0f,\ \textcolor{keywordtype}{double}\ \_w\ =\ 1.0f)\ :\ x(\_x),\ y(\_y),\ z(\_z),\ w(\_w)\ \{\}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \mbox{\hyperlink{classVector3}{Vector3}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVector3}{Vector3}}\&\ other);}
+\DoxyCodeLine{00063\ \ \ \mbox{\hyperlink{classVector3}{Vector3}}\&\ operator+=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVector3}{Vector3}}\&\ other);}
+\DoxyCodeLine{00064\ \ \ \mbox{\hyperlink{classVector3}{Vector3}}\&\ operator*=(\textcolor{keywordtype}{double}\ scalar);}
+\DoxyCodeLine{00065\ \ \ \mbox{\hyperlink{classVector3}{Vector3}}\ operator*(\textcolor{keywordtype}{double}\ scalar)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ \ \ \mbox{\hyperlink{classVector3}{Vector3}}\ operator-\/(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVector3}{Vector3}}\&\ other)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00067\ \ \ \mbox{\hyperlink{classVector3}{Vector3}}\ operator+(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVector3}{Vector3}}\&\ other)\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{00068\ \ \ \textcolor{keywordtype}{double}\ dot(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVector3}{Vector3}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00069\ \ \ \mbox{\hyperlink{classVector3}{Vector3}}\ operator/(\textcolor{keywordtype}{double}\ scalar)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{comment}{//\ Vector3\ Vector3::zero\ =\ Vector3(0,\ 0,\ 0,\ 1);}}
+\DoxyCodeLine{00073\ \textcolor{comment}{//\ Vector3\ Vector3::one\ \ =\ Vector3(1,\ 1,\ 1,\ 1);}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classColor}{Color}}}
+\DoxyCodeLine{00076\ \{}
+\DoxyCodeLine{00077\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00078\ \ \ \textcolor{keywordtype}{float}\ r,\ g,\ b,\ a;}
+\DoxyCodeLine{00079\ \ \ \textcolor{comment}{/*\ 4bit\ color\ support\ */}}
+\DoxyCodeLine{00080\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ black;}
+\DoxyCodeLine{00081\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ white;}
+\DoxyCodeLine{00082\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ red;}
+\DoxyCodeLine{00083\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ green;}
+\DoxyCodeLine{00084\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ blue;}
+\DoxyCodeLine{00085\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ yellow;}
+\DoxyCodeLine{00086\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ cyan;}
+\DoxyCodeLine{00087\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ magenta;}
+\DoxyCodeLine{00088\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ gray;}
+\DoxyCodeLine{00089\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ darkGray;}
+\DoxyCodeLine{00090\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ lightGray;}
+\DoxyCodeLine{00091\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ darkRed;}
+\DoxyCodeLine{00092\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ darkGreen;}
+\DoxyCodeLine{00093\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ darkBlue;}
+\DoxyCodeLine{00094\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ brown;}
+\DoxyCodeLine{00095\ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{classColor}{Color}}\ orange;}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00102\ \ \ \mbox{\hyperlink{classColor_a3431d140ce6a4f5f217e0e9390506a74}{Color}}(\textcolor{keywordtype}{double}\ \_value)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classColor}{Color}}(\_value,\ \_value,\ \_value,\ 1.0f)\ \{\}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00112\ \ \ \mbox{\hyperlink{classColor_a30bf2464eedd5e77462f9ec67bb0ed90}{Color}}(\textcolor{keywordtype}{double}\ \_r,\ \textcolor{keywordtype}{double}\ \_g,\ \textcolor{keywordtype}{double}\ \_b)}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ :\ \mbox{\hyperlink{classColor}{Color}}(\_r,\ \_g,\ \_b,\ 1.0f)\ \{\}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00123\ \ \ \mbox{\hyperlink{classColor_a64a697500686bc606889e39a4cab923c}{Color}}(\textcolor{keywordtype}{double}\ \_r,\ \textcolor{keywordtype}{double}\ \_g,\ \textcolor{keywordtype}{double}\ \_b,\ \textcolor{keywordtype}{double}\ \_a)}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ :\ r(\_r),\ g(\_g),\ b(\_b),\ a(\_a)\ \{\}}
+\DoxyCodeLine{00125\ \};}
+\DoxyCodeLine{00126\ \textcolor{comment}{//\ Color\ Color::black\ \ =\ Color(0.0,\ 0.0,\ 0.0,\ 1.0);}}
+\DoxyCodeLine{00127\ \textcolor{comment}{//\ Color\ Color::white\ \ =\ Color(1.0,\ 1.0,\ 1.0,\ 1.0);}}
+\DoxyCodeLine{00128\ \textcolor{comment}{//\ Color\ Color::red\ \ \ \ =\ Color(1.0,\ 0.0,\ 0.0,\ 1.0);}}
+\DoxyCodeLine{00129\ \textcolor{comment}{//\ Color\ Color::green\ \ =\ Color(0.0,\ 1.0,\ 0.0,\ 1.0);}}
+\DoxyCodeLine{00130\ \textcolor{comment}{//\ Color\ Color::blue\ \ \ =\ Color(0.0,\ 0.0,\ 1.0,\ 1.0);}}
+\DoxyCodeLine{00131\ \textcolor{comment}{//\ Color\ Color::yellow\ =\ Color(1.0,\ 1.0,\ 0.0,\ 1.0);}}
+\DoxyCodeLine{00132\ \textcolor{comment}{//\ Color\ Color::cyan\ \ \ =\ Color(0.0,\ 1.0,\ 1.0,\ 1.0);}}
+\DoxyCodeLine{00133\ \textcolor{comment}{//\ Color\ Color::purple\ =\ Color(0.5,\ 0.0,\ 0.5,\ 1.0);}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{keyword}{namespace\ }Component}
+\DoxyCodeLine{00136\ \{}
+\DoxyCodeLine{00137\ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classComponent_1_1Transform}{Transform}}}
+\DoxyCodeLine{00138\ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \mbox{\hyperlink{classVector3}{Vector3}}\ \mbox{\hyperlink{classComponent_1_1Transform_a9dc717b4963fcf9d6401bad10f4ffca6}{position}};\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \mbox{\hyperlink{classVector3}{Vector3}}\ \mbox{\hyperlink{classComponent_1_1Transform_ab31301f0978e91a7c08d1836c7bd9451}{rotation}};\ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \mbox{\hyperlink{classVector3}{Vector3}}\ \mbox{\hyperlink{classComponent_1_1Transform_adf3adcaf7ff55b1a412f0f11216ed556}{scale}};\ \ \ \ }
+\DoxyCodeLine{00143\ \ \ \};}
+\DoxyCodeLine{00144\ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classComponent_1_1Rigidbody}{Rigidbody}}}
+\DoxyCodeLine{00145\ \ \ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \mbox{\hyperlink{classVector3}{Vector3}}\ velocity;}
+\DoxyCodeLine{00148\ \ \ \};}
+\DoxyCodeLine{00149\ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{classComponent_1_1Renderer}{Renderer}}}
+\DoxyCodeLine{00150\ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \mbox{\hyperlink{classColor}{Color}}\ color;}
+\DoxyCodeLine{00153\ \ \ \};}
+\DoxyCodeLine{00154\ \}}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classGameObject}{GameObject}}}
+\DoxyCodeLine{00160\ \{}
+\DoxyCodeLine{00161\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00162\ \ \ \mbox{\hyperlink{classComponent_1_1Transform}{Component::Transform}}\ transform;}
+\DoxyCodeLine{00163\ \ \ \mbox{\hyperlink{classComponent_1_1Rigidbody}{Component::Rigidbody}}\ rigidbody;}
+\DoxyCodeLine{00164\ \ \ \mbox{\hyperlink{classComponent_1_1Renderer}{Component::Renderer}}\ \ renderer\ ;}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \mbox{\hyperlink{classGameObject}{GameObject}}();}
+\DoxyCodeLine{00167\ \};}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ }
+
+\end{DoxyCode}

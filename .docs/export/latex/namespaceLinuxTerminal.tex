@@ -1,0 +1,62 @@
+\doxysection{Linux\+Terminal Namespace Reference}
+\hypertarget{namespaceLinuxTerminal}{}\label{namespaceLinuxTerminal}\index{LinuxTerminal@{LinuxTerminal}}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classLinuxTerminal_1_1PrimitiveTerminalWidget}{Primitive\+Terminal\+Widget}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{namespaceLinuxTerminal_af8cf734e305f3ebc6a640485b83703ed}\label{namespaceLinuxTerminal_af8cf734e305f3ebc6a640485b83703ed} 
+list {\bfseries DEFAULT\+\_\+\+TTY\+\_\+\+CMD} = \mbox{[}\textquotesingle{}/bin/bash\textquotesingle{}\mbox{]}
+\item 
+\Hypertarget{namespaceLinuxTerminal_aaa189093f68eceec13a5e7555ed47586}\label{namespaceLinuxTerminal_aaa189093f68eceec13a5e7555ed47586} 
+int {\bfseries DEFAULT\+\_\+\+COLS} = 80
+\item 
+\Hypertarget{namespaceLinuxTerminal_a797e14d824d668cd21b0dcae0a22a44a}\label{namespaceLinuxTerminal_a797e14d824d668cd21b0dcae0a22a44a} 
+int {\bfseries DEFAULT\+\_\+\+ROWS} = 25
+\item 
+\Hypertarget{namespaceLinuxTerminal_a98735411fd5886057b8001020d2fd8cb}\label{namespaceLinuxTerminal_a98735411fd5886057b8001020d2fd8cb} 
+{\bfseries DEFAULT\+\_\+\+TTY\+\_\+\+FONT} = QFont(\textquotesingle{}Noto\textquotesingle{}, 16)
+\item 
+\Hypertarget{namespaceLinuxTerminal_accfdb89c7c0962cfb405cd78edf744fc}\label{namespaceLinuxTerminal_accfdb89c7c0962cfb405cd78edf744fc} 
+{\bfseries DEFAULT\+\_\+\+TTY\+\_\+\+FG} = Qt.\+light\+Gray
+\item 
+\Hypertarget{namespaceLinuxTerminal_a7efeedbaab3dc2d98040cf0f3677b321}\label{namespaceLinuxTerminal_a7efeedbaab3dc2d98040cf0f3677b321} 
+{\bfseries DEFAULT\+\_\+\+TTY\+\_\+\+BG} = Qt.\+black
+\item 
+\Hypertarget{namespaceLinuxTerminal_a5154baf51604f0d298308ff1e10082a8}\label{namespaceLinuxTerminal_a5154baf51604f0d298308ff1e10082a8} 
+str {\bfseries REFERENCE\+\_\+\+CHAR} = \textquotesingle{}W\textquotesingle{}
+\item 
+\Hypertarget{namespaceLinuxTerminal_a0dbe12fed2c04e45264ccac19bfedf68}\label{namespaceLinuxTerminal_a0dbe12fed2c04e45264ccac19bfedf68} 
+{\bfseries app} = QApplication(sys.\+argv)
+\item 
+\Hypertarget{namespaceLinuxTerminal_aef7c4152360d1b511b506271cdad4ced}\label{namespaceLinuxTerminal_aef7c4152360d1b511b506271cdad4ced} 
+{\bfseries mainwin} = \mbox{\hyperlink{classLinuxTerminal_1_1PrimitiveTerminalWidget}{Primitive\+Terminal\+Widget}}()
+\item 
+\Hypertarget{namespaceLinuxTerminal_a10b35bfe47a260c0d7300598f3c45ca0}\label{namespaceLinuxTerminal_a10b35bfe47a260c0d7300598f3c45ca0} 
+{\bfseries font\+Metrics} = mainwin.\+font\+Metrics()
+\item 
+tuple \mbox{\hyperlink{namespaceLinuxTerminal_ab840d5d99db1095f9182f3eed1b59ec0}{target\+\_\+width}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Primitive terminal emulator example made from a PyQt QTextEdit widget.\end{DoxyVerb}
+ 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespaceLinuxTerminal_ab840d5d99db1095f9182f3eed1b59ec0}\index{LinuxTerminal@{LinuxTerminal}!target\_width@{target\_width}}
+\index{target\_width@{target\_width}!LinuxTerminal@{LinuxTerminal}}
+\doxysubsubsection{\texorpdfstring{target\_width}{target\_width}}
+{\footnotesize\ttfamily \label{namespaceLinuxTerminal_ab840d5d99db1095f9182f3eed1b59ec0} 
+tuple Linux\+Terminal.\+target\+\_\+width}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ (fontMetrics.boundingRect(}
+\DoxyCodeLine{00002\ \ \ \ \ \ \ \ \ REFERENCE\_CHAR\ *\ DEFAULT\_COLS}
+\DoxyCodeLine{00003\ \ \ \ \ ).width()\ +\ app.style().pixelMetric(QStyle.PM\_ScrollBarExtent))}
+
+\end{DoxyCode}

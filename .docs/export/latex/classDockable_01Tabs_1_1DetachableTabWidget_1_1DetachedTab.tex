@@ -1,0 +1,81 @@
+\doxysection{Dockable Tabs.\+Detachable\+Tab\+Widget.\+Detached\+Tab Class Reference}
+\hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab}{}\label{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab}\index{Dockable Tabs.DetachableTabWidget.DetachedTab@{Dockable Tabs.DetachableTabWidget.DetachedTab}}
+
+
+When a tab is detached, the contents are placed into this QDialog.  
+
+
+Inheritance diagram for Dockable Tabs.\+Detachable\+Tab\+Widget.\+Detached\+Tab\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab_a9d24e28f9ab883afe87d753d898d1264}\label{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab_a9d24e28f9ab883afe87d753d898d1264} 
+{\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, content\+Widget, parent=None)
+\item 
+\mbox{\hyperlink{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab_a420d5ee3d59b40c578996949fa7c1cba}{event}} (self, event)
+\begin{DoxyCompactList}\small\item\em Capture a double click event on the dialog\textquotesingle{}s window frame. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab_aba52534259b06a4b88863acb55066742}{close\+Event}} (self, \mbox{\hyperlink{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab_a420d5ee3d59b40c578996949fa7c1cba}{event}})
+\begin{DoxyCompactList}\small\item\em If the dialog is closed, emit the on\+Close\+Signal and give the content widget back to the \doxylink{classDockable_01Tabs_1_1DetachableTabWidget}{Detachable\+Tab\+Widget}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab_a80598a10fd35aae3aca383a365e5a422}\label{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab_a80598a10fd35aae3aca383a365e5a422} 
+{\bfseries content\+Widget}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab_adeab7e719aba3398a5c13a6e6045fa8c}\label{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab_adeab7e719aba3398a5c13a6e6045fa8c} 
+{\bfseries on\+Close\+Signal} = pyqt\+Signal(QWidget,type(\textquotesingle{}\textquotesingle{}), QIcon)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+When a tab is detached, the contents are placed into this QDialog. 
+
+The tab can be re-\/attached by closing the dialog or by double clicking on its window frame. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab_aba52534259b06a4b88863acb55066742}\index{Dockable Tabs.DetachableTabWidget.DetachedTab@{Dockable Tabs.DetachableTabWidget.DetachedTab}!closeEvent@{closeEvent}}
+\index{closeEvent@{closeEvent}!Dockable Tabs.DetachableTabWidget.DetachedTab@{Dockable Tabs.DetachableTabWidget.DetachedTab}}
+\doxysubsubsection{\texorpdfstring{closeEvent()}{closeEvent()}}
+{\footnotesize\ttfamily \label{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab_aba52534259b06a4b88863acb55066742} 
+Dockable Tabs.\+Detachable\+Tab\+Widget.\+Detached\+Tab.\+close\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+
+
+If the dialog is closed, emit the on\+Close\+Signal and give the content widget back to the \doxylink{classDockable_01Tabs_1_1DetachableTabWidget}{Detachable\+Tab\+Widget}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & a close event \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab_a420d5ee3d59b40c578996949fa7c1cba}\index{Dockable Tabs.DetachableTabWidget.DetachedTab@{Dockable Tabs.DetachableTabWidget.DetachedTab}!event@{event}}
+\index{event@{event}!Dockable Tabs.DetachableTabWidget.DetachedTab@{Dockable Tabs.DetachableTabWidget.DetachedTab}}
+\doxysubsubsection{\texorpdfstring{event()}{event()}}
+{\footnotesize\ttfamily \label{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab_a420d5ee3d59b40c578996949fa7c1cba} 
+Dockable Tabs.\+Detachable\+Tab\+Widget.\+Detached\+Tab.\+event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+
+
+Capture a double click event on the dialog\textquotesingle{}s window frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & an event\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the event was recognized 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/admin/github/comp-\/graphics-\/resources/\+Py\+Qt/Dockable Tabs.\+py\end{DoxyCompactItemize}

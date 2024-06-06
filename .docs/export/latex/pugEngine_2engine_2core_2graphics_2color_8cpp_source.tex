@@ -1,0 +1,64 @@
+\doxysection{color.\+cpp}
+\hypertarget{pugEngine_2engine_2core_2graphics_2color_8cpp_source}{}\label{pugEngine_2engine_2core_2graphics_2color_8cpp_source}\index{/home/admin/github/pugEngine/engine/core/graphics/color.cpp@{/home/admin/github/pugEngine/engine/core/graphics/color.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}color\_mapping.cpp"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }core}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcore_1_1Color}{Color}}}
+\DoxyCodeLine{00009\ \ \ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{float}\ r,\ g,\ b,\ a;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ black;}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ white;}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ red;}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ green;}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ blue;}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ yellow;}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ cyan;}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ purple;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ Constructor\ for\ grayscale\ color}}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{structcore_1_1Color}{Color}}(\textcolor{keywordtype}{double}\ \_value)}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structcore_1_1Color}{Color}}(\_value,\ \_value,\ \_value,\ 1.0f)\ \{\}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ Constructor\ for\ RGB\ color}}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{structcore_1_1Color}{Color}}(\textcolor{keywordtype}{double}\ \_r,\ \textcolor{keywordtype}{double}\ \_g,\ \textcolor{keywordtype}{double}\ \_b)}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structcore_1_1Color}{Color}}(\_r,\ \_g,\ \_b,\ 1.0f)\ \{\}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ Main\ constructor\ for\ RGBA\ color}}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{structcore_1_1Color}{Color}}(\textcolor{keywordtype}{double}\ \_r,\ \textcolor{keywordtype}{double}\ \_g,\ \textcolor{keywordtype}{double}\ \_b,\ \textcolor{keywordtype}{double}\ \_a)}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ :\ r(\_r),\ g(\_g),\ b(\_b),\ a(\_a)\ \{\}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \textcolor{comment}{//\ Constructor\ for\ named\ color}}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{structcore_1_1Color}{Color}}(\textcolor{keyword}{const}\ std::string\&\ colorName)}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{structcore_1_1Color}{Color}}(colorName,\ 1.0f)\ \{\}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{structcore_1_1Color}{Color}}(\textcolor{keyword}{const}\ std::string\&\ colorName,\ \textcolor{keywordtype}{double}\ \_a)\ }
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ namedColors.find(colorName);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ namedColors.end())\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ r\ =\ std::get<0>(it-\/>second);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ g\ =\ std::get<1>(it-\/>second);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ b\ =\ std::get<2>(it-\/>second);}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ a\ =\ \_a;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Unknown\ color\ name"{}});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ Color::black\ \ =\ \mbox{\hyperlink{structcore_1_1Color}{Color}}(0.0,\ 0.0,\ 0.0,\ 1.0);}
+\DoxyCodeLine{00050\ \ \ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ Color::white\ \ =\ \mbox{\hyperlink{structcore_1_1Color}{Color}}(1.0,\ 1.0,\ 1.0,\ 1.0);}
+\DoxyCodeLine{00051\ \ \ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ Color::red\ \ \ \ =\ \mbox{\hyperlink{structcore_1_1Color}{Color}}(1.0,\ 0.0,\ 0.0,\ 1.0);}
+\DoxyCodeLine{00052\ \ \ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ Color::green\ \ =\ \mbox{\hyperlink{structcore_1_1Color}{Color}}(0.0,\ 1.0,\ 0.0,\ 1.0);}
+\DoxyCodeLine{00053\ \ \ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ Color::blue\ \ \ =\ \mbox{\hyperlink{structcore_1_1Color}{Color}}(0.0,\ 0.0,\ 1.0,\ 1.0);}
+\DoxyCodeLine{00054\ \ \ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ Color::yellow\ =\ \mbox{\hyperlink{structcore_1_1Color}{Color}}(1.0,\ 1.0,\ 0.0,\ 1.0);}
+\DoxyCodeLine{00055\ \ \ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ Color::cyan\ \ \ =\ \mbox{\hyperlink{structcore_1_1Color}{Color}}(0.0,\ 1.0,\ 1.0,\ 1.0);}
+\DoxyCodeLine{00056\ \ \ \mbox{\hyperlink{structcore_1_1Color}{Color}}\ Color::purple\ =\ \mbox{\hyperlink{structcore_1_1Color}{Color}}(0.5,\ 0.0,\ 0.5,\ 1.0);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,43 @@
+\doxysection{ray.\+cpp}
+\hypertarget{ray_8cpp_source}{}\label{ray_8cpp_source}\index{/home/admin/github/doomer/ray.cpp@{/home/admin/github/doomer/ray.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRay}{Ray}}\ \{}
+\DoxyCodeLine{00004\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00005\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{structPoint}{Point}}\ pos,\ dir;}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classRay}{Ray}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y,\ \textcolor{keywordtype}{float}\ angle)\ :\ pos(\mbox{\hyperlink{structPoint}{Point}}(x,\ y))\ }
+\DoxyCodeLine{00008\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \ \ \ \ \ \ \ \ dir.x\ =\ cos(angle);}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ \ \ \ \ \ \ dir.y\ =\ sin(angle);}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ lookAt(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y)\ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ dir.x\ =\ x\ -\/\ pos.x;}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ dir.y\ =\ y\ -\/\ pos.y;}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ normalize();}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ show()\textcolor{keyword}{\ const\ }}
+\DoxyCodeLine{00021\ \textcolor{keyword}{\ \ \ \ \ \ \ \ }\{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ glColor3f(1.0,\ 1.0,\ 1.0);}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ glBegin(GL\_LINES);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ glVertex2f(pos.x,\ pos.y);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ glVertex2f(pos.x\ +\ dir.x\ *\ 10,\ pos.y\ +\ dir.y\ *\ 10);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ glEnd();}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ normalize()\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ mag\ =\ sqrt(dir.x\ *\ dir.x\ +\ dir.y\ *\ dir.y);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mag\ !=\ 0)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dir.x\ /=\ mag;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dir.y\ /=\ mag;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \};}
+
+\end{DoxyCode}

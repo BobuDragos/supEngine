@@ -1,0 +1,132 @@
+\doxysection{scene\+Object.\+h}
+\hypertarget{sceneObject_8h_source}{}\label{sceneObject_8h_source}\index{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/sceneObject.h@{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/sceneObject.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_SCENEOBJECT\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_SCENEOBJECT\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}dataStructures.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}oglDataCache.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }SdimpleRocket\ \{}
+\DoxyCodeLine{00011\ \ \ \textcolor{comment}{//variable\ names\ may\ depart\ from\ being\ long\ and\ precise\ in\ the\ traditional\ sense;\ this\ is\ not\ in\ order\ to\ shorten\ them,\ but\ in\ order\ to\ make\ them\ \_even\ more\ precise\_:\ the\ short\ names\ used\ here\ are\ long-\/standing\ physics\ conventions,\ with\ precise\ meanings.\ Still,\ outside\ of\ physics\ computations\ (like\ get/set),\ long\ names\ will\ be\ used}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSdimpleRocket_1_1Light}{Light}}\ \{}
+\DoxyCodeLine{00015\ \ \ GLuint\ lightId;}
+\DoxyCodeLine{00016\ \ \ GLfloat\ amb[4],\ dif[4],\ spe[4];}
+\DoxyCodeLine{00017\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ offset;\textcolor{comment}{//where\ the\ object\ bounding\ sphere\ has\ radius\ 1}}
+\DoxyCodeLine{00018\ \};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSdimpleRocket_1_1State}{State}}\ \{}
+\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ r;\ \textcolor{comment}{//position\ vector\ to\ the\ center\ of\ the\ object,\ meters}}
+\DoxyCodeLine{00022\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ v;\ \textcolor{comment}{//velocity,\ meters\ /\ second}}
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSdimpleRocket_1_1Derivative}{Derivative}}\ \{\ \textcolor{comment}{//the\ state\ derivative}}
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ dr;\ \textcolor{comment}{//\ dr\ /\ dt\ \ velocity}}
+\DoxyCodeLine{00027\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ dv;\ \textcolor{comment}{//\ dv\ /\ dt\ \ acceleration\ m/s\string^2}}
+\DoxyCodeLine{00028\ \};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSdimpleRocket_1_1SceneObject}{SceneObject}}\ \{}
+\DoxyCodeLine{00031\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00032\ \ \ \mbox{\hyperlink{structSdimpleRocket_1_1DataObject}{DataObject}}\ m\_object;\ \textcolor{comment}{//the\ actual\ 3d\ model\ and\ textures}}
+\DoxyCodeLine{00033\ \ \ \textcolor{comment}{//3d\ model-\/related}}
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ m\_glCenterOffset;\ \textcolor{comment}{//\ Center\ offset\ or\ object\ translation.\ OpenGL\ units!!!\ Should\ generally\ be\ (0,\ 0,\ 0),\ and\ used\ only\ if\ the\ (0,\ 0,\ 0)\ point\ of\ the\ 3d\ model\ is\ not\ the\ center\ of\ mass}}
+\DoxyCodeLine{00035\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ m\_glScale;\ \textcolor{comment}{//\ object\ scale;\ not\ actual\ vector,\ but\ scale\ factors\ on\ each\ dimension.\ Usually,\ a\ 3d\ model\ should\ have\ its\ longest\ dimension\ length\ (along\ an\ axis)\ as\ 1\ (inscribed\ in\ a\ radius\ 1\ sphere).}}
+\DoxyCodeLine{00036\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ m\_glRotationAxis;\ \textcolor{comment}{//\ rotation\ axis\ for\ rotation\ offset}}
+\DoxyCodeLine{00037\ \ \ Float\ m\_glRotationAngle;\ \ \textcolor{comment}{//\ object\ rotation\ around\ the\ rotation\ axis.\ The\ rotation\ is\ not\ stored\ as\ a\ vector\ having\ a\ direction\ and\ a\ vector\ length\ (for\ rotational\ angle)\ for\ clarity.\ Measured\ in\ pi-\/radians.\ Describes\ the\ initial\ orientation\ of\ the\ model}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \textcolor{comment}{//physics\ related}}
+\DoxyCodeLine{00040\ \ \ Float\ m\_size;\ \textcolor{comment}{//\ The\ dimension\ /\ length\ multiplier\ for\ the\ object.\ This,\ multiplied\ with\ the\ dimensions\ of\ the\ 3d\ model,\ yields\ the\ 'real-\/size'\ object.\ meters.}}
+\DoxyCodeLine{00041\ \ \ Float\ m\_m;\ \textcolor{comment}{//object\ mass,\ kg}}
+\DoxyCodeLine{00042\ \ \ Float\ m\_h;\ \textcolor{comment}{//rotation\ around\ object\ origin,\ in\ pi-\/radians}}
+\DoxyCodeLine{00043\ \ \ Float\ m\_w;\ \textcolor{comment}{//object\ angular\ velocity,\ pi-\/radians/s,\ only\ for\ the\ depth\ axis\ (z)}}
+\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{structSdimpleRocket_1_1State}{State}}\ m\_state;\ \textcolor{comment}{//this\ object's\ position\ and\ current\ velocity}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \textcolor{comment}{//ideally,\ we\ would\ be\ working\ with\ the\ rotational\ momentum\ quaternion.\ For\ convenience,\ we\ skip\ this,\ and,\ instead,\ use\ a\ very\ simple\ angular\ velocity\ scalar;\ computing\ rotation\ will,\ likewise,\ be\ simple\ fiat,\ not\ accurate\ simulation.}}
+\DoxyCodeLine{00047\ \ \ \textcolor{comment}{//as\ we\ compute\ now,\ these\ are\ secondary\ properties,\ entirely\ computed\ from\ primary\ properties}}
+\DoxyCodeLine{00048\ \ \ \mbox{\hyperlink{structSdimpleRocket_1_1Derivative}{Derivative}}\ m\_derivative;\ \textcolor{comment}{//m\_state\ derivatives,\ in\ respect\ to\ time}}
+\DoxyCodeLine{00049\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ m\_p;\ \textcolor{comment}{//momentum\ vector\ kg\ *\ m\ /\ s}}
+\DoxyCodeLine{00050\ \ \ Float\ m\_im;\ \textcolor{comment}{//object\ inverse\ mass,\ kg\string^\{-\/1\}}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ m\_force;\textcolor{comment}{//the\ resultant\ of\ all\ forces\ acting\ upon\ this\ object}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \textcolor{comment}{//engine}}
+\DoxyCodeLine{00055\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ m\_thrust;\ \textcolor{comment}{//direction\ and\ magnitude\ of\ the\ force\ produced\ by\ the\ engine\ upon\ the\ object\ center\ of\ mass}}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{bool}\ m\_thrustActive;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ update();}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{void}\ updateMass();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00062\ \ \ \textcolor{comment}{//light\ related}}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{bool}\ m\_hasLight;\ \textcolor{comment}{//does\ this\ body\ have\ a\ lightsource\ attached?}}
+\DoxyCodeLine{00064\ \ \ \mbox{\hyperlink{structSdimpleRocket_1_1Light}{Light}}\ m\_light;\ \textcolor{comment}{//\ not\ enough\ time\ to\ properly\ implement\ accessor\ functions,\ thus\ public}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1SceneObject}{SceneObject}}(\mbox{\hyperlink{structSdimpleRocket_1_1DataObject}{DataObject}}\ \textcolor{keywordtype}{object},\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ position,\ Float\ size,\ Float\ mass,\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ velocity,\ Float\ rotation,\ Float\ angularVelocity,\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ thrust);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \mbox{\hyperlink{structSdimpleRocket_1_1DataObject}{DataObject}}\ getDataObject()\ \{\ \textcolor{keywordflow}{return}\ m\_object;\ \}}
+\DoxyCodeLine{00069\ \ \ \textcolor{keywordtype}{void}\ setDataObject(\mbox{\hyperlink{structSdimpleRocket_1_1DataObject}{DataObject}}\ \textcolor{keywordtype}{object})\ \{\ m\_object\ =\ object;\ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ getGlCenterOffset()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_glCenterOffset;\ \}}
+\DoxyCodeLine{00073\ \ \ \textcolor{keywordtype}{void}\ setGlCenterOffset(\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ glCenterOffset)\ \{\ m\_glCenterOffset\ =\ glCenterOffset;\ \}}
+\DoxyCodeLine{00074\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ getGlScale()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_glScale;\ \}}
+\DoxyCodeLine{00075\ \ \ \textcolor{keywordtype}{void}\ setGlScale(Float\ glScale)\ \{\ m\_glScale\ =\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}(glScale\ ,\ glScale,\ glScale);\ \}}
+\DoxyCodeLine{00076\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ getGlRotationAxis()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_glRotationAxis;\ \}}
+\DoxyCodeLine{00077\ \ \ \textcolor{keywordtype}{void}\ setGlRotationAxis(\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ glRotationalAxis)\ \{\ m\_glRotationAxis\ =\ glRotationalAxis;\ \}}
+\DoxyCodeLine{00078\ \ \ Float\ getGlRotationAngle()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_glRotationAngle;\ \}}
+\DoxyCodeLine{00079\ \ \ \textcolor{keywordtype}{void}\ setGlRotationAngle(Float\ glRotationalAngle)\ \{\ m\_glRotationAngle\ =\ glRotationalAngle;\ \}}
+\DoxyCodeLine{00080\ \ \ Float\ getSize()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_size;\ \}}
+\DoxyCodeLine{00081\ \ \ \textcolor{keywordtype}{void}\ setSize(Float\ size)\ \{\ m\_size\ =\ size;\ \}}
+\DoxyCodeLine{00082\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ getPosition()\ \{\ \textcolor{keywordflow}{return}\ m\_state.r;\ \}}
+\DoxyCodeLine{00083\ \ \ \textcolor{keywordtype}{void}\ setPosition(\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ position)\ \{\ m\_state.r\ =\ position;\ \}}
+\DoxyCodeLine{00084\ \ \ \textcolor{keywordtype}{void}\ translate(\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ deltaR)\ \{\ m\_state.r\ +=\ deltaR;\ \}}
+\DoxyCodeLine{00085\ \ \ Float\ getMass()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_m;\ \}}
+\DoxyCodeLine{00086\ \ \ \textcolor{keywordtype}{void}\ setMass(Float\ mass)\ \{\ m\_m\ =\ mass;\ updateMass();\ \}}
+\DoxyCodeLine{00087\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ getVelocity()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_state.v;\ \}}
+\DoxyCodeLine{00088\ \ \ \textcolor{keywordtype}{void}\ getVelocity(\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ velocity)\ \{\ m\_state.v\ =\ velocity;\ \}}
+\DoxyCodeLine{00089\ \ \ Float\ getRotation()\ \{\ \textcolor{keywordflow}{return}\ m\_h;\ \}}
+\DoxyCodeLine{00090\ \ \ \textcolor{keywordtype}{void}\ setRotation(Float\ rotation)\ \{\ m\_h\ =\ rotation;\ \}}
+\DoxyCodeLine{00091\ \ \ Float\ getAngularVelocity()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_w;\ \}}
+\DoxyCodeLine{00092\ \ \ \textcolor{keywordtype}{void}\ setAngularVelocity(Float\ angularVelocity)\ \{\ m\_w\ =\ angularVelocity;\ \}}
+\DoxyCodeLine{00093\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ getDPosition()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_derivative.dr;\ \}}
+\DoxyCodeLine{00094\ \ \ \textcolor{keywordtype}{void}\ setDPosition(\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ dPosition)\ \{\ m\_derivative.dr\ =\ dPosition;\ \}}
+\DoxyCodeLine{00095\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ getDVelocity()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_derivative.dv;\ \}}
+\DoxyCodeLine{00096\ \ \ \textcolor{keywordtype}{void}\ setDVelocity(\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ dVelocity)\ \{\ m\_derivative.dv\ =\ dVelocity;\ \}}
+\DoxyCodeLine{00097\ \ \ \mbox{\hyperlink{structSdimpleRocket_1_1State}{State}}\ getState()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_state;\ \}}
+\DoxyCodeLine{00098\ \ \ \textcolor{keywordtype}{void}\ setState(\mbox{\hyperlink{structSdimpleRocket_1_1State}{State}}\ state)\ \{\ m\_state\ =\ state;\ \}}
+\DoxyCodeLine{00099\ \ \ \mbox{\hyperlink{structSdimpleRocket_1_1Derivative}{Derivative}}\ getDerivative()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_derivative;\ \}}
+\DoxyCodeLine{00100\ \ \ \textcolor{keywordtype}{void}\ setDerivative(\mbox{\hyperlink{structSdimpleRocket_1_1Derivative}{Derivative}}\ \mbox{\hyperlink{structSdimpleRocket_1_1Derivative}{Derivative}})\ \{\ m\_derivative\ =\ \mbox{\hyperlink{structSdimpleRocket_1_1Derivative}{Derivative}};\ \}}
+\DoxyCodeLine{00101\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ getForce()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_force;\ \}}
+\DoxyCodeLine{00102\ \ \ \textcolor{keywordtype}{void}\ setForce(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&force\ =\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}())\ \{\ m\_force\ =\ force;\ \}}
+\DoxyCodeLine{00103\ \ \ \textcolor{keywordtype}{void}\ addForce(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&force)\ \{\ m\_force\ +=\ force;\ \}}
+\DoxyCodeLine{00104\ \ \ \textcolor{keywordtype}{void}\ setAcceleration(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&acceleration\ =\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}())\ \{\ m\_derivative.dv\ =\ acceleration;\ \}}
+\DoxyCodeLine{00105\ \ \ \textcolor{keywordtype}{void}\ addAcceleration(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&acceleration)\ \{\ m\_derivative.dv\ +=\ acceleration;\ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \textcolor{comment}{//physics}}
+\DoxyCodeLine{00109\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ linearAcceleration(\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ force)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00110\ \ \ \mbox{\hyperlink{structSdimpleRocket_1_1Derivative}{Derivative}}\ eval(\mbox{\hyperlink{structSdimpleRocket_1_1State}{State}}\ s,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structSdimpleRocket_1_1Derivative}{Derivative}}\ d,\ Float\ dt,\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ force)\ \textcolor{keyword}{const}\ ;}
+\DoxyCodeLine{00111\ \ \ \mbox{\hyperlink{structSdimpleRocket_1_1Derivative}{Derivative}}\ evalAccel(\mbox{\hyperlink{structSdimpleRocket_1_1State}{State}}\ s,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{structSdimpleRocket_1_1Derivative}{Derivative}}\ d,\ Float\ dt)\ \textcolor{keyword}{const}\ ;}
+\DoxyCodeLine{00112\ \ \ \textcolor{comment}{//move\ the\ object\ affected\ by\ a\ force\ during\ a\ certain\ time}}
+\DoxyCodeLine{00113\ \ \ \textcolor{keywordtype}{void}\ integrateRk4Accel(Float\ dt);}
+\DoxyCodeLine{00114\ \ \ \textcolor{keywordtype}{void}\ integrateRk4(Float\ dt,\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ force);}
+\DoxyCodeLine{00115\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ integrate(Float\ dt,\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ force)\ \{\ integrateRk4(dt,\ force);\ \}}
+\DoxyCodeLine{00116\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ integrate(Float\ dt)\ \{\ integrate(dt,\ m\_force);\ \}}
+\DoxyCodeLine{00117\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ integrateAccel(Float\ dt)\ \{\ integrateRk4Accel(dt);\ \}}
+\DoxyCodeLine{00118\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ forceToAccel()\ \{\ m\_derivative.dv\ +=\ m\_force\ /\ m\_m;\ \}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \textcolor{keywordtype}{bool}\ isThrustActive()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_thrustActive;\ \}}
+\DoxyCodeLine{00121\ \ \ \textcolor{keywordtype}{void}\ applyThrust();\ \textcolor{comment}{//compute\ thrust\ according\ to\ object\ rotation,\ and\ add\ it\ to\ the\ forces\ acting\ upon\ the\ object.\ Do\ not\ integrate\ yet.}}
+\DoxyCodeLine{00122\ \};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

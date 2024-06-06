@@ -1,0 +1,102 @@
+\doxysection{engine.\+cpp}
+\hypertarget{pugEngine_2engine_2engine_8cpp_source}{}\label{pugEngine_2engine_2engine_8cpp_source}\index{/home/admin/github/pugEngine/engine/engine.cpp@{/home/admin/github/pugEngine/engine/engine.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}physics/physics.cpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}core/core.cpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{using\ namespace\ }core;}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <GL/freeglut\_std.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <GL/freeglut.h>}}
+\DoxyCodeLine{00012\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ prevKey;}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ \#include\ "{}engine/engine.cpp"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classopengl}{opengl}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ void\ (*loop)();}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ setLoop(\textcolor{keywordtype}{void}\ (*func)())}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Loop\ function\ set.\(\backslash\)n"{}});}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ loop\ =\ func;}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ display(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(loop)}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ loop();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \textcolor{comment}{//\ //\ Reset\ key\ states\ if\ needed}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \textcolor{comment}{//\ Input::resetKeyStates();}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ glutSwapBuffers();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ glFlush();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ glutPostRedisplay();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ reshape(\textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ h)}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \textcolor{comment}{//\ printf("{}ReshapeFunction\ \(\backslash\)n"{});}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ glViewport(0,0,(GLsizei)\ w,\ (GLsizei)\ h);}
+\DoxyCodeLine{00045\ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ keyboard(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ key,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ }
+\DoxyCodeLine{00048\ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \textcolor{comment}{//\ printf("{}key\ pressed:\ \%c\ \(\backslash\)n"{},\ key);}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\ ==\ 27)}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ exit(0);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ Input::updateKeyState(key,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ keyUp(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ key,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ }
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ Input::updateKeyState(key,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ mouse(\textcolor{keywordtype}{int}\ button,\ \textcolor{keywordtype}{int}\ state,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)}
+\DoxyCodeLine{00062\ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \textcolor{comment}{//\ printf("{}mouse\ \%d\ \(\backslash\)n"{},\ state);}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \textcolor{comment}{//\ if(state\ ==\ 0)}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ keyPressed(button\ +\ '0',\ x,\ y);}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (state\ ==\ 1)}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ keyReleased(button\ +\ '0',\ x,\ y);}}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ glutSetup(\textcolor{keywordtype}{int}\ *argc,\ \textcolor{keywordtype}{char}**\ argv)\ }
+\DoxyCodeLine{00073\ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ glutInit(argc,\ argv);}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ glutInitWindowSize(480,\ 480);\ \textcolor{comment}{//\ 480x640}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ glutInitWindowPosition(0,0);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ glutInitDisplayMode(GLUT\_DOUBLE\ |\ GLUT\_RGBA);}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ glutCreateWindow(\textcolor{stringliteral}{"{}Canvas"{}});}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ glutReshapeFunc(reshape);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ glutDisplayFunc(display);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ glutKeyboardFunc(keyboard);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ glutKeyboardUpFunc(keyUp);\ \textcolor{comment}{//\ Register\ key\ release\ event}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ glutMouseFunc(mouse);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ user's\ code\ here\ somehow}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ smth\ like;}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ main::setup();}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ glutMainLoop();}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ void\ (*opengl::loop)()\ =\ \textcolor{keyword}{nullptr};}
+
+\end{DoxyCode}

@@ -1,0 +1,86 @@
+\doxysection{vector3.\+h}
+\hypertarget{vector3_8h_source}{}\label{vector3_8h_source}\index{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/vector3.h@{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/vector3.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_VECTOR3\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_VECTOR3\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}types.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }SdimpleRocket\ \{}
+\DoxyCodeLine{00008\ \textcolor{comment}{//mathematics\ /\ physics\ vector,\ element\ of\ a\ 3-\/dimensional\ Vector\ Space,\ with\ Euclidean\ (L\_p,\ p\ =\ 2)\ metric}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \{}
+\DoxyCodeLine{00011\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00012\ \ \ Float\ m\_x,\ m\_y,\ m\_z;}
+\DoxyCodeLine{00013\ \ \ Float\ m\_x2,\ m\_y2,\ m\_z2;\ \textcolor{comment}{//squared\ values,\ for\ caching}}
+\DoxyCodeLine{00014\ \ \ Float\ m\_norm;\ \textcolor{comment}{//the\ vector's\ euclidean\ norm}}
+\DoxyCodeLine{00015\ \ \ Float\ m\_norm2;}
+\DoxyCodeLine{00016\ \ \ }
+\DoxyCodeLine{00017\ \ \ \textcolor{keywordtype}{void}\ update();}
+\DoxyCodeLine{00018\ \ \ \textcolor{keywordtype}{void}\ updateNorm();}
+\DoxyCodeLine{00019\ \ \ }
+\DoxyCodeLine{00020\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}(Float\ x\ =\ 0,\ Float\ y\ =\ 0,\ Float\ z\ =\ 0):}
+\DoxyCodeLine{00022\ \ \ m\_x(x),\ m\_y(y),\ m\_z(z)\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ update();}
+\DoxyCodeLine{00024\ \ \ \}}
+\DoxyCodeLine{00025\ \ \ }
+\DoxyCodeLine{00026\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ Float\ getX()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_x;\ \}\ }
+\DoxyCodeLine{00029\ \ \ \textcolor{keywordtype}{void}\ setX(\textcolor{keyword}{const}\ Float\ x)\ \{\ m\_x\ =\ x;\ m\_x2\ =\ pow(x,\ 2);\ updateNorm();\}}
+\DoxyCodeLine{00030\ \ \ Float\ getY()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_y;\ \}}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{void}\ setY(\textcolor{keyword}{const}\ Float\ y)\ \{\ m\_y\ =\ y;\ m\_y2\ =\ pow(y,\ 2);\ updateNorm();\}}
+\DoxyCodeLine{00032\ \ \ Float\ getZ()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_z;\ \}}
+\DoxyCodeLine{00033\ \ \ \textcolor{keywordtype}{void}\ setZ(\textcolor{keyword}{const}\ Float\ z)\ \{\ m\_z\ =\ z;\ m\_z2\ =\ pow(z,\ 2);\ updateNorm();\}}
+\DoxyCodeLine{00034\ \ \ Float\ getNorm()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_norm;\ \}}
+\DoxyCodeLine{00035\ \ \ Float\ getNorm2()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_norm2;\ \}}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{void}\ normalise();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \textcolor{keywordtype}{void}\ perAxisMax(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&);}
+\DoxyCodeLine{00039\ \ \ \textcolor{keywordtype}{void}\ perAxisMin(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&);}
+\DoxyCodeLine{00040\ \ \ }
+\DoxyCodeLine{00041\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&);}
+\DoxyCodeLine{00042\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\&\ operator*=(\textcolor{keyword}{const}\ Float\ \&);}
+\DoxyCodeLine{00043\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\&\ operator/=(\textcolor{keyword}{const}\ Float\ \&);}
+\DoxyCodeLine{00044\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\&\ operator+=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&);}
+\DoxyCodeLine{00045\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\&\ operator-\/=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&);}
+\DoxyCodeLine{00046\ \ \ \textcolor{comment}{//for\ convenience}}
+\DoxyCodeLine{00047\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&\ operator+=(\textcolor{keyword}{const}\ Float\ \&);}
+\DoxyCodeLine{00048\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&\ operator-\/=(\textcolor{keyword}{const}\ Float\ \&);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ }
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{bool}\ operator==(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&)\ \textcolor{keyword}{const}\ ;\ }
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{bool}\ operator!=(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&)\ \textcolor{keyword}{const}\ ;}
+\DoxyCodeLine{00053\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ operator+(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&);}
+\DoxyCodeLine{00054\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ operator-\/(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&);}
+\DoxyCodeLine{00055\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ operator-\/();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ operator+(\textcolor{keyword}{const}\ Float\ \&);}
+\DoxyCodeLine{00058\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ operator-\/(\textcolor{keyword}{const}\ Float\ \&);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ operator*(\textcolor{keyword}{const}\ Float\ \&);}
+\DoxyCodeLine{00061\ \ \ Float\ operator*(\textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&);}
+\DoxyCodeLine{00062\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ operator/(\textcolor{keyword}{const}\ Float\ \&);}
+\DoxyCodeLine{00063\ \ \ \textcolor{keywordtype}{void}\ print()\textcolor{keyword}{\ const\ }\{\ std::cout\ <<\ \textcolor{stringliteral}{"{}("{}}\ <<\ m\_x\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ m\_y\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ m\_z\ <<\ \textcolor{stringliteral}{"{})\ "{}};\ \}}
+\DoxyCodeLine{00064\ \ \ \textcolor{comment}{//friend\ Vector3\ operator*(const\ Float\&\ lhs,\ const\ Vector3\ \&rhs);}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{comment}{//outside-\/class\ operator\ for\ scalar\ *\ vector\ operation}}
+\DoxyCodeLine{00070\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ operator*(\textcolor{keyword}{const}\ Float\ \&lhs,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ \&rhs)\ \{}
+\DoxyCodeLine{00071\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ ret(rhs);}
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordflow}{return}\ ret\ *\ lhs;}
+\DoxyCodeLine{00073\ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{comment}{/*Float\ distance(Vector3\ lhs,\ Vector3\ rhs)\ \{}}
+\DoxyCodeLine{00076\ \textcolor{comment}{\ \ return\ (lhs\ -\/\ rhs).getNorm();}}
+\DoxyCodeLine{00077\ \textcolor{comment}{\ \ \}*/}}
+\DoxyCodeLine{00078\ \ }
+\DoxyCodeLine{00079\ \}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,38 @@
+\doxysection{data\+Structures.\+h}
+\hypertarget{dataStructures_8h_source}{}\label{dataStructures_8h_source}\index{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/dataStructures.h@{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/dataStructures.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_DATASTRUCTURES\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_DATASTRUCTURES\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}proxyGl.h"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}vector3.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}types.h"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{namespace\ }SdimpleRocket\ \{}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{//information\ related\ to\ the\ drawable\ screen\ and\ its\ outer\ window}}
+\DoxyCodeLine{00013\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSdimpleRocket_1_1Screen}{Screen}}\ \{}
+\DoxyCodeLine{00014\ \ \ GLsizei\ w,\ h;}
+\DoxyCodeLine{00015\ \ \ GLfloat\ ratio;}
+\DoxyCodeLine{00016\ \ \ SDL\_Window\ *window;}
+\DoxyCodeLine{00017\ \ \ SDL\_GLContext\ context;}
+\DoxyCodeLine{00018\ \ \ \textcolor{comment}{//this\ will\ point\ to\ a\ certain\ address,\ updated\ by\ SDL\_PollEvent}}
+\DoxyCodeLine{00019\ \ \ \textcolor{keyword}{const}\ Uint8\ *kbState;}
+\DoxyCodeLine{00020\ \ \ \textcolor{keywordtype}{bool}\ active;}
+\DoxyCodeLine{00021\ \ \ }
+\DoxyCodeLine{00022\ \ \ \textcolor{keyword}{inline}\ \textcolor{keywordtype}{void}\ updateRatio()\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordflow}{if}\ (h\ <\ 1)\ h\ =\ 1;}
+\DoxyCodeLine{00024\ \ \ \ \ ratio\ =\ (GLfloat)\ w\ /\ (GLfloat)\ h;}
+\DoxyCodeLine{00025\ \ \ \}}
+\DoxyCodeLine{00026\ \};}
+\DoxyCodeLine{00027\ \ }
+\DoxyCodeLine{00028\ \ }
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ }
+\DoxyCodeLine{00031\ \}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

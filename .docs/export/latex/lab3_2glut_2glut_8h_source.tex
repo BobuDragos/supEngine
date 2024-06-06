@@ -1,0 +1,665 @@
+\doxysection{glut.\+h}
+\hypertarget{lab3_2glut_2glut_8h_source}{}\label{lab3_2glut_2glut_8h_source}\index{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/Work/lab3/glut/glut.h@{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/Work/lab3/glut/glut.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_glut\_h\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_glut\_h\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{/*\ Copyright\ (c)\ Mark\ J.\ Kilgard,\ 1994,\ 1995,\ 1996,\ 1998.\ */}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{comment}{/*\ This\ program\ is\ freely\ distributable\ without\ licensing\ fees\ \ and\ is}}
+\DoxyCodeLine{00007\ \textcolor{comment}{\ \ \ provided\ without\ guarantee\ or\ warrantee\ expressed\ or\ \ implied.\ This}}
+\DoxyCodeLine{00008\ \textcolor{comment}{\ \ \ program\ is\ -\/not-\/\ in\ the\ public\ domain.\ */}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#if\ defined(\_WIN32)}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{comment}{/*\ GLUT\ 3.7\ now\ tries\ to\ avoid\ including\ <windows.h>}}
+\DoxyCodeLine{00013\ \textcolor{comment}{\ \ \ to\ avoid\ name\ space\ pollution,\ but\ Win32's\ <GL/gl.h>\ }}
+\DoxyCodeLine{00014\ \textcolor{comment}{\ \ \ needs\ APIENTRY\ and\ WINGDIAPI\ defined\ properly.\ */}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#\ if\ 0}}
+\DoxyCodeLine{00016\ \ \ \ \textcolor{comment}{/*\ This\ would\ put\ tons\ of\ macros\ and\ crap\ in\ our\ clean\ name\ space.\ */}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#\ \ define\ \ WIN32\_LEAN\_AND\_MEAN}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#\ \ include\ <windows.h>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#\ else}}
+\DoxyCodeLine{00020\ \ \ \ \textcolor{comment}{/*\ XXX\ This\ is\ from\ Win32's\ <windef.h>\ */}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#\ \ ifndef\ APIENTRY}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#\ \ \ define\ GLUT\_APIENTRY\_DEFINED}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#\ \ \ if\ (\_MSC\_VER\ >=\ 800)\ ||\ defined(\_STDCALL\_SUPPORTED)\ ||\ defined(\_\_BORLANDC\_\_)\ ||\ defined(\_\_LCC\_\_)}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#\ \ \ \ define\ APIENTRY\ \ \ \ \_\_stdcall}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#\ \ \ else}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#\ \ \ \ define\ APIENTRY}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#\ \ endif}}
+\DoxyCodeLine{00029\ \ \ \ \textcolor{comment}{/*\ XXX\ This\ is\ from\ Win32's\ <winnt.h>\ */}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#\ \ ifndef\ CALLBACK}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#\ \ \ if\ (defined(\_M\_MRX000)\ ||\ defined(\_M\_IX86)\ ||\ defined(\_M\_ALPHA)\ ||\ defined(\_M\_PPC))\ \&\&\ !defined(MIDL\_PASS)\ ||\ defined(\_\_LCC\_\_)}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#\ \ \ \ define\ CALLBACK\ \_\_stdcall}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#\ \ \ else}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#\ \ \ \ define\ CALLBACK}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#\ \ endif}}
+\DoxyCodeLine{00037\ \ \ \ \textcolor{comment}{/*\ XXX\ Hack\ for\ lcc\ compiler.\ \ It\ doesn't\ support\ \_\_declspec(dllimport),\ just\ \_\_stdcall.\ */}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#\ \ if\ defined(\ \_\_LCC\_\_\ )}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#\ \ \ undef\ WINGDIAPI}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#\ \ \ define\ WINGDIAPI\ \_\_stdcall}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#\ \ else}}
+\DoxyCodeLine{00042\ \ \ \ \textcolor{comment}{/*\ XXX\ This\ is\ from\ Win32's\ <wingdi.h>\ and\ <winnt.h>\ */}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#\ \ \ ifndef\ WINGDIAPI}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#\ \ \ \ define\ GLUT\_WINGDIAPI\_DEFINED}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#\ \ \ \ define\ WINGDIAPI\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#\ \ endif}}
+\DoxyCodeLine{00048\ \ \ \ \textcolor{comment}{/*\ XXX\ This\ is\ from\ Win32's\ <ctype.h>\ */}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#\ \ ifndef\ \_WCHAR\_T\_DEFINED}}
+\DoxyCodeLine{00050\ \textcolor{keyword}{typedef}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ wchar\_t;}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#\ \ \ define\ \_WCHAR\_T\_DEFINED}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#\ \ endif}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{comment}{/*\ To\ disable\ automatic\ library\ usage\ for\ GLUT,\ define\ GLUT\_NO\_LIB\_PRAGMA}}
+\DoxyCodeLine{00056\ \textcolor{comment}{\ \ \ in\ your\ compile\ preprocessor\ options.\ */}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#\ if\ !defined(GLUT\_BUILDING\_LIB)\ \&\&\ !defined(GLUT\_NO\_LIB\_PRAGMA)}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#\ \ pragma\ comment\ (lib,\ "{}winmm.lib"{})\ \ \ \ \ \ }\textcolor{comment}{/*\ link\ with\ Windows\ MultiMedia\ lib\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00059\ \textcolor{comment}{/*\ To\ enable\ automatic\ SGI\ OpenGL\ for\ Windows\ library\ usage\ for\ GLUT,}}
+\DoxyCodeLine{00060\ \textcolor{comment}{\ \ \ define\ GLUT\_USE\_SGI\_OPENGL\ in\ your\ compile\ preprocessor\ options.\ \ */}}
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#\ \ ifdef\ GLUT\_USE\_SGI\_OPENGL}}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#\ \ \ pragma\ comment\ (lib,\ "{}opengl.lib"{})\ \ \ \ }\textcolor{comment}{/*\ link\ with\ SGI\ OpenGL\ for\ Windows\ lib\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#\ \ \ pragma\ comment\ (lib,\ "{}glu.lib"{})\ \ \ \ \ \ \ }\textcolor{comment}{/*\ link\ with\ SGI\ OpenGL\ Utility\ lib\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#\ \ \ pragma\ comment\ (lib,\ "{}glut.lib"{})\ \ \ \ \ \ }\textcolor{comment}{/*\ link\ with\ Win32\ GLUT\ for\ SGI\ OpenGL\ lib\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#\ \ else}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#\ \ \ pragma\ comment\ (lib,\ "{}opengl32.lib"{})\ \ }\textcolor{comment}{/*\ link\ with\ Microsoft\ OpenGL\ lib\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#\ \ \ pragma\ comment\ (lib,\ "{}glu32.lib"{})\ \ \ \ \ }\textcolor{comment}{/*\ link\ with\ Microsoft\ OpenGL\ Utility\ lib\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#\ \ \ pragma\ comment\ (lib,\ "{}glut32.lib"{})\ \ \ \ }\textcolor{comment}{/*\ link\ with\ Win32\ GLUT\ lib\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#\ \ endif}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{comment}{/*\ To\ disable\ supression\ of\ annoying\ warnings\ about\ floats\ being\ promoted}}
+\DoxyCodeLine{00073\ \textcolor{comment}{\ \ \ to\ doubles,\ define\ GLUT\_NO\_WARNING\_DISABLE\ in\ your\ compile\ preprocessor}}
+\DoxyCodeLine{00074\ \textcolor{comment}{\ \ \ options.\ */}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#\ ifndef\ GLUT\_NO\_WARNING\_DISABLE}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#\ \ pragma\ warning\ (disable:4244)\ \ }\textcolor{comment}{/*\ Disable\ bogus\ VC++\ 4.2\ conversion\ warnings.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#\ \ pragma\ warning\ (disable:4305)\ \ }\textcolor{comment}{/*\ VC++\ 5.0\ version\ of\ above\ warning.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{comment}{/*\ Win32\ has\ an\ annoying\ issue\ where\ there\ are\ multiple\ C\ run-\/time}}
+\DoxyCodeLine{00081\ \textcolor{comment}{\ \ \ libraries\ (CRTs).\ \ If\ the\ executable\ is\ linked\ with\ a\ different\ CRT}}
+\DoxyCodeLine{00082\ \textcolor{comment}{\ \ \ from\ the\ GLUT\ DLL,\ the\ GLUT\ DLL\ will\ not\ share\ the\ same\ CRT\ static}}
+\DoxyCodeLine{00083\ \textcolor{comment}{\ \ \ data\ seen\ by\ the\ executable.\ \ In\ particular,\ atexit\ callbacks\ registered}}
+\DoxyCodeLine{00084\ \textcolor{comment}{\ \ \ in\ the\ executable\ will\ not\ be\ called\ if\ GLUT\ calls\ its\ (different)}}
+\DoxyCodeLine{00085\ \textcolor{comment}{\ \ \ exit\ routine).\ \ GLUT\ is\ typically\ built\ with\ the}}
+\DoxyCodeLine{00086\ \textcolor{comment}{\ \ \ "{}/MD"{}\ option\ (the\ CRT\ with\ multithreading\ DLL\ support),\ but\ the\ Visual}}
+\DoxyCodeLine{00087\ \textcolor{comment}{\ \ \ C++\ linker\ default\ is\ "{}/ML"{}\ (the\ single\ threaded\ CRT).}}
+\DoxyCodeLine{00088\ \textcolor{comment}{}}
+\DoxyCodeLine{00089\ \textcolor{comment}{\ \ \ One\ workaround\ to\ this\ issue\ is\ requiring\ users\ to\ always\ link\ with}}
+\DoxyCodeLine{00090\ \textcolor{comment}{\ \ \ the\ same\ CRT\ as\ GLUT\ is\ compiled\ with.\ \ That\ requires\ users\ supply\ a}}
+\DoxyCodeLine{00091\ \textcolor{comment}{\ \ \ non-\/standard\ option.\ \ GLUT\ 3.7\ has\ its\ own\ built-\/in\ workaround\ where}}
+\DoxyCodeLine{00092\ \textcolor{comment}{\ \ \ the\ executable's\ "{}exit"{}\ function\ pointer\ is\ covertly\ passed\ to\ GLUT.}}
+\DoxyCodeLine{00093\ \textcolor{comment}{\ \ \ GLUT\ then\ calls\ the\ executable's\ exit\ function\ pointer\ to\ ensure\ that}}
+\DoxyCodeLine{00094\ \textcolor{comment}{\ \ \ any\ "{}atexit"{}\ calls\ registered\ by\ the\ application\ are\ called\ if\ GLUT}}
+\DoxyCodeLine{00095\ \textcolor{comment}{\ \ \ needs\ to\ exit.}}
+\DoxyCodeLine{00096\ \textcolor{comment}{}}
+\DoxyCodeLine{00097\ \textcolor{comment}{\ \ \ Note\ that\ the\ \_\_glut*WithExit\ routines\ should\ NEVER\ be\ called\ directly.}}
+\DoxyCodeLine{00098\ \textcolor{comment}{\ \ \ To\ avoid\ the\ atexit\ workaround,\ \#define\ GLUT\_DISABLE\_ATEXIT\_HACK.\ */}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{comment}{/*\ XXX\ This\ is\ from\ Win32's\ <process.h>\ */}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#\ if\ !defined(\_MSC\_VER)\ \&\&\ !defined(\_\_cdecl)}}
+\DoxyCodeLine{00102\ \ \ \ \textcolor{comment}{/*\ Define\ \_\_cdecl\ for\ non-\/Microsoft\ compilers.\ */}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#\ \ define\ \_\_cdecl}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#\ \ define\ GLUT\_DEFINED\_\_\_CDECL}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#\ ifndef\ \_CRTIMP}}
+\DoxyCodeLine{00107\ \textcolor{preprocessor}{\#\ \ ifdef\ \_NTSDK}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{comment}{/*\ Definition\ compatible\ with\ NT\ SDK\ */}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#\ \ \ define\ \_CRTIMP}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#\ \ else}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{/*\ Current\ definition\ */}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#\ \ \ ifdef\ \_DLL}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#\ \ \ \ define\ \_CRTIMP\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#\ \ \ else}}
+\DoxyCodeLine{00115\ \textcolor{preprocessor}{\#\ \ \ \ define\ \_CRTIMP}}
+\DoxyCodeLine{00116\ \textcolor{preprocessor}{\#\ \ \ endif}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#\ \ endif}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#\ \ define\ GLUT\_DEFINED\_\_CRTIMP}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{comment}{/*\ GLUT\ API\ entry\ point\ declarations\ for\ Win32.\ */}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#\ ifdef\ GLUT\_BUILDING\_LIB}}
+\DoxyCodeLine{00123\ \textcolor{preprocessor}{\#\ \ define\ GLUTAPI\ \_\_declspec(dllexport)}}
+\DoxyCodeLine{00124\ \textcolor{preprocessor}{\#\ else}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#\ \ ifdef\ \_DLL}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#\ \ \ define\ GLUTAPI\ \_\_declspec(dllimport)}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#\ \ else}}
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#\ \ \ define\ GLUTAPI\ extern}}
+\DoxyCodeLine{00129\ \textcolor{preprocessor}{\#\ \ endif}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \textcolor{comment}{/*\ GLUT\ callback\ calling\ convention\ for\ Win32.\ */}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#\ define\ GLUTCALLBACK\ \_\_cdecl}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{/*\ \_WIN32\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#include\ <GL/gl.h>}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#include\ <GL/glu.h>}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00141\ \textcolor{keyword}{extern}\ \textcolor{stringliteral}{"{}C"{}}\ \{}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#if\ defined(\_WIN32)}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#\ ifndef\ GLUT\_BUILDING\_LIB}}
+\DoxyCodeLine{00146\ \textcolor{keyword}{extern}\ \_CRTIMP\ \textcolor{keywordtype}{void}\ \_\_cdecl\ exit(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#\ endif}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00149\ \textcolor{comment}{/*\ non-\/Win32\ case.\ */}}
+\DoxyCodeLine{00150\ \textcolor{comment}{/*\ Define\ APIENTRY\ and\ CALLBACK\ to\ nothing\ if\ we\ aren't\ on\ Win32.\ */}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#\ define\ APIENTRY}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#\ define\ GLUT\_APIENTRY\_DEFINED}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#\ define\ CALLBACK}}
+\DoxyCodeLine{00154\ \textcolor{comment}{/*\ Define\ GLUTAPI\ and\ GLUTCALLBACK\ as\ below\ if\ we\ aren't\ on\ Win32.\ */}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#\ define\ GLUTAPI\ extern}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#\ define\ GLUTCALLBACK}}
+\DoxyCodeLine{00157\ \textcolor{comment}{/*\ Prototype\ exit\ for\ the\ non-\/Win32\ case\ (see\ above).\ */}}
+\DoxyCodeLine{00158\ \textcolor{keyword}{extern}\ \textcolor{keywordtype}{void}\ exit(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00182\ \textcolor{preprocessor}{\#ifndef\ GLUT\_API\_VERSION\ \ }\textcolor{comment}{/*\ allow\ this\ to\ be\ overriden\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00183\ \textcolor{preprocessor}{\#define\ GLUT\_API\_VERSION\ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00222\ \textcolor{preprocessor}{\#ifndef\ GLUT\_XLIB\_IMPLEMENTATION\ \ }\textcolor{comment}{/*\ Allow\ this\ to\ be\ overriden.\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{00223\ \textcolor{preprocessor}{\#define\ GLUT\_XLIB\_IMPLEMENTATION\ \ \ \ 15}}
+\DoxyCodeLine{00224\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00225\ }
+\DoxyCodeLine{00226\ \textcolor{comment}{/*\ Display\ mode\ bit\ masks.\ */}}
+\DoxyCodeLine{00227\ \textcolor{preprocessor}{\#define\ GLUT\_RGB\ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00228\ \textcolor{preprocessor}{\#define\ GLUT\_RGBA\ \ \ \ \ \ \ \ \ \ \ GLUT\_RGB}}
+\DoxyCodeLine{00229\ \textcolor{preprocessor}{\#define\ GLUT\_INDEX\ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00230\ \textcolor{preprocessor}{\#define\ GLUT\_SINGLE\ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00231\ \textcolor{preprocessor}{\#define\ GLUT\_DOUBLE\ \ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00232\ \textcolor{preprocessor}{\#define\ GLUT\_ACCUM\ \ \ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00233\ \textcolor{preprocessor}{\#define\ GLUT\_ALPHA\ \ \ \ \ \ \ \ \ \ 8}}
+\DoxyCodeLine{00234\ \textcolor{preprocessor}{\#define\ GLUT\_DEPTH\ \ \ \ \ \ \ \ \ \ 16}}
+\DoxyCodeLine{00235\ \textcolor{preprocessor}{\#define\ GLUT\_STENCIL\ \ \ \ \ \ \ \ \ \ \ \ 32}}
+\DoxyCodeLine{00236\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 2)}}
+\DoxyCodeLine{00237\ \textcolor{preprocessor}{\#define\ GLUT\_MULTISAMPLE\ \ \ \ \ \ \ \ 128}}
+\DoxyCodeLine{00238\ \textcolor{preprocessor}{\#define\ GLUT\_STEREO\ \ \ \ \ \ \ \ \ 256}}
+\DoxyCodeLine{00239\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00240\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 3)}}
+\DoxyCodeLine{00241\ \textcolor{preprocessor}{\#define\ GLUT\_LUMINANCE\ \ \ \ \ \ \ \ \ \ 512}}
+\DoxyCodeLine{00242\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \textcolor{comment}{/*\ Mouse\ buttons.\ */}}
+\DoxyCodeLine{00245\ \textcolor{preprocessor}{\#define\ GLUT\_LEFT\_BUTTON\ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00246\ \textcolor{preprocessor}{\#define\ GLUT\_MIDDLE\_BUTTON\ \ \ \ \ \ 1}}
+\DoxyCodeLine{00247\ \textcolor{preprocessor}{\#define\ GLUT\_RIGHT\_BUTTON\ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ \textcolor{comment}{/*\ Mouse\ button\ \ state.\ */}}
+\DoxyCodeLine{00250\ \textcolor{preprocessor}{\#define\ GLUT\_DOWN\ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00251\ \textcolor{preprocessor}{\#define\ GLUT\_UP\ \ \ \ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 2)}}
+\DoxyCodeLine{00254\ \textcolor{comment}{/*\ function\ keys\ */}}
+\DoxyCodeLine{00255\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_F1\ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00256\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_F2\ \ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00257\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_F3\ \ \ \ \ \ \ \ \ 3}}
+\DoxyCodeLine{00258\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_F4\ \ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00259\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_F5\ \ \ \ \ \ \ \ \ 5}}
+\DoxyCodeLine{00260\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_F6\ \ \ \ \ \ \ \ \ 6}}
+\DoxyCodeLine{00261\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_F7\ \ \ \ \ \ \ \ \ 7}}
+\DoxyCodeLine{00262\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_F8\ \ \ \ \ \ \ \ \ 8}}
+\DoxyCodeLine{00263\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_F9\ \ \ \ \ \ \ \ \ 9}}
+\DoxyCodeLine{00264\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_F10\ \ \ \ \ \ \ \ \ \ \ \ 10}}
+\DoxyCodeLine{00265\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_F11\ \ \ \ \ \ \ \ \ \ \ \ 11}}
+\DoxyCodeLine{00266\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_F12\ \ \ \ \ \ \ \ \ \ \ \ 12}}
+\DoxyCodeLine{00267\ \textcolor{comment}{/*\ directional\ keys\ */}}
+\DoxyCodeLine{00268\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_LEFT\ \ \ \ \ \ \ \ \ \ \ 100}}
+\DoxyCodeLine{00269\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_UP\ \ \ \ \ \ \ \ \ 101}}
+\DoxyCodeLine{00270\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_RIGHT\ \ \ \ \ \ \ \ \ \ 102}}
+\DoxyCodeLine{00271\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_DOWN\ \ \ \ \ \ \ \ \ \ \ 103}}
+\DoxyCodeLine{00272\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_PAGE\_UP\ \ \ \ \ \ \ \ 104}}
+\DoxyCodeLine{00273\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_PAGE\_DOWN\ \ \ \ \ \ 105}}
+\DoxyCodeLine{00274\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_HOME\ \ \ \ \ \ \ \ \ \ \ 106}}
+\DoxyCodeLine{00275\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_END\ \ \ \ \ \ \ \ \ \ \ \ 107}}
+\DoxyCodeLine{00276\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_INSERT\ \ \ \ \ \ \ \ \ 108}}
+\DoxyCodeLine{00277\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00279\ \textcolor{comment}{/*\ Entry/exit\ \ state.\ */}}
+\DoxyCodeLine{00280\ \textcolor{preprocessor}{\#define\ GLUT\_LEFT\ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00281\ \textcolor{preprocessor}{\#define\ GLUT\_ENTERED\ \ \ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \textcolor{comment}{/*\ Menu\ usage\ \ state.\ */}}
+\DoxyCodeLine{00284\ \textcolor{preprocessor}{\#define\ GLUT\_MENU\_NOT\_IN\_USE\ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00285\ \textcolor{preprocessor}{\#define\ GLUT\_MENU\_IN\_USE\ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \textcolor{comment}{/*\ Visibility\ \ state.\ */}}
+\DoxyCodeLine{00288\ \textcolor{preprocessor}{\#define\ GLUT\_NOT\_VISIBLE\ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00289\ \textcolor{preprocessor}{\#define\ GLUT\_VISIBLE\ \ \ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00291\ \textcolor{comment}{/*\ Window\ status\ \ state.\ */}}
+\DoxyCodeLine{00292\ \textcolor{preprocessor}{\#define\ GLUT\_HIDDEN\ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00293\ \textcolor{preprocessor}{\#define\ GLUT\_FULLY\_RETAINED\ \ \ \ \ 1}}
+\DoxyCodeLine{00294\ \textcolor{preprocessor}{\#define\ GLUT\_PARTIALLY\_RETAINED\ \ \ \ \ 2}}
+\DoxyCodeLine{00295\ \textcolor{preprocessor}{\#define\ GLUT\_FULLY\_COVERED\ \ \ \ \ \ 3}}
+\DoxyCodeLine{00296\ }
+\DoxyCodeLine{00297\ \textcolor{comment}{/*\ Color\ index\ component\ selection\ values.\ */}}
+\DoxyCodeLine{00298\ \textcolor{preprocessor}{\#define\ GLUT\_RED\ \ \ \ \ \ \ \ \ \ \ \ 0}}
+\DoxyCodeLine{00299\ \textcolor{preprocessor}{\#define\ GLUT\_GREEN\ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00300\ \textcolor{preprocessor}{\#define\ GLUT\_BLUE\ \ \ \ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \textcolor{preprocessor}{\#if\ defined(\_WIN32)}}
+\DoxyCodeLine{00303\ \textcolor{comment}{/*\ Stroke\ font\ constants\ (use\ these\ in\ GLUT\ program).\ */}}
+\DoxyCodeLine{00304\ \textcolor{preprocessor}{\#define\ GLUT\_STROKE\_ROMAN\ \ \ \ \ \ \ ((void*)0)}}
+\DoxyCodeLine{00305\ \textcolor{preprocessor}{\#define\ GLUT\_STROKE\_MONO\_ROMAN\ \ \ \ \ \ ((void*)1)}}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \textcolor{comment}{/*\ Bitmap\ font\ constants\ (use\ these\ in\ GLUT\ program).\ */}}
+\DoxyCodeLine{00308\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_9\_BY\_15\ \ \ \ \ ((void*)2)}}
+\DoxyCodeLine{00309\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_8\_BY\_13\ \ \ \ \ ((void*)3)}}
+\DoxyCodeLine{00310\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_TIMES\_ROMAN\_10\ \ ((void*)4)}}
+\DoxyCodeLine{00311\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_TIMES\_ROMAN\_24\ \ ((void*)5)}}
+\DoxyCodeLine{00312\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 3)}}
+\DoxyCodeLine{00313\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_HELVETICA\_10\ \ \ \ ((void*)6)}}
+\DoxyCodeLine{00314\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_HELVETICA\_12\ \ \ \ ((void*)7)}}
+\DoxyCodeLine{00315\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_HELVETICA\_18\ \ \ \ ((void*)8)}}
+\DoxyCodeLine{00316\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00317\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00318\ \textcolor{comment}{/*\ Stroke\ font\ opaque\ addresses\ (use\ constants\ instead\ in\ source\ code).\ */}}
+\DoxyCodeLine{00319\ GLUTAPI\ \textcolor{keywordtype}{void}\ *glutStrokeRoman;}
+\DoxyCodeLine{00320\ GLUTAPI\ \textcolor{keywordtype}{void}\ *glutStrokeMonoRoman;}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ \textcolor{comment}{/*\ Stroke\ font\ constants\ (use\ these\ in\ GLUT\ program).\ */}}
+\DoxyCodeLine{00323\ \textcolor{preprocessor}{\#define\ GLUT\_STROKE\_ROMAN\ \ \ \ \ \ \ (\&glutStrokeRoman)}}
+\DoxyCodeLine{00324\ \textcolor{preprocessor}{\#define\ GLUT\_STROKE\_MONO\_ROMAN\ \ \ \ \ \ (\&glutStrokeMonoRoman)}}
+\DoxyCodeLine{00325\ }
+\DoxyCodeLine{00326\ \textcolor{comment}{/*\ Bitmap\ font\ opaque\ addresses\ (use\ constants\ instead\ in\ source\ code).\ */}}
+\DoxyCodeLine{00327\ GLUTAPI\ \textcolor{keywordtype}{void}\ *glutBitmap9By15;}
+\DoxyCodeLine{00328\ GLUTAPI\ \textcolor{keywordtype}{void}\ *glutBitmap8By13;}
+\DoxyCodeLine{00329\ GLUTAPI\ \textcolor{keywordtype}{void}\ *glutBitmapTimesRoman10;}
+\DoxyCodeLine{00330\ GLUTAPI\ \textcolor{keywordtype}{void}\ *glutBitmapTimesRoman24;}
+\DoxyCodeLine{00331\ GLUTAPI\ \textcolor{keywordtype}{void}\ *glutBitmapHelvetica10;}
+\DoxyCodeLine{00332\ GLUTAPI\ \textcolor{keywordtype}{void}\ *glutBitmapHelvetica12;}
+\DoxyCodeLine{00333\ GLUTAPI\ \textcolor{keywordtype}{void}\ *glutBitmapHelvetica18;}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00335\ \textcolor{comment}{/*\ Bitmap\ font\ constants\ (use\ these\ in\ GLUT\ program).\ */}}
+\DoxyCodeLine{00336\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_9\_BY\_15\ \ \ \ \ (\&glutBitmap9By15)}}
+\DoxyCodeLine{00337\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_8\_BY\_13\ \ \ \ \ (\&glutBitmap8By13)}}
+\DoxyCodeLine{00338\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_TIMES\_ROMAN\_10\ \ (\&glutBitmapTimesRoman10)}}
+\DoxyCodeLine{00339\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_TIMES\_ROMAN\_24\ \ (\&glutBitmapTimesRoman24)}}
+\DoxyCodeLine{00340\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 3)}}
+\DoxyCodeLine{00341\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_HELVETICA\_10\ \ \ \ (\&glutBitmapHelvetica10)}}
+\DoxyCodeLine{00342\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_HELVETICA\_12\ \ \ \ (\&glutBitmapHelvetica12)}}
+\DoxyCodeLine{00343\ \textcolor{preprocessor}{\#define\ GLUT\_BITMAP\_HELVETICA\_18\ \ \ \ (\&glutBitmapHelvetica18)}}
+\DoxyCodeLine{00344\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00345\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00346\ }
+\DoxyCodeLine{00347\ \textcolor{comment}{/*\ glutGet\ parameters.\ */}}
+\DoxyCodeLine{00348\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_X\ \ \ \ \ \ \ \ \ \ \ ((GLenum)\ 100)}}
+\DoxyCodeLine{00349\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_Y\ \ \ \ \ \ \ \ \ \ \ ((GLenum)\ 101)}}
+\DoxyCodeLine{00350\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_WIDTH\ \ \ \ \ \ \ ((GLenum)\ 102)}}
+\DoxyCodeLine{00351\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_HEIGHT\ \ \ \ \ \ ((GLenum)\ 103)}}
+\DoxyCodeLine{00352\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_BUFFER\_SIZE\ \ \ \ \ ((GLenum)\ 104)}}
+\DoxyCodeLine{00353\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_STENCIL\_SIZE\ \ \ \ ((GLenum)\ 105)}}
+\DoxyCodeLine{00354\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_DEPTH\_SIZE\ \ \ \ \ \ ((GLenum)\ 106)}}
+\DoxyCodeLine{00355\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_RED\_SIZE\ \ \ \ \ \ \ \ ((GLenum)\ 107)}}
+\DoxyCodeLine{00356\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_GREEN\_SIZE\ \ \ \ \ \ ((GLenum)\ 108)}}
+\DoxyCodeLine{00357\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_BLUE\_SIZE\ \ \ \ \ \ \ ((GLenum)\ 109)}}
+\DoxyCodeLine{00358\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_ALPHA\_SIZE\ \ \ \ \ \ ((GLenum)\ 110)}}
+\DoxyCodeLine{00359\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_ACCUM\_RED\_SIZE\ \ ((GLenum)\ 111)}}
+\DoxyCodeLine{00360\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_ACCUM\_GREEN\_SIZE\ \ \ \ ((GLenum)\ 112)}}
+\DoxyCodeLine{00361\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_ACCUM\_BLUE\_SIZE\ ((GLenum)\ 113)}}
+\DoxyCodeLine{00362\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_ACCUM\_ALPHA\_SIZE\ \ \ \ ((GLenum)\ 114)}}
+\DoxyCodeLine{00363\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_DOUBLEBUFFER\ \ \ \ ((GLenum)\ 115)}}
+\DoxyCodeLine{00364\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_RGBA\ \ \ \ \ \ \ \ ((GLenum)\ 116)}}
+\DoxyCodeLine{00365\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_PARENT\ \ \ \ \ \ ((GLenum)\ 117)}}
+\DoxyCodeLine{00366\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_NUM\_CHILDREN\ \ \ \ ((GLenum)\ 118)}}
+\DoxyCodeLine{00367\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_COLORMAP\_SIZE\ \ \ ((GLenum)\ 119)}}
+\DoxyCodeLine{00368\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 2)}}
+\DoxyCodeLine{00369\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_NUM\_SAMPLES\ \ \ \ \ ((GLenum)\ 120)}}
+\DoxyCodeLine{00370\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_STEREO\ \ \ \ \ \ ((GLenum)\ 121)}}
+\DoxyCodeLine{00371\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00372\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 3)}}
+\DoxyCodeLine{00373\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_CURSOR\ \ \ \ \ \ ((GLenum)\ 122)}}
+\DoxyCodeLine{00374\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00375\ \textcolor{preprocessor}{\#define\ GLUT\_SCREEN\_WIDTH\ \ \ \ \ \ \ ((GLenum)\ 200)}}
+\DoxyCodeLine{00376\ \textcolor{preprocessor}{\#define\ GLUT\_SCREEN\_HEIGHT\ \ \ \ \ \ ((GLenum)\ 201)}}
+\DoxyCodeLine{00377\ \textcolor{preprocessor}{\#define\ GLUT\_SCREEN\_WIDTH\_MM\ \ \ \ \ \ \ \ ((GLenum)\ 202)}}
+\DoxyCodeLine{00378\ \textcolor{preprocessor}{\#define\ GLUT\_SCREEN\_HEIGHT\_MM\ \ \ \ \ \ \ ((GLenum)\ 203)}}
+\DoxyCodeLine{00379\ \textcolor{preprocessor}{\#define\ GLUT\_MENU\_NUM\_ITEMS\ \ \ \ \ ((GLenum)\ 300)}}
+\DoxyCodeLine{00380\ \textcolor{preprocessor}{\#define\ GLUT\_DISPLAY\_MODE\_POSSIBLE\ \ ((GLenum)\ 400)}}
+\DoxyCodeLine{00381\ \textcolor{preprocessor}{\#define\ GLUT\_INIT\_WINDOW\_X\ \ \ \ \ \ ((GLenum)\ 500)}}
+\DoxyCodeLine{00382\ \textcolor{preprocessor}{\#define\ GLUT\_INIT\_WINDOW\_Y\ \ \ \ \ \ ((GLenum)\ 501)}}
+\DoxyCodeLine{00383\ \textcolor{preprocessor}{\#define\ GLUT\_INIT\_WINDOW\_WIDTH\ \ \ \ \ \ ((GLenum)\ 502)}}
+\DoxyCodeLine{00384\ \textcolor{preprocessor}{\#define\ GLUT\_INIT\_WINDOW\_HEIGHT\ \ \ \ \ ((GLenum)\ 503)}}
+\DoxyCodeLine{00385\ \textcolor{preprocessor}{\#define\ GLUT\_INIT\_DISPLAY\_MODE\ \ \ \ \ \ ((GLenum)\ 504)}}
+\DoxyCodeLine{00386\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 2)}}
+\DoxyCodeLine{00387\ \textcolor{preprocessor}{\#define\ GLUT\_ELAPSED\_TIME\ \ \ \ \ \ \ ((GLenum)\ 700)}}
+\DoxyCodeLine{00388\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00389\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 4\ ||\ GLUT\_XLIB\_IMPLEMENTATION\ >=\ 13)}}
+\DoxyCodeLine{00390\ \textcolor{preprocessor}{\#define\ GLUT\_WINDOW\_FORMAT\_ID\ \ \ \ \ \ \ ((GLenum)\ 123)}}
+\DoxyCodeLine{00391\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00392\ }
+\DoxyCodeLine{00393\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 2)}}
+\DoxyCodeLine{00394\ \textcolor{comment}{/*\ glutDeviceGet\ parameters.\ */}}
+\DoxyCodeLine{00395\ \textcolor{preprocessor}{\#define\ GLUT\_HAS\_KEYBOARD\ \ \ \ \ \ \ ((GLenum)\ 600)}}
+\DoxyCodeLine{00396\ \textcolor{preprocessor}{\#define\ GLUT\_HAS\_MOUSE\ \ \ \ \ \ \ \ \ \ ((GLenum)\ 601)}}
+\DoxyCodeLine{00397\ \textcolor{preprocessor}{\#define\ GLUT\_HAS\_SPACEBALL\ \ \ \ \ \ ((GLenum)\ 602)}}
+\DoxyCodeLine{00398\ \textcolor{preprocessor}{\#define\ GLUT\_HAS\_DIAL\_AND\_BUTTON\_BOX\ \ \ \ ((GLenum)\ 603)}}
+\DoxyCodeLine{00399\ \textcolor{preprocessor}{\#define\ GLUT\_HAS\_TABLET\ \ \ \ \ \ \ \ \ ((GLenum)\ 604)}}
+\DoxyCodeLine{00400\ \textcolor{preprocessor}{\#define\ GLUT\_NUM\_MOUSE\_BUTTONS\ \ \ \ \ \ ((GLenum)\ 605)}}
+\DoxyCodeLine{00401\ \textcolor{preprocessor}{\#define\ GLUT\_NUM\_SPACEBALL\_BUTTONS\ \ ((GLenum)\ 606)}}
+\DoxyCodeLine{00402\ \textcolor{preprocessor}{\#define\ GLUT\_NUM\_BUTTON\_BOX\_BUTTONS\ ((GLenum)\ 607)}}
+\DoxyCodeLine{00403\ \textcolor{preprocessor}{\#define\ GLUT\_NUM\_DIALS\ \ \ \ \ \ \ \ \ \ ((GLenum)\ 608)}}
+\DoxyCodeLine{00404\ \textcolor{preprocessor}{\#define\ GLUT\_NUM\_TABLET\_BUTTONS\ \ \ \ \ ((GLenum)\ 609)}}
+\DoxyCodeLine{00405\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00406\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 4\ ||\ GLUT\_XLIB\_IMPLEMENTATION\ >=\ 13)}}
+\DoxyCodeLine{00407\ \textcolor{preprocessor}{\#define\ GLUT\_DEVICE\_IGNORE\_KEY\_REPEAT\ \ \ ((GLenum)\ 610)}}
+\DoxyCodeLine{00408\ \textcolor{preprocessor}{\#define\ GLUT\_DEVICE\_KEY\_REPEAT\ \ \ \ \ \ \ \ \ \ ((GLenum)\ 611)}}
+\DoxyCodeLine{00409\ \textcolor{preprocessor}{\#define\ GLUT\_HAS\_JOYSTICK\ \ \ \ \ \ \ ((GLenum)\ 612)}}
+\DoxyCodeLine{00410\ \textcolor{preprocessor}{\#define\ GLUT\_OWNS\_JOYSTICK\ \ \ \ \ \ ((GLenum)\ 613)}}
+\DoxyCodeLine{00411\ \textcolor{preprocessor}{\#define\ GLUT\_JOYSTICK\_BUTTONS\ \ \ \ \ \ \ ((GLenum)\ 614)}}
+\DoxyCodeLine{00412\ \textcolor{preprocessor}{\#define\ GLUT\_JOYSTICK\_AXES\ \ \ \ \ \ ((GLenum)\ 615)}}
+\DoxyCodeLine{00413\ \textcolor{preprocessor}{\#define\ GLUT\_JOYSTICK\_POLL\_RATE\ \ \ \ \ ((GLenum)\ 616)}}
+\DoxyCodeLine{00414\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00416\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 3)}}
+\DoxyCodeLine{00417\ \textcolor{comment}{/*\ glutLayerGet\ parameters.\ */}}
+\DoxyCodeLine{00418\ \textcolor{preprocessor}{\#define\ GLUT\_OVERLAY\_POSSIBLE\ \ \ \ \ \ \ \ \ \ \ ((GLenum)\ 800)}}
+\DoxyCodeLine{00419\ \textcolor{preprocessor}{\#define\ GLUT\_LAYER\_IN\_USE\ \ \ \ \ \ \ ((GLenum)\ 801)}}
+\DoxyCodeLine{00420\ \textcolor{preprocessor}{\#define\ GLUT\_HAS\_OVERLAY\ \ \ \ \ \ \ \ ((GLenum)\ 802)}}
+\DoxyCodeLine{00421\ \textcolor{preprocessor}{\#define\ GLUT\_TRANSPARENT\_INDEX\ \ \ \ \ \ ((GLenum)\ 803)}}
+\DoxyCodeLine{00422\ \textcolor{preprocessor}{\#define\ GLUT\_NORMAL\_DAMAGED\ \ \ \ \ ((GLenum)\ 804)}}
+\DoxyCodeLine{00423\ \textcolor{preprocessor}{\#define\ GLUT\_OVERLAY\_DAMAGED\ \ \ \ \ \ \ \ ((GLenum)\ 805)}}
+\DoxyCodeLine{00424\ }
+\DoxyCodeLine{00425\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 4\ ||\ GLUT\_XLIB\_IMPLEMENTATION\ >=\ 9)}}
+\DoxyCodeLine{00426\ \textcolor{comment}{/*\ glutVideoResizeGet\ parameters.\ */}}
+\DoxyCodeLine{00427\ \textcolor{preprocessor}{\#define\ GLUT\_VIDEO\_RESIZE\_POSSIBLE\ \ ((GLenum)\ 900)}}
+\DoxyCodeLine{00428\ \textcolor{preprocessor}{\#define\ GLUT\_VIDEO\_RESIZE\_IN\_USE\ \ \ \ ((GLenum)\ 901)}}
+\DoxyCodeLine{00429\ \textcolor{preprocessor}{\#define\ GLUT\_VIDEO\_RESIZE\_X\_DELTA\ \ \ ((GLenum)\ 902)}}
+\DoxyCodeLine{00430\ \textcolor{preprocessor}{\#define\ GLUT\_VIDEO\_RESIZE\_Y\_DELTA\ \ \ ((GLenum)\ 903)}}
+\DoxyCodeLine{00431\ \textcolor{preprocessor}{\#define\ GLUT\_VIDEO\_RESIZE\_WIDTH\_DELTA\ \ \ ((GLenum)\ 904)}}
+\DoxyCodeLine{00432\ \textcolor{preprocessor}{\#define\ GLUT\_VIDEO\_RESIZE\_HEIGHT\_DELTA\ \ ((GLenum)\ 905)}}
+\DoxyCodeLine{00433\ \textcolor{preprocessor}{\#define\ GLUT\_VIDEO\_RESIZE\_X\ \ \ \ \ ((GLenum)\ 906)}}
+\DoxyCodeLine{00434\ \textcolor{preprocessor}{\#define\ GLUT\_VIDEO\_RESIZE\_Y\ \ \ \ \ ((GLenum)\ 907)}}
+\DoxyCodeLine{00435\ \textcolor{preprocessor}{\#define\ GLUT\_VIDEO\_RESIZE\_WIDTH\ \ \ \ \ ((GLenum)\ 908)}}
+\DoxyCodeLine{00436\ \textcolor{preprocessor}{\#define\ GLUT\_VIDEO\_RESIZE\_HEIGHT\ \ \ \ ((GLenum)\ 909)}}
+\DoxyCodeLine{00437\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00438\ }
+\DoxyCodeLine{00439\ \textcolor{comment}{/*\ glutUseLayer\ parameters.\ */}}
+\DoxyCodeLine{00440\ \textcolor{preprocessor}{\#define\ GLUT\_NORMAL\ \ \ \ \ \ \ \ \ ((GLenum)\ 0)}}
+\DoxyCodeLine{00441\ \textcolor{preprocessor}{\#define\ GLUT\_OVERLAY\ \ \ \ \ \ \ \ \ \ \ \ ((GLenum)\ 1)}}
+\DoxyCodeLine{00442\ }
+\DoxyCodeLine{00443\ \textcolor{comment}{/*\ glutGetModifiers\ return\ mask.\ */}}
+\DoxyCodeLine{00444\ \textcolor{preprocessor}{\#define\ GLUT\_ACTIVE\_SHIFT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 1}}
+\DoxyCodeLine{00445\ \textcolor{preprocessor}{\#define\ GLUT\_ACTIVE\_CTRL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00446\ \textcolor{preprocessor}{\#define\ GLUT\_ACTIVE\_ALT\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00447\ }
+\DoxyCodeLine{00448\ \textcolor{comment}{/*\ glutSetCursor\ parameters.\ */}}
+\DoxyCodeLine{00449\ \textcolor{comment}{/*\ Basic\ arrows.\ */}}
+\DoxyCodeLine{00450\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_RIGHT\_ARROW\ \ \ \ \ 0}}
+\DoxyCodeLine{00451\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_LEFT\_ARROW\ \ \ \ \ \ 1}}
+\DoxyCodeLine{00452\ \textcolor{comment}{/*\ Symbolic\ cursor\ shapes.\ */}}
+\DoxyCodeLine{00453\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_INFO\ \ \ \ \ \ \ \ 2}}
+\DoxyCodeLine{00454\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_DESTROY\ \ \ \ \ 3}}
+\DoxyCodeLine{00455\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_HELP\ \ \ \ \ \ \ \ 4}}
+\DoxyCodeLine{00456\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_CYCLE\ \ \ \ \ \ \ 5}}
+\DoxyCodeLine{00457\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_SPRAY\ \ \ \ \ \ \ 6}}
+\DoxyCodeLine{00458\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_WAIT\ \ \ \ \ \ \ \ 7}}
+\DoxyCodeLine{00459\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_TEXT\ \ \ \ \ \ \ \ 8}}
+\DoxyCodeLine{00460\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_CROSSHAIR\ \ \ \ \ \ \ 9}}
+\DoxyCodeLine{00461\ \textcolor{comment}{/*\ Directional\ cursors.\ */}}
+\DoxyCodeLine{00462\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_UP\_DOWN\ \ \ \ \ 10}}
+\DoxyCodeLine{00463\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_LEFT\_RIGHT\ \ \ \ \ \ 11}}
+\DoxyCodeLine{00464\ \textcolor{comment}{/*\ Sizing\ cursors.\ */}}
+\DoxyCodeLine{00465\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_TOP\_SIDE\ \ \ \ \ \ \ \ 12}}
+\DoxyCodeLine{00466\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_BOTTOM\_SIDE\ \ \ \ \ 13}}
+\DoxyCodeLine{00467\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_LEFT\_SIDE\ \ \ \ \ \ \ 14}}
+\DoxyCodeLine{00468\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_RIGHT\_SIDE\ \ \ \ \ \ 15}}
+\DoxyCodeLine{00469\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_TOP\_LEFT\_CORNER\ 16}}
+\DoxyCodeLine{00470\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_TOP\_RIGHT\_CORNER\ \ \ \ 17}}
+\DoxyCodeLine{00471\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_BOTTOM\_RIGHT\_CORNER\ 18}}
+\DoxyCodeLine{00472\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_BOTTOM\_LEFT\_CORNER\ \ 19}}
+\DoxyCodeLine{00473\ \textcolor{comment}{/*\ Inherit\ from\ parent\ window.\ */}}
+\DoxyCodeLine{00474\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_INHERIT\ \ \ \ \ 100}}
+\DoxyCodeLine{00475\ \textcolor{comment}{/*\ Blank\ cursor.\ */}}
+\DoxyCodeLine{00476\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_NONE\ \ \ \ \ \ \ \ 101}}
+\DoxyCodeLine{00477\ \textcolor{comment}{/*\ Fullscreen\ crosshair\ (if\ available).\ */}}
+\DoxyCodeLine{00478\ \textcolor{preprocessor}{\#define\ GLUT\_CURSOR\_FULL\_CROSSHAIR\ \ 102}}
+\DoxyCodeLine{00479\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00480\ }
+\DoxyCodeLine{00481\ \textcolor{comment}{/*\ GLUT\ initialization\ sub-\/API.\ */}}
+\DoxyCodeLine{00482\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutInit(\textcolor{keywordtype}{int}\ *argcp,\ \textcolor{keywordtype}{char}\ **argv);}
+\DoxyCodeLine{00483\ \textcolor{preprocessor}{\#if\ defined(\_WIN32)\ \&\&\ !defined(GLUT\_DISABLE\_ATEXIT\_HACK)}}
+\DoxyCodeLine{00484\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ \_\_glutInitWithExit(\textcolor{keywordtype}{int}\ *argcp,\ \textcolor{keywordtype}{char}\ **argv,\ \textcolor{keywordtype}{void}\ (\_\_cdecl\ *exitfunc)(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00485\ \textcolor{preprocessor}{\#ifndef\ GLUT\_BUILDING\_LIB}}
+\DoxyCodeLine{00486\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ APIENTRY\ glutInit\_ATEXIT\_HACK(\textcolor{keywordtype}{int}\ *argcp,\ \textcolor{keywordtype}{char}\ **argv)\ \{\ \_\_glutInitWithExit(argcp,\ argv,\ exit);\ \}}
+\DoxyCodeLine{00487\ \textcolor{preprocessor}{\#define\ glutInit\ glutInit\_ATEXIT\_HACK}}
+\DoxyCodeLine{00488\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00489\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00490\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutInitDisplayMode(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ mode);}
+\DoxyCodeLine{00491\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 4\ ||\ GLUT\_XLIB\_IMPLEMENTATION\ >=\ 9)}}
+\DoxyCodeLine{00492\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutInitDisplayString(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\textcolor{keywordtype}{string});}
+\DoxyCodeLine{00493\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00494\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutInitWindowPosition(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00495\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutInitWindowSize(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00496\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutMainLoop(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00497\ }
+\DoxyCodeLine{00498\ \textcolor{comment}{/*\ GLUT\ window\ sub-\/API.\ */}}
+\DoxyCodeLine{00499\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutCreateWindow(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *title);}
+\DoxyCodeLine{00500\ \textcolor{preprocessor}{\#if\ defined(\_WIN32)\ \&\&\ !defined(GLUT\_DISABLE\_ATEXIT\_HACK)}}
+\DoxyCodeLine{00501\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ \_\_glutCreateWindowWithExit(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *title,\ \textcolor{keywordtype}{void}\ (\_\_cdecl\ *exitfunc)(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00502\ \textcolor{preprocessor}{\#ifndef\ GLUT\_BUILDING\_LIB}}
+\DoxyCodeLine{00503\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ APIENTRY\ glutCreateWindow\_ATEXIT\_HACK(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *title)\ \{\ \textcolor{keywordflow}{return}\ \_\_glutCreateWindowWithExit(title,\ exit);\ \}}
+\DoxyCodeLine{00504\ \textcolor{preprocessor}{\#define\ glutCreateWindow\ glutCreateWindow\_ATEXIT\_HACK}}
+\DoxyCodeLine{00505\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00506\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00507\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutCreateSubWindow(\textcolor{keywordtype}{int}\ win,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00508\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutDestroyWindow(\textcolor{keywordtype}{int}\ win);}
+\DoxyCodeLine{00509\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutPostRedisplay(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00510\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 4\ ||\ GLUT\_XLIB\_IMPLEMENTATION\ >=\ 11)}}
+\DoxyCodeLine{00511\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutPostWindowRedisplay(\textcolor{keywordtype}{int}\ win);}
+\DoxyCodeLine{00512\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00513\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSwapBuffers(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00514\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutGetWindow(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00515\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSetWindow(\textcolor{keywordtype}{int}\ win);}
+\DoxyCodeLine{00516\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSetWindowTitle(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *title);}
+\DoxyCodeLine{00517\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSetIconTitle(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *title);}
+\DoxyCodeLine{00518\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutPositionWindow(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00519\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutReshapeWindow(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00520\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutPopWindow(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00521\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutPushWindow(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00522\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutIconifyWindow(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00523\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutShowWindow(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00524\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutHideWindow(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00525\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 3)}}
+\DoxyCodeLine{00526\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutFullScreen(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00527\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSetCursor(\textcolor{keywordtype}{int}\ cursor);}
+\DoxyCodeLine{00528\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 4\ ||\ GLUT\_XLIB\_IMPLEMENTATION\ >=\ 9)}}
+\DoxyCodeLine{00529\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutWarpPointer(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00530\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00531\ }
+\DoxyCodeLine{00532\ \textcolor{comment}{/*\ GLUT\ overlay\ sub-\/API.\ */}}
+\DoxyCodeLine{00533\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutEstablishOverlay(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00534\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutRemoveOverlay(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00535\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutUseLayer(GLenum\ layer);}
+\DoxyCodeLine{00536\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutPostOverlayRedisplay(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00537\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 4\ ||\ GLUT\_XLIB\_IMPLEMENTATION\ >=\ 11)}}
+\DoxyCodeLine{00538\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutPostWindowOverlayRedisplay(\textcolor{keywordtype}{int}\ win);}
+\DoxyCodeLine{00539\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00540\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutShowOverlay(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00541\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutHideOverlay(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00542\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00543\ }
+\DoxyCodeLine{00544\ \textcolor{comment}{/*\ GLUT\ menu\ sub-\/API.\ */}}
+\DoxyCodeLine{00545\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutCreateMenu(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00546\ \textcolor{preprocessor}{\#if\ defined(\_WIN32)\ \&\&\ !defined(GLUT\_DISABLE\_ATEXIT\_HACK)}}
+\DoxyCodeLine{00547\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ \_\_glutCreateMenuWithExit(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}),\ \textcolor{keywordtype}{void}\ (\_\_cdecl\ *exitfunc)(\textcolor{keywordtype}{int}));}
+\DoxyCodeLine{00548\ \textcolor{preprocessor}{\#ifndef\ GLUT\_BUILDING\_LIB}}
+\DoxyCodeLine{00549\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ APIENTRY\ glutCreateMenu\_ATEXIT\_HACK(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}))\ \{\ \textcolor{keywordflow}{return}\ \_\_glutCreateMenuWithExit(func,\ exit);\ \}}
+\DoxyCodeLine{00550\ \textcolor{preprocessor}{\#define\ glutCreateMenu\ glutCreateMenu\_ATEXIT\_HACK}}
+\DoxyCodeLine{00551\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00552\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00553\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutDestroyMenu(\textcolor{keywordtype}{int}\ menu);}
+\DoxyCodeLine{00554\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutGetMenu(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00555\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSetMenu(\textcolor{keywordtype}{int}\ menu);}
+\DoxyCodeLine{00556\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutAddMenuEntry(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *label,\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00557\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutAddSubMenu(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *label,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacesubmenu}{submenu}});}
+\DoxyCodeLine{00558\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutChangeToMenuEntry(\textcolor{keywordtype}{int}\ item,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *label,\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00559\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutChangeToSubMenu(\textcolor{keywordtype}{int}\ item,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *label,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{namespacesubmenu}{submenu}});}
+\DoxyCodeLine{00560\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutRemoveMenuItem(\textcolor{keywordtype}{int}\ item);}
+\DoxyCodeLine{00561\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutAttachMenu(\textcolor{keywordtype}{int}\ button);}
+\DoxyCodeLine{00562\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutDetachMenu(\textcolor{keywordtype}{int}\ button);}
+\DoxyCodeLine{00563\ }
+\DoxyCodeLine{00564\ \textcolor{comment}{/*\ GLUT\ window\ callback\ sub-\/API.\ */}}
+\DoxyCodeLine{00565\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutDisplayFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{void}));}
+\DoxyCodeLine{00566\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutReshapeFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height));}
+\DoxyCodeLine{00567\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutKeyboardFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ key,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y));}
+\DoxyCodeLine{00568\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutMouseFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ button,\ \textcolor{keywordtype}{int}\ state,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y));}
+\DoxyCodeLine{00569\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutMotionFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y));}
+\DoxyCodeLine{00570\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutPassiveMotionFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y));}
+\DoxyCodeLine{00571\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutEntryFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ state));}
+\DoxyCodeLine{00572\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutVisibilityFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ state));}
+\DoxyCodeLine{00573\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutIdleFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{void}));}
+\DoxyCodeLine{00574\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutTimerFunc(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ millis,\ \textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ value),\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{00575\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutMenuStateFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ state));}
+\DoxyCodeLine{00576\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 2)}}
+\DoxyCodeLine{00577\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSpecialFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ key,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y));}
+\DoxyCodeLine{00578\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSpaceballMotionFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ z));}
+\DoxyCodeLine{00579\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSpaceballRotateFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ z));}
+\DoxyCodeLine{00580\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSpaceballButtonFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ button,\ \textcolor{keywordtype}{int}\ state));}
+\DoxyCodeLine{00581\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutButtonBoxFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ button,\ \textcolor{keywordtype}{int}\ state));}
+\DoxyCodeLine{00582\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutDialsFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ dial,\ \textcolor{keywordtype}{int}\ value));}
+\DoxyCodeLine{00583\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutTabletMotionFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y));}
+\DoxyCodeLine{00584\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutTabletButtonFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ button,\ \textcolor{keywordtype}{int}\ state,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y));}
+\DoxyCodeLine{00585\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 3)}}
+\DoxyCodeLine{00586\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutMenuStatusFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ status,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y));}
+\DoxyCodeLine{00587\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutOverlayDisplayFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{void}));}
+\DoxyCodeLine{00588\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 4\ ||\ GLUT\_XLIB\_IMPLEMENTATION\ >=\ 9)}}
+\DoxyCodeLine{00589\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutWindowStatusFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ state));}
+\DoxyCodeLine{00590\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00591\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 4\ ||\ GLUT\_XLIB\_IMPLEMENTATION\ >=\ 13)}}
+\DoxyCodeLine{00592\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutKeyboardUpFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ key,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y));}
+\DoxyCodeLine{00593\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSpecialUpFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{int}\ key,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y));}
+\DoxyCodeLine{00594\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutJoystickFunc(\textcolor{keywordtype}{void}\ (GLUTCALLBACK\ *func)(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ buttonMask,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ z),\ \textcolor{keywordtype}{int}\ pollInterval);}
+\DoxyCodeLine{00595\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00596\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00597\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00598\ }
+\DoxyCodeLine{00599\ \textcolor{comment}{/*\ GLUT\ color\ index\ sub-\/API.\ */}}
+\DoxyCodeLine{00600\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSetColor(\textcolor{keywordtype}{int},\ GLfloat\ red,\ GLfloat\ green,\ GLfloat\ blue);}
+\DoxyCodeLine{00601\ GLUTAPI\ GLfloat\ APIENTRY\ glutGetColor(\textcolor{keywordtype}{int}\ ndx,\ \textcolor{keywordtype}{int}\ component);}
+\DoxyCodeLine{00602\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutCopyColormap(\textcolor{keywordtype}{int}\ win);}
+\DoxyCodeLine{00603\ }
+\DoxyCodeLine{00604\ \textcolor{comment}{/*\ GLUT\ state\ retrieval\ sub-\/API.\ */}}
+\DoxyCodeLine{00605\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutGet(GLenum\ type);}
+\DoxyCodeLine{00606\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutDeviceGet(GLenum\ type);}
+\DoxyCodeLine{00607\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 2)}}
+\DoxyCodeLine{00608\ \textcolor{comment}{/*\ GLUT\ extension\ support\ sub-\/API\ */}}
+\DoxyCodeLine{00609\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutExtensionSupported(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *name);}
+\DoxyCodeLine{00610\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00611\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 3)}}
+\DoxyCodeLine{00612\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutGetModifiers(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00613\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutLayerGet(GLenum\ type);}
+\DoxyCodeLine{00614\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00615\ }
+\DoxyCodeLine{00616\ \textcolor{comment}{/*\ GLUT\ font\ sub-\/API\ */}}
+\DoxyCodeLine{00617\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutBitmapCharacter(\textcolor{keywordtype}{void}\ *font,\ \textcolor{keywordtype}{int}\ character);}
+\DoxyCodeLine{00618\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutBitmapWidth(\textcolor{keywordtype}{void}\ *font,\ \textcolor{keywordtype}{int}\ character);}
+\DoxyCodeLine{00619\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutStrokeCharacter(\textcolor{keywordtype}{void}\ *font,\ \textcolor{keywordtype}{int}\ character);}
+\DoxyCodeLine{00620\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutStrokeWidth(\textcolor{keywordtype}{void}\ *font,\ \textcolor{keywordtype}{int}\ character);}
+\DoxyCodeLine{00621\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 4\ ||\ GLUT\_XLIB\_IMPLEMENTATION\ >=\ 9)}}
+\DoxyCodeLine{00622\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutBitmapLength(\textcolor{keywordtype}{void}\ *font,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *\textcolor{keywordtype}{string});}
+\DoxyCodeLine{00623\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutStrokeLength(\textcolor{keywordtype}{void}\ *font,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *\textcolor{keywordtype}{string});}
+\DoxyCodeLine{00624\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00625\ }
+\DoxyCodeLine{00626\ \textcolor{comment}{/*\ GLUT\ pre-\/built\ models\ sub-\/API\ */}}
+\DoxyCodeLine{00627\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutWireSphere(GLdouble\ radius,\ GLint\ slices,\ GLint\ stacks);}
+\DoxyCodeLine{00628\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSolidSphere(GLdouble\ radius,\ GLint\ slices,\ GLint\ stacks);}
+\DoxyCodeLine{00629\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutWireCone(GLdouble\ base,\ GLdouble\ height,\ GLint\ slices,\ GLint\ stacks);}
+\DoxyCodeLine{00630\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSolidCone(GLdouble\ base,\ GLdouble\ height,\ GLint\ slices,\ GLint\ stacks);}
+\DoxyCodeLine{00631\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutWireCube(GLdouble\ size);}
+\DoxyCodeLine{00632\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSolidCube(GLdouble\ size);}
+\DoxyCodeLine{00633\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutWireTorus(GLdouble\ innerRadius,\ GLdouble\ outerRadius,\ GLint\ sides,\ GLint\ rings);}
+\DoxyCodeLine{00634\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSolidTorus(GLdouble\ innerRadius,\ GLdouble\ outerRadius,\ GLint\ sides,\ GLint\ rings);}
+\DoxyCodeLine{00635\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutWireDodecahedron(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00636\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSolidDodecahedron(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00637\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutWireTeapot(GLdouble\ size);}
+\DoxyCodeLine{00638\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSolidTeapot(GLdouble\ size);}
+\DoxyCodeLine{00639\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutWireOctahedron(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00640\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSolidOctahedron(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00641\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutWireTetrahedron(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00642\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSolidTetrahedron(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00643\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutWireIcosahedron(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00644\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSolidIcosahedron(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00645\ }
+\DoxyCodeLine{00646\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 4\ ||\ GLUT\_XLIB\_IMPLEMENTATION\ >=\ 9)}}
+\DoxyCodeLine{00647\ \textcolor{comment}{/*\ GLUT\ video\ resize\ sub-\/API.\ */}}
+\DoxyCodeLine{00648\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutVideoResizeGet(GLenum\ param);}
+\DoxyCodeLine{00649\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSetupVideoResizing(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00650\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutStopVideoResizing(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00651\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutVideoResize(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00652\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutVideoPan(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height);}
+\DoxyCodeLine{00653\ }
+\DoxyCodeLine{00654\ \textcolor{comment}{/*\ GLUT\ debugging\ sub-\/API.\ */}}
+\DoxyCodeLine{00655\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutReportErrors(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00656\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00657\ }
+\DoxyCodeLine{00658\ \textcolor{preprocessor}{\#if\ (GLUT\_API\_VERSION\ >=\ 4\ ||\ GLUT\_XLIB\_IMPLEMENTATION\ >=\ 13)}}
+\DoxyCodeLine{00659\ \textcolor{comment}{/*\ GLUT\ device\ control\ sub-\/API.\ */}}
+\DoxyCodeLine{00660\ \textcolor{comment}{/*\ glutSetKeyRepeat\ modes.\ */}}
+\DoxyCodeLine{00661\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_REPEAT\_OFF\ \ \ \ \ 0}}
+\DoxyCodeLine{00662\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_REPEAT\_ON\ \ \ \ \ \ 1}}
+\DoxyCodeLine{00663\ \textcolor{preprocessor}{\#define\ GLUT\_KEY\_REPEAT\_DEFAULT\ \ \ \ \ 2}}
+\DoxyCodeLine{00664\ }
+\DoxyCodeLine{00665\ \textcolor{comment}{/*\ Joystick\ button\ masks.\ */}}
+\DoxyCodeLine{00666\ \textcolor{preprocessor}{\#define\ GLUT\_JOYSTICK\_BUTTON\_A\ \ \ \ \ \ 1}}
+\DoxyCodeLine{00667\ \textcolor{preprocessor}{\#define\ GLUT\_JOYSTICK\_BUTTON\_B\ \ \ \ \ \ 2}}
+\DoxyCodeLine{00668\ \textcolor{preprocessor}{\#define\ GLUT\_JOYSTICK\_BUTTON\_C\ \ \ \ \ \ 4}}
+\DoxyCodeLine{00669\ \textcolor{preprocessor}{\#define\ GLUT\_JOYSTICK\_BUTTON\_D\ \ \ \ \ \ 8}}
+\DoxyCodeLine{00670\ }
+\DoxyCodeLine{00671\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutIgnoreKeyRepeat(\textcolor{keywordtype}{int}\ ignore);}
+\DoxyCodeLine{00672\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutSetKeyRepeat(\textcolor{keywordtype}{int}\ repeatMode);}
+\DoxyCodeLine{00673\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutForceJoystickFunc(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00674\ }
+\DoxyCodeLine{00675\ \textcolor{comment}{/*\ GLUT\ game\ mode\ sub-\/API.\ */}}
+\DoxyCodeLine{00676\ \textcolor{comment}{/*\ glutGameModeGet.\ */}}
+\DoxyCodeLine{00677\ \textcolor{preprocessor}{\#define\ GLUT\_GAME\_MODE\_ACTIVE\ \ \ \ \ \ \ \ \ \ \ ((GLenum)\ 0)}}
+\DoxyCodeLine{00678\ \textcolor{preprocessor}{\#define\ GLUT\_GAME\_MODE\_POSSIBLE\ \ \ \ \ \ \ \ \ ((GLenum)\ 1)}}
+\DoxyCodeLine{00679\ \textcolor{preprocessor}{\#define\ GLUT\_GAME\_MODE\_WIDTH\ \ \ \ \ \ \ \ \ \ \ \ ((GLenum)\ 2)}}
+\DoxyCodeLine{00680\ \textcolor{preprocessor}{\#define\ GLUT\_GAME\_MODE\_HEIGHT\ \ \ \ \ \ \ \ \ \ \ ((GLenum)\ 3)}}
+\DoxyCodeLine{00681\ \textcolor{preprocessor}{\#define\ GLUT\_GAME\_MODE\_PIXEL\_DEPTH\ \ \ \ \ \ ((GLenum)\ 4)}}
+\DoxyCodeLine{00682\ \textcolor{preprocessor}{\#define\ GLUT\_GAME\_MODE\_REFRESH\_RATE\ \ \ \ \ ((GLenum)\ 5)}}
+\DoxyCodeLine{00683\ \textcolor{preprocessor}{\#define\ GLUT\_GAME\_MODE\_DISPLAY\_CHANGED\ \ ((GLenum)\ 6)}}
+\DoxyCodeLine{00684\ }
+\DoxyCodeLine{00685\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutGameModeString(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\textcolor{keywordtype}{string});}
+\DoxyCodeLine{00686\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutEnterGameMode(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00687\ GLUTAPI\ \textcolor{keywordtype}{void}\ APIENTRY\ glutLeaveGameMode(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00688\ GLUTAPI\ \textcolor{keywordtype}{int}\ APIENTRY\ glutGameModeGet(GLenum\ mode);}
+\DoxyCodeLine{00689\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00690\ }
+\DoxyCodeLine{00691\ \textcolor{preprocessor}{\#ifdef\ \_\_cplusplus}}
+\DoxyCodeLine{00692\ \}}
+\DoxyCodeLine{00693\ }
+\DoxyCodeLine{00694\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00695\ }
+\DoxyCodeLine{00696\ \textcolor{preprocessor}{\#ifdef\ GLUT\_APIENTRY\_DEFINED}}
+\DoxyCodeLine{00697\ \textcolor{preprocessor}{\#\ undef\ GLUT\_APIENTRY\_DEFINED}}
+\DoxyCodeLine{00698\ \textcolor{preprocessor}{\#\ undef\ APIENTRY}}
+\DoxyCodeLine{00699\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00700\ }
+\DoxyCodeLine{00701\ \textcolor{preprocessor}{\#ifdef\ GLUT\_WINGDIAPI\_DEFINED}}
+\DoxyCodeLine{00702\ \textcolor{preprocessor}{\#\ undef\ GLUT\_WINGDIAPI\_DEFINED}}
+\DoxyCodeLine{00703\ \textcolor{preprocessor}{\#\ undef\ WINGDIAPI}}
+\DoxyCodeLine{00704\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00705\ }
+\DoxyCodeLine{00706\ \textcolor{preprocessor}{\#ifdef\ GLUT\_DEFINED\_\_\_CDECL}}
+\DoxyCodeLine{00707\ \textcolor{preprocessor}{\#\ undef\ GLUT\_DEFINED\_\_\_CDECL}}
+\DoxyCodeLine{00708\ \textcolor{preprocessor}{\#\ undef\ \_\_cdecl}}
+\DoxyCodeLine{00709\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00710\ }
+\DoxyCodeLine{00711\ \textcolor{preprocessor}{\#ifdef\ GLUT\_DEFINED\_\_CRTIMP}}
+\DoxyCodeLine{00712\ \textcolor{preprocessor}{\#\ undef\ GLUT\_DEFINED\_\_CRTIMP}}
+\DoxyCodeLine{00713\ \textcolor{preprocessor}{\#\ undef\ \_CRTIMP}}
+\DoxyCodeLine{00714\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00715\ }
+\DoxyCodeLine{00716\ \textcolor{preprocessor}{\#endif\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ \_\_glut\_h\_\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

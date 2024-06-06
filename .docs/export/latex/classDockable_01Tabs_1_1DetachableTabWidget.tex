@@ -1,0 +1,106 @@
+\doxysection{Dockable Tabs.\+Detachable\+Tab\+Widget Class Reference}
+\hypertarget{classDockable_01Tabs_1_1DetachableTabWidget}{}\label{classDockable_01Tabs_1_1DetachableTabWidget}\index{Dockable Tabs.DetachableTabWidget@{Dockable Tabs.DetachableTabWidget}}
+Inheritance diagram for Dockable Tabs.\+Detachable\+Tab\+Widget\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDockable_01Tabs_1_1DetachableTabWidget}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab}{Detached\+Tab}}
+\begin{DoxyCompactList}\small\item\em When a tab is detached, the contents are placed into this QDialog. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classDockable_01Tabs_1_1DetachableTabWidget_1_1TabBar}{Tab\+Bar}}
+\begin{DoxyCompactList}\small\item\em The \doxylink{classDockable_01Tabs_1_1DetachableTabWidget_1_1TabBar}{Tab\+Bar} class re-\/implements some of the functionality of the QTab\+Bar widget. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_a5cee672f84e4c236c60248d23e52d1d5}\label{classDockable_01Tabs_1_1DetachableTabWidget_a5cee672f84e4c236c60248d23e52d1d5} 
+{\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, parent=None)
+\item 
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_a174c3263b966d44647456c4be80d7958}\label{classDockable_01Tabs_1_1DetachableTabWidget_a174c3263b966d44647456c4be80d7958} 
+{\bfseries set\+Movable} (self, movable)
+\begin{DoxyCompactList}\small\item\em The default movable functionality of QTab\+Widget must remain disabled so as not to conflict with the added features. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDockable_01Tabs_1_1DetachableTabWidget_afda84a91c98b25beabc0e14c3b3e036d}{move\+Tab}} (self, from\+Index, to\+Index)
+\begin{DoxyCompactList}\small\item\em Move a tab from one position (index) to another. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDockable_01Tabs_1_1DetachableTabWidget_a85c6c8fa984040e336c92511cd4de6c9}{detach\+Tab}} (self, index, point)
+\begin{DoxyCompactList}\small\item\em Detach the tab by removing it\textquotesingle{}s contents and placing them in a \doxylink{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab}{Detached\+Tab} dialog. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDockable_01Tabs_1_1DetachableTabWidget_a92879657dbe31e4d068b98dfa86e3f98}{attach\+Tab}} (self, content\+Widget, name, icon)
+\begin{DoxyCompactList}\small\item\em Re-\/attach the tab by removing the content from the \doxylink{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab}{Detached\+Tab} dialog, closing it, and placing the content back into the \doxylink{classDockable_01Tabs_1_1DetachableTabWidget}{Detachable\+Tab\+Widget}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_aeb6c68d93d40951f69a80a0a2cfb56b1}\label{classDockable_01Tabs_1_1DetachableTabWidget_aeb6c68d93d40951f69a80a0a2cfb56b1} 
+{\bfseries tab\+Bar}
+\item 
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_a3438adc57bbec30a267f02a89e74a004}\label{classDockable_01Tabs_1_1DetachableTabWidget_a3438adc57bbec30a267f02a89e74a004} 
+{\bfseries detach\+Tab}
+\item 
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_ae6a3130c840b6ed9d1baf130893f7937}\label{classDockable_01Tabs_1_1DetachableTabWidget_ae6a3130c840b6ed9d1baf130893f7937} 
+{\bfseries move\+Tab}
+\item 
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_a253a2ec5d53c92b20245506b7430dc18}\label{classDockable_01Tabs_1_1DetachableTabWidget_a253a2ec5d53c92b20245506b7430dc18} 
+{\bfseries attach\+Tab}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_a92879657dbe31e4d068b98dfa86e3f98}\index{Dockable Tabs.DetachableTabWidget@{Dockable Tabs.DetachableTabWidget}!attachTab@{attachTab}}
+\index{attachTab@{attachTab}!Dockable Tabs.DetachableTabWidget@{Dockable Tabs.DetachableTabWidget}}
+\doxysubsubsection{\texorpdfstring{attachTab()}{attachTab()}}
+{\footnotesize\ttfamily \label{classDockable_01Tabs_1_1DetachableTabWidget_a92879657dbe31e4d068b98dfa86e3f98} 
+Dockable Tabs.\+Detachable\+Tab\+Widget.\+attach\+Tab (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{content\+Widget}{, }\item[{}]{name}{, }\item[{}]{icon}{}\end{DoxyParamCaption})}
+
+
+
+Re-\/attach the tab by removing the content from the \doxylink{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab}{Detached\+Tab} dialog, closing it, and placing the content back into the \doxylink{classDockable_01Tabs_1_1DetachableTabWidget}{Detachable\+Tab\+Widget}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em content\+Widget} & the content widget from the \doxylink{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab}{Detached\+Tab} dialog \\
+\hline
+{\em name} & the name of the detached tab \\
+\hline
+{\em icon} & the window icon for the detached tab \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_a85c6c8fa984040e336c92511cd4de6c9}\index{Dockable Tabs.DetachableTabWidget@{Dockable Tabs.DetachableTabWidget}!detachTab@{detachTab}}
+\index{detachTab@{detachTab}!Dockable Tabs.DetachableTabWidget@{Dockable Tabs.DetachableTabWidget}}
+\doxysubsubsection{\texorpdfstring{detachTab()}{detachTab()}}
+{\footnotesize\ttfamily \label{classDockable_01Tabs_1_1DetachableTabWidget_a85c6c8fa984040e336c92511cd4de6c9} 
+Dockable Tabs.\+Detachable\+Tab\+Widget.\+detach\+Tab (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{index}{, }\item[{}]{point}{}\end{DoxyParamCaption})}
+
+
+
+Detach the tab by removing it\textquotesingle{}s contents and placing them in a \doxylink{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab}{Detached\+Tab} dialog. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & the index location of the tab to be detached \\
+\hline
+{\em point} & the screen position for creating the new \doxylink{classDockable_01Tabs_1_1DetachableTabWidget_1_1DetachedTab}{Detached\+Tab} dialog \\
+\hline
+\end{DoxyParams}
+\Hypertarget{classDockable_01Tabs_1_1DetachableTabWidget_afda84a91c98b25beabc0e14c3b3e036d}\index{Dockable Tabs.DetachableTabWidget@{Dockable Tabs.DetachableTabWidget}!moveTab@{moveTab}}
+\index{moveTab@{moveTab}!Dockable Tabs.DetachableTabWidget@{Dockable Tabs.DetachableTabWidget}}
+\doxysubsubsection{\texorpdfstring{moveTab()}{moveTab()}}
+{\footnotesize\ttfamily \label{classDockable_01Tabs_1_1DetachableTabWidget_afda84a91c98b25beabc0e14c3b3e036d} 
+Dockable Tabs.\+Detachable\+Tab\+Widget.\+move\+Tab (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{from\+Index}{, }\item[{}]{to\+Index}{}\end{DoxyParamCaption})}
+
+
+
+Move a tab from one position (index) to another. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em from\+Index} & the original index location of the tab \\
+\hline
+{\em to\+Index} & the new index location of the tab \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/admin/github/comp-\/graphics-\/resources/\+Py\+Qt/Dockable Tabs.\+py\end{DoxyCompactItemize}

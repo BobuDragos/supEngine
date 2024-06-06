@@ -1,0 +1,73 @@
+\doxysection{input.\+cpp}
+\hypertarget{input_8cpp_source}{}\label{input_8cpp_source}\index{/home/admin/github/pugEngine/engine/core/input/input.cpp@{/home/admin/github/pugEngine/engine/core/input/input.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}key\_mapping.cpp"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{namespace\ }core}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \textcolor{keyword}{enum}\ KeyCode\ \{}
+\DoxyCodeLine{00010\ \ \ \ \ \ \ KEY\_A\ =\ \textcolor{charliteral}{'a'},}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ KEY\_D\ =\ \textcolor{charliteral}{'d'},}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ KEY\_W\ =\ \textcolor{charliteral}{'w'},}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ KEY\_S\ =\ \textcolor{charliteral}{'s'},}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ other\ keys\ as\ needed}}
+\DoxyCodeLine{00015\ \ \ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classcore_1_1Input}{Input}}\ }
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{static}\ std::map<unsigned\ char,\ bool>\ KeyTable;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ std::map<unsigned\ char,\ bool>\ KeyDownTable;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ getKeyDown(KeyCode\ key)\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (KeyDownTable[key])\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ KeyDownTable[key]\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Reset\ after\ the\ first\ check}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ getKey(KeyCode\ key)\ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ KeyTable[key];}
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ getAxisRaw(std::string\ axisName)\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (axisName\ ==\ \textcolor{stringliteral}{"{}Horizontal"{}})\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (getKey(KEY\_A))\ \textcolor{keywordflow}{return}\ -\/1.0f;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (getKey(KEY\_D))\ \textcolor{keywordflow}{return}\ 1.0f;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (axisName\ ==\ \textcolor{stringliteral}{"{}Vertical"{}})\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (getKey(KEY\_W))\ \textcolor{keywordflow}{return}\ 1.0f;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (getKey(KEY\_S))\ \textcolor{keywordflow}{return}\ -\/1.0f;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0.0f;}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ updateKeyState(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ key,\ \textcolor{keywordtype}{bool}\ state\ =\ \textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ oldState\ =\ KeyTable[key];}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ KeyTable[key]\ =\ state;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (state\ \&\&\ !oldState)\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ KeyDownTable[key]\ =\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ Register\ key\ down\ event}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ resetKeyStates()\ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\&\ kv\ :\ KeyTable)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ kv.second\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ std::map<unsigned\ char,\ bool>\ Input::KeyTable;}
+\DoxyCodeLine{00064\ std::map<unsigned\ char,\ bool>\ Input::KeyDownTable;}
+\DoxyCodeLine{00065\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+
+\end{DoxyCode}

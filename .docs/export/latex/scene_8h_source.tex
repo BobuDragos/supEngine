@@ -1,0 +1,69 @@
+\doxysection{scene.\+h}
+\hypertarget{scene_8h_source}{}\label{scene_8h_source}\index{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/scene.h@{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/scene.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_SCENE\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_SCENE\_H\_\_}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}dataStructures.h"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}sceneObject.h"{}}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{namespace\ }SdimpleRocket\{}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSdimpleRocket_1_1Scene}{Scene}}\ \{}
+\DoxyCodeLine{00013\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00014\ \ \ std::vector<\ SceneObject\ >\ m\_objects;}
+\DoxyCodeLine{00015\ \ \ Float\ m\_time,\ m\_dt;\ \textcolor{comment}{//unit:\ second;\ old\ time\ and\ time\ difference\ to\ get\ in\ the\ 'present'}}
+\DoxyCodeLine{00016\ \ \ Float\ m\_mulDt;\ \textcolor{comment}{//time\ difference,\ multiplied}}
+\DoxyCodeLine{00017\ \ \ Float\ m\_timeMul;\ \textcolor{comment}{//time\ multiplier,\ for\ faster\ /\ slower\ simulation}}
+\DoxyCodeLine{00018\ \ \ Float\ m\_frameTime;\ \textcolor{comment}{//the\ length\ of\ the\ simulation\ time-\/step}}
+\DoxyCodeLine{00019\ \ \ \textcolor{comment}{//virtual\ camera-\/related}}
+\DoxyCodeLine{00020\ \ \ Float\ m\_scale;}
+\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ m\_offset;}
+\DoxyCodeLine{00022\ \ \ \textcolor{comment}{//gravitational\ constant,\ N\ *\ m\string^2\ *\ kg\string^-\/2}}
+\DoxyCodeLine{00023\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ Float\ k\_G\ =\ 0.000000000066740831;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \textcolor{comment}{//center\ and\ scale\ out\ objects\ so\ all\ the\ scene\ has\ a\ certain\ length,\ so\ it\ fits\ in\ the\ view\ volume}}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{void}\ updateView(Float\ maxLength\ =\ 2);}
+\DoxyCodeLine{00027\ \ \ \textcolor{keywordtype}{void}\ updateRotation();}
+\DoxyCodeLine{00028\ \ \ \textcolor{comment}{//compute\ the\ gravitational\ force\ acting\ upon\ the\ local\ object\ from\ a\ distant\ object.\ The\ force\ point\ of\ application\ is\ the\ center\ of\ the\ local\ object,\ and\ is\ directed\ towards\ the\ distant.\ This\ assumes\ point\ masses.}}
+\DoxyCodeLine{00029\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ gravity(\mbox{\hyperlink{classSdimpleRocket_1_1SceneObject}{SceneObject}}\ local,\ \mbox{\hyperlink{classSdimpleRocket_1_1SceneObject}{SceneObject}}\ distant);}
+\DoxyCodeLine{00030\ \ \ \textcolor{comment}{//updatePhysics\ looks\ up\ current\ m\_dt,\ no\ need\ for\ an\ argument}}
+\DoxyCodeLine{00031\ \ \ \textcolor{keywordtype}{void}\ updatePhysics(\textcolor{keywordtype}{bool}\ thrusting);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Scene}{Scene}}(Float\ frameTime\ =\ 0.1);\ \textcolor{comment}{//maxFrameTime\ given\ in\ seconds\ here.}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{void}\ addObject(\mbox{\hyperlink{classSdimpleRocket_1_1SceneObject}{SceneObject}}\ sceneObject);}
+\DoxyCodeLine{00037\ \ \ \textcolor{keywordtype}{void}\ addObject(\mbox{\hyperlink{structSdimpleRocket_1_1DataObject}{DataObject}}\ \textcolor{keywordtype}{object},\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ position\ =\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}(0,\ 0,\ 0),\ Float\ size\ =\ 1,\ Float\ mass\ =\ 1,\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ velocity\ =\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}(0,\ 0,\ 0),\ Float\ rotation\ =\ 0,\ Float\ angularVelocity\ =\ 0,\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ thrust\ =\ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}());}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ std::vector<\ SceneObject\ >::iterator\ begin();}
+\DoxyCodeLine{00040\ \ \ std::vector<\ SceneObject\ >::iterator\ end();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \textcolor{comment}{//use\ this\ before\ every\ frame}}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{int}\ nextFrame(Float\ dt,\ \textcolor{keywordtype}{bool}\ thrusting\ =\ 0);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \textcolor{comment}{//concievably\ usable\ by\ the\ engine,\ thus\ public.\ Questionable\ decision.\ TODO:\ remove\ or\ provide\ usecase.}}
+\DoxyCodeLine{00046\ \ \ \textcolor{keywordtype}{void}\ updateTime(Float\ dt);}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{void}\ resetTime(Float\ time\ =\ 0);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{size\_t}\ getObjectCount()\ \{\ \textcolor{keywordflow}{return}\ m\_objects.size();\ \}}
+\DoxyCodeLine{00050\ \ \ }
+\DoxyCodeLine{00051\ \ \ Float\ getTimeMul()\ \{\ \textcolor{keywordflow}{return}\ m\_timeMul;\ \}}
+\DoxyCodeLine{00052\ \ \ \textcolor{keywordtype}{void}\ setTimeMul(Float\ timeMul)\ \{\ m\_timeMul\ =\ timeMul;\ \}}
+\DoxyCodeLine{00053\ \ \ Float\ getScale()\ \{\ \textcolor{keywordflow}{return}\ m\_scale;\ \}}
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{void}\ setScale(Float\ scale)\ \{\ m\_scale\ =\ scale;\ \}}
+\DoxyCodeLine{00055\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ getOffset()\ \{\ \textcolor{keywordflow}{return}\ m\_offset;\ \}}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ setOffset(\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ offset)\ \{\ m\_offset\ =\ offset;\ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ std::pair<Float,\ Float>\ getApPe(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{object});}
+\DoxyCodeLine{00059\ \ \ }
+\DoxyCodeLine{00060\ \};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

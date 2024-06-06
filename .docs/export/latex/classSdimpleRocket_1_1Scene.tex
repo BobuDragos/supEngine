@@ -1,0 +1,106 @@
+\doxysection{Sdimple\+Rocket\+::Scene Class Reference}
+\hypertarget{classSdimpleRocket_1_1Scene}{}\label{classSdimpleRocket_1_1Scene}\index{SdimpleRocket::Scene@{SdimpleRocket::Scene}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_aabccc294b6348245cca9c7532c5df1e9}\label{classSdimpleRocket_1_1Scene_aabccc294b6348245cca9c7532c5df1e9} 
+{\bfseries Scene} (Float frame\+Time=0.\+1)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a70d308b1bee6d8fbb1d17786e81daa1e}\label{classSdimpleRocket_1_1Scene_a70d308b1bee6d8fbb1d17786e81daa1e} 
+void {\bfseries add\+Object} (\mbox{\hyperlink{classSdimpleRocket_1_1SceneObject}{Scene\+Object}} scene\+Object)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a142e6de942c80a7511dfa584053b3c46}\label{classSdimpleRocket_1_1Scene_a142e6de942c80a7511dfa584053b3c46} 
+void {\bfseries add\+Object} (\mbox{\hyperlink{structSdimpleRocket_1_1DataObject}{Data\+Object}} object, \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}} position=\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}(0, 0, 0), Float size=1, Float mass=1, \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}} velocity=\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}(0, 0, 0), Float rotation=0, Float angular\+Velocity=0, \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}} thrust=\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}())
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_aa39e7de1de4badb14d8e996e864dde4c}\label{classSdimpleRocket_1_1Scene_aa39e7de1de4badb14d8e996e864dde4c} 
+std\+::vector$<$ \mbox{\hyperlink{classSdimpleRocket_1_1SceneObject}{Scene\+Object}} $>$\+::iterator {\bfseries begin} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a8d5f6ef3fd46732192b0b5e9adef5dab}\label{classSdimpleRocket_1_1Scene_a8d5f6ef3fd46732192b0b5e9adef5dab} 
+std\+::vector$<$ \mbox{\hyperlink{classSdimpleRocket_1_1SceneObject}{Scene\+Object}} $>$\+::iterator {\bfseries end} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a74f00830dd74dec1a7e2957ea2232fb6}\label{classSdimpleRocket_1_1Scene_a74f00830dd74dec1a7e2957ea2232fb6} 
+int {\bfseries next\+Frame} (Float dt, bool thrusting=0)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_aa3a09c3bb4bef321e41357455ec1f736}\label{classSdimpleRocket_1_1Scene_aa3a09c3bb4bef321e41357455ec1f736} 
+void {\bfseries update\+Time} (Float dt)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_adee6b1f4b80cdbfa2ab6f81e7ae59024}\label{classSdimpleRocket_1_1Scene_adee6b1f4b80cdbfa2ab6f81e7ae59024} 
+void {\bfseries reset\+Time} (Float time=0)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_aeebc025d89d5a0371af5af925ae29f0b}\label{classSdimpleRocket_1_1Scene_aeebc025d89d5a0371af5af925ae29f0b} 
+size\+\_\+t {\bfseries get\+Object\+Count} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a5852ca44e9babf6667650ec356e697ac}\label{classSdimpleRocket_1_1Scene_a5852ca44e9babf6667650ec356e697ac} 
+Float {\bfseries get\+Time\+Mul} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_affb9e4ca84c4494a0168d495d0224bba}\label{classSdimpleRocket_1_1Scene_affb9e4ca84c4494a0168d495d0224bba} 
+void {\bfseries set\+Time\+Mul} (Float time\+Mul)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_abc6a2b55c890eadc17d270a16f697c1e}\label{classSdimpleRocket_1_1Scene_abc6a2b55c890eadc17d270a16f697c1e} 
+Float {\bfseries get\+Scale} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_ae4a62a18c953082e8877894c05605e15}\label{classSdimpleRocket_1_1Scene_ae4a62a18c953082e8877894c05605e15} 
+void {\bfseries set\+Scale} (Float scale)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_afa029ffec46b619f21b1cf8bac3ee6a4}\label{classSdimpleRocket_1_1Scene_afa029ffec46b619f21b1cf8bac3ee6a4} 
+\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}} {\bfseries get\+Offset} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a7939fc9ffc3e9d54e357211ef11751e3}\label{classSdimpleRocket_1_1Scene_a7939fc9ffc3e9d54e357211ef11751e3} 
+void {\bfseries set\+Offset} (\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}} offset)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_ae417f5f07cd48a7da93e63ecec5ce75d}\label{classSdimpleRocket_1_1Scene_ae417f5f07cd48a7da93e63ecec5ce75d} 
+std\+::pair$<$ Float, Float $>$ {\bfseries get\+Ap\+Pe} (unsigned int object)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a65e5353049eebe2fa0615586b94fc950}\label{classSdimpleRocket_1_1Scene_a65e5353049eebe2fa0615586b94fc950} 
+void {\bfseries update\+View} (Float max\+Length=2)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a5fd820262e7435420e3d060e18ecf279}\label{classSdimpleRocket_1_1Scene_a5fd820262e7435420e3d060e18ecf279} 
+void {\bfseries update\+Rotation} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a6c679de4e79a8a73a9885227b8994cae}\label{classSdimpleRocket_1_1Scene_a6c679de4e79a8a73a9885227b8994cae} 
+\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}} {\bfseries gravity} (\mbox{\hyperlink{classSdimpleRocket_1_1SceneObject}{Scene\+Object}} local, \mbox{\hyperlink{classSdimpleRocket_1_1SceneObject}{Scene\+Object}} distant)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_ae52465c43c0c1069737f83b96c18c0d6}\label{classSdimpleRocket_1_1Scene_ae52465c43c0c1069737f83b96c18c0d6} 
+void {\bfseries update\+Physics} (bool thrusting)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a6a7ed7079fc2325de157bf9be963a417}\label{classSdimpleRocket_1_1Scene_a6a7ed7079fc2325de157bf9be963a417} 
+std\+::vector$<$ \mbox{\hyperlink{classSdimpleRocket_1_1SceneObject}{Scene\+Object}} $>$ {\bfseries m\+\_\+objects}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_af3f74bda84a169bb8058fb0beb1a5b15}\label{classSdimpleRocket_1_1Scene_af3f74bda84a169bb8058fb0beb1a5b15} 
+Float {\bfseries m\+\_\+time}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_aafbf90283450918d11a5835b6a0bd113}\label{classSdimpleRocket_1_1Scene_aafbf90283450918d11a5835b6a0bd113} 
+Float {\bfseries m\+\_\+dt}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a705722a605da8aad19ab0e4f43a1bedd}\label{classSdimpleRocket_1_1Scene_a705722a605da8aad19ab0e4f43a1bedd} 
+Float {\bfseries m\+\_\+mul\+Dt}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a5d55a5d35f48db7cc3e3794dccf2b67c}\label{classSdimpleRocket_1_1Scene_a5d55a5d35f48db7cc3e3794dccf2b67c} 
+Float {\bfseries m\+\_\+time\+Mul}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a99ca84c6971cac2cb7ba579c21779f06}\label{classSdimpleRocket_1_1Scene_a99ca84c6971cac2cb7ba579c21779f06} 
+Float {\bfseries m\+\_\+frame\+Time}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_ac96cf41b0f59f57ecce540247bbaaa92}\label{classSdimpleRocket_1_1Scene_ac96cf41b0f59f57ecce540247bbaaa92} 
+Float {\bfseries m\+\_\+scale}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a3641735e9e8a6716a1df8cac3ba4f22f}\label{classSdimpleRocket_1_1Scene_a3641735e9e8a6716a1df8cac3ba4f22f} 
+\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}} {\bfseries m\+\_\+offset}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Scene_a4dc3be8a24e072b146af64061a4731b7}\label{classSdimpleRocket_1_1Scene_a4dc3be8a24e072b146af64061a4731b7} 
+static const Float {\bfseries k\+\_\+G} = 0.\+000000000066740831
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/admin/github/comp-\/graphics-\/resources/\+Computer Graphics/\+Fii\+Materials/\+Grafica pe Calculator/\+Laborator/\+Tema 8 Learning\+Rockets-\/master/\+Learning\+Rockets-\/master/src/scene.\+h\end{DoxyCompactItemize}

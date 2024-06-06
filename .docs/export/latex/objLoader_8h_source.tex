@@ -1,0 +1,76 @@
+\doxysection{obj\+Loader.\+h}
+\hypertarget{objLoader_8h_source}{}\label{objLoader_8h_source}\index{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/objLoader.h@{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/objLoader.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_OBJLOADER\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_OBJLOADER\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <GL/gl.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <GL/glu.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}types.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}vector3.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{namespace\ }SdimpleRocket\ \{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSdimpleRocket_1_1ObjLoader}{ObjLoader}}\ \{}
+\DoxyCodeLine{00015\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \textcolor{comment}{//we\ use\ these\ vectors\ for\ their\ auto-\/allocation\ feature;\ they\ treat\ different\ coordinates\ the\ same\ way\ -\/\ i.e.\ array\ of\ values,\ not\ mathematical\ vectors.}}
+\DoxyCodeLine{00017\ \ \ \textcolor{comment}{//3-\/dimensional:\ x,\ y,\ z}}
+\DoxyCodeLine{00018\ \ \ std::vector<GLfloat>\ m\_vertices;}
+\DoxyCodeLine{00019\ \ \ \textcolor{comment}{//2-\/dimensional:\ u,\ v}}
+\DoxyCodeLine{00020\ \ \ std::vector<GLfloat>\ m\_texture;}
+\DoxyCodeLine{00021\ \ \ std::vector<GLfloat>\ m\_normals;}
+\DoxyCodeLine{00022\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}}\ m\_min,\ m\_max;}
+\DoxyCodeLine{00023\ \ \ \textcolor{comment}{//\ integer\ indices:\ a\ face\ can\ be\ made\ up\ by\ the\ 0-\/th,\ 2-\/nd\ and\ 5-\/th\ vertex.}}
+\DoxyCodeLine{00024\ \ \ std::vector<GLuint>\ m\_faces;}
+\DoxyCodeLine{00025\ \ \ \textcolor{keywordtype}{bool}\ m\_hasUv;}
+\DoxyCodeLine{00026\ \ \ \textcolor{keywordtype}{bool}\ m\_hasNormals;}
+\DoxyCodeLine{00027\ \ \ \textcolor{comment}{//Limitation:\ we\ only\ deal\ with\ faces\ of\ a\ constant\ number\ of\ vertices.\ This\ values\ partitions\ the\ continuous\ m\_faces\ vector\ into\ separate\ faces}}
+\DoxyCodeLine{00028\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ m\_verticesPerFace;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \textcolor{comment}{//i\ encoutered\ the\ stupidest\ bug\ or\ huuge\ lapse\ in\ my\ C++\ constructor\ and\ object\ copy\ knowledge\ in\ C++99\ here.\ fix'd-\/ish}}
+\DoxyCodeLine{00031\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1ObjLoader}{ObjLoader}}()\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ m\_hasUv\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00033\ \ \ \ \ m\_hasNormals\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00034\ \ \ \ \ m\_verticesPerFace\ =\ 3;}
+\DoxyCodeLine{00035\ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1ObjLoader}{ObjLoader}}(std::string\ fileName)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1ObjLoader}{ObjLoader}}();}
+\DoxyCodeLine{00040\ \ \ \ \ load(fileName.c\_str());}
+\DoxyCodeLine{00041\ \ \ \}}
+\DoxyCodeLine{00042\ \ \ }
+\DoxyCodeLine{00043\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1ObjLoader}{ObjLoader}}(std::string\ *fileName)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1ObjLoader}{ObjLoader}}();}
+\DoxyCodeLine{00045\ \ \ \ \ load(fileName-\/>c\_str());}
+\DoxyCodeLine{00046\ \ \ \}}
+\DoxyCodeLine{00047\ \ \ }
+\DoxyCodeLine{00048\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1ObjLoader}{ObjLoader}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fileName)\ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1ObjLoader}{ObjLoader}}();}
+\DoxyCodeLine{00050\ \ \ \ \ load(fileName);}
+\DoxyCodeLine{00051\ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{void}\ load(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fileName);}
+\DoxyCodeLine{00054\ \ \ \textcolor{keywordtype}{void}\ parse(std::ifstream*\ file);}
+\DoxyCodeLine{00055\ \ \ \textcolor{keywordtype}{void}\ parseVertices(StringVect\ tokens);}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ parseTexture(StringVect\ tokens);}
+\DoxyCodeLine{00057\ \ \ \textcolor{keywordtype}{void}\ parseNormals(StringVect\ tokens);}
+\DoxyCodeLine{00058\ \ \ \textcolor{keywordtype}{void}\ parseFaces(StringVect\ tokens);}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{void}\ computeMinMax();}
+\DoxyCodeLine{00060\ \ \ \textcolor{keywordtype}{void}\ normaliseAndCenter();}
+\DoxyCodeLine{00061\ \ \ }
+\DoxyCodeLine{00062\ \ \ std::string\ dumpVect(std::vector<GLfloat>\ v,\ \textcolor{keywordtype}{int}\ groupSize\ =\ 3);}
+\DoxyCodeLine{00063\ \ \ }
+\DoxyCodeLine{00064\ \ \ std::string\ dump();}
+\DoxyCodeLine{00065\ \ \ }
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\_\_OBJLOADER\_H\_\_}}
+
+\end{DoxyCode}

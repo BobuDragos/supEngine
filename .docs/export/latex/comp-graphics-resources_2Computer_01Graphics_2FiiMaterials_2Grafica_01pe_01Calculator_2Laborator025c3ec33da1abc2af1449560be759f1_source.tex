@@ -1,0 +1,92 @@
+\doxysection{engine.\+h}
+\hypertarget{comp-graphics-resources_2Computer_01Graphics_2FiiMaterials_2Grafica_01pe_01Calculator_2Laborator025c3ec33da1abc2af1449560be759f1_source}{}\label{comp-graphics-resources_2Computer_01Graphics_2FiiMaterials_2Grafica_01pe_01Calculator_2Laborator025c3ec33da1abc2af1449560be759f1_source}\index{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/engine.h@{/home/admin/github/comp-\/graphics-\/resources/Computer Graphics/FiiMaterials/Grafica pe Calculator/Laborator/Tema 8 LearningRockets-\/master/LearningRockets-\/master/src/engine.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_\_ENGINE\_H\_\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_\_ENGINE\_H\_\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}proxyGl.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <exception>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}types.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}objLoader.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}dataStructures.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}oglDataCache.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}scene.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{namespace\ }SdimpleRocket\ \{}
+\DoxyCodeLine{00017\ \ \ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSdimpleRocket_1_1Engine}{Engine}}\ \{}
+\DoxyCodeLine{00019\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00020\ \ \ \mbox{\hyperlink{structSdimpleRocket_1_1Screen}{Screen}}\ m\_screen1;}
+\DoxyCodeLine{00021\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1OglDataCache}{OglDataCache}}\ m\_cache;}
+\DoxyCodeLine{00022\ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Scene}{Scene}}\ m\_scene;}
+\DoxyCodeLine{00023\ \ \ \textcolor{comment}{//simple\ example\ only}}
+\DoxyCodeLine{00024\ \ \ GLuint\ m\_texture[1];}
+\DoxyCodeLine{00025\ \ \ GLint\ m\_startTime;\ \textcolor{comment}{//measurement\ start,\ not\ program\ start}}
+\DoxyCodeLine{00026\ \ \ GLint\ m\_currentTime;}
+\DoxyCodeLine{00027\ \ \ GLint\ m\_frameTime;}
+\DoxyCodeLine{00028\ \ \ GLint\ m\_frames;}
+\DoxyCodeLine{00029\ \ \ GLint\ m\_pFrames;}
+\DoxyCodeLine{00030\ \ \ \textcolor{keywordtype}{bool}\ m\_thrust;}
+\DoxyCodeLine{00031\ \ \ \textcolor{comment}{//hacks,\ mostly}}
+\DoxyCodeLine{00032\ \ \ Float\ m\_rotation;}
+\DoxyCodeLine{00033\ \ \ Float\ m\_rotationIncrease;}
+\DoxyCodeLine{00034\ \ \ \textcolor{keywordtype}{bool}\ m\_resetRotation;}
+\DoxyCodeLine{00035\ \ \ \textcolor{comment}{//this\ object\ will\ be\ input-\/controlled.\ It's\ an\ index\ for\ the\ n-\/th\ object\ created,\ starting\ from\ 0.}}
+\DoxyCodeLine{00036\ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ m\_controlledObject;}
+\DoxyCodeLine{00037\ \ \ }
+\DoxyCodeLine{00038\ \ \ \textcolor{comment}{//functions\ for\ various\ SDL\ and\ GL-\/related\ tasks.\ constructors\ and\ destructors\ are\ expected\ to\ use\ them\ as\ appropriate.}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \textcolor{comment}{//general\ engine\ and\ SDL\ inits}}
+\DoxyCodeLine{00041\ \ \ \textcolor{keywordtype}{bool}\ init();}
+\DoxyCodeLine{00042\ \ \ \textcolor{comment}{//specific\ OpenGL\ within\ SDL\ inits}}
+\DoxyCodeLine{00043\ \ \ \textcolor{keywordtype}{bool}\ initGl();}
+\DoxyCodeLine{00044\ \ \ \textcolor{comment}{//activate\ lights\ on\ scene}}
+\DoxyCodeLine{00045\ \ \ \textcolor{keywordtype}{void}\ initLights();}
+\DoxyCodeLine{00046\ \ \ \textcolor{comment}{//close\ SDL}}
+\DoxyCodeLine{00047\ \ \ \textcolor{keywordtype}{void}\ close();}
+\DoxyCodeLine{00048\ \ \ \textcolor{comment}{//handle\ window-\/resize\ events}}
+\DoxyCodeLine{00049\ \ \ \textcolor{keywordtype}{void}\ resize(SDL\_Event\ *e);}
+\DoxyCodeLine{00050\ \ \ \textcolor{comment}{//handle\ key\ presses}}
+\DoxyCodeLine{00051\ \ \ \textcolor{keywordtype}{void}\ handleKeys(SDL\_Event\ *e,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y);}
+\DoxyCodeLine{00052\ \ \ \textcolor{comment}{//render\ scene\ on\ screen}}
+\DoxyCodeLine{00053\ \ \ \textcolor{keywordtype}{void}\ render();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \textcolor{comment}{//per-\/frame\ updates}}
+\DoxyCodeLine{00056\ \ \ \textcolor{keywordtype}{void}\ update();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \textcolor{comment}{//switch\ between\ windowed\ mode,\ fake-\/fullscreen\ (dekstop\ res)\ and\ true\ fullscreen\ (at\ window\ specified\ resolution)}}
+\DoxyCodeLine{00059\ \ \ \textcolor{keywordtype}{void}\ toggleFullscreen(\textcolor{keywordtype}{bool}\ fake\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00060\ \ \ \textcolor{comment}{//shortcut\ for\ m\_screen1.kbState(SDL\_SCANCODE)}}
+\DoxyCodeLine{00061\ \ \ Uint8\ \textcolor{keyword}{inline}\ k(SDL\_Scancode\ scancode)\ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{return}\ m\_screen1.kbState[scancode];}
+\DoxyCodeLine{00063\ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \textcolor{keywordtype}{void}\ renderObject(\mbox{\hyperlink{structSdimpleRocket_1_1DataObject}{DataObject}}\ d);}
+\DoxyCodeLine{00066\ \ \ \textcolor{keywordtype}{void}\ renderLight(\mbox{\hyperlink{structSdimpleRocket_1_1Light}{Light}}\ l,\ \textcolor{keywordtype}{bool}\ active);}
+\DoxyCodeLine{00067\ \ \ \textcolor{keywordtype}{void}\ renderUi();}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \textcolor{comment}{//multiple\ scene\ definitions}}
+\DoxyCodeLine{00070\ \ \ \textcolor{keywordtype}{void}\ scene1();\ }
+\DoxyCodeLine{00071\ \ \ \textcolor{keywordtype}{void}\ scene2();}
+\DoxyCodeLine{00072\ \ \ \textcolor{keywordtype}{void}\ scene3();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ }
+\DoxyCodeLine{00075\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Engine}{Engine}}(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ screenWidth\ =\ 800,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ screenHeight\ =\ 600);}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ loadScene(std::string\ sceneFile);}
+\DoxyCodeLine{00078\ \ \ \ \ \mbox{\hyperlink{classSdimpleRocket_1_1Engine}{\string~Engine}}();}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//run\ the\ engine}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//steps\ ==\ 0\ means\ until\ the\ window\ is\ closed.\ Otherwise,\ run\ the\ event\ loop\ a\ limited\ number\ of\ steps.}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ run(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ steps\ =\ 0);}
+\DoxyCodeLine{00082\ \};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \}}
+\DoxyCodeLine{00085\ \ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\_\_ENGINE\_H\_\_}}
+
+\end{DoxyCode}

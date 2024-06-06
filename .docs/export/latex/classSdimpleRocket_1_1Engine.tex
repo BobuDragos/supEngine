@@ -1,0 +1,116 @@
+\doxysection{Sdimple\+Rocket\+::Engine Class Reference}
+\hypertarget{classSdimpleRocket_1_1Engine}{}\label{classSdimpleRocket_1_1Engine}\index{SdimpleRocket::Engine@{SdimpleRocket::Engine}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a843585e3d755fd4e63352a726e542427}\label{classSdimpleRocket_1_1Engine_a843585e3d755fd4e63352a726e542427} 
+{\bfseries Engine} (unsigned int screen\+Width=800, unsigned int screen\+Height=600)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a4d3c6b826e996a82015bd264458acabe}\label{classSdimpleRocket_1_1Engine_a4d3c6b826e996a82015bd264458acabe} 
+void {\bfseries load\+Scene} (std\+::string scene\+File)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a50084c48b4935a415e1238f9a2db43ef}\label{classSdimpleRocket_1_1Engine_a50084c48b4935a415e1238f9a2db43ef} 
+void {\bfseries run} (unsigned int steps=0)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a89c3790af9e7b75e6b220bfe05244bde}\label{classSdimpleRocket_1_1Engine_a89c3790af9e7b75e6b220bfe05244bde} 
+bool {\bfseries init} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a079662534e2d64a9a16e9d60fdfff347}\label{classSdimpleRocket_1_1Engine_a079662534e2d64a9a16e9d60fdfff347} 
+bool {\bfseries init\+Gl} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a82281c1ce71e61705c7281a4de4df60a}\label{classSdimpleRocket_1_1Engine_a82281c1ce71e61705c7281a4de4df60a} 
+void {\bfseries init\+Lights} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a6f00047153c2581a74c7c1912bfe5f36}\label{classSdimpleRocket_1_1Engine_a6f00047153c2581a74c7c1912bfe5f36} 
+void {\bfseries close} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a6c79f7cb1aa81868eeed90d019dbb078}\label{classSdimpleRocket_1_1Engine_a6c79f7cb1aa81868eeed90d019dbb078} 
+void {\bfseries resize} (SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}e)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a9922ab1c787cd99b950c5eed9d901350}\label{classSdimpleRocket_1_1Engine_a9922ab1c787cd99b950c5eed9d901350} 
+void {\bfseries handle\+Keys} (SDL\+\_\+\+Event \texorpdfstring{$\ast$}{*}e, int x, int y)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a7960743aefd62e846e7f3cd92c18bc73}\label{classSdimpleRocket_1_1Engine_a7960743aefd62e846e7f3cd92c18bc73} 
+void {\bfseries render} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_ad2ff110d5a86c1cd60b541d65915ac48}\label{classSdimpleRocket_1_1Engine_ad2ff110d5a86c1cd60b541d65915ac48} 
+void {\bfseries update} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_ac261f817f500c4b236af265bebd9c29b}\label{classSdimpleRocket_1_1Engine_ac261f817f500c4b236af265bebd9c29b} 
+void {\bfseries toggle\+Fullscreen} (bool fake=true)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a6ef8704cec8f4c6fb92f4855703121fb}\label{classSdimpleRocket_1_1Engine_a6ef8704cec8f4c6fb92f4855703121fb} 
+Uint8 {\bfseries k} (SDL\+\_\+\+Scancode scancode)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a06f4cc73d265423b0aa290ab06f79078}\label{classSdimpleRocket_1_1Engine_a06f4cc73d265423b0aa290ab06f79078} 
+void {\bfseries render\+Object} (\mbox{\hyperlink{structSdimpleRocket_1_1DataObject}{Data\+Object}} d)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_acceb3080ec43f3b248a6776c83fe5c45}\label{classSdimpleRocket_1_1Engine_acceb3080ec43f3b248a6776c83fe5c45} 
+void {\bfseries render\+Light} (\mbox{\hyperlink{structSdimpleRocket_1_1Light}{Light}} l, bool active)
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_aee249f1e327bc5acebde96382e1c5bde}\label{classSdimpleRocket_1_1Engine_aee249f1e327bc5acebde96382e1c5bde} 
+void {\bfseries render\+Ui} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a46101bc13a77426d793e96b368a64ef7}\label{classSdimpleRocket_1_1Engine_a46101bc13a77426d793e96b368a64ef7} 
+void {\bfseries scene1} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a57fce73f8d3561bcd117800c8a8f1bde}\label{classSdimpleRocket_1_1Engine_a57fce73f8d3561bcd117800c8a8f1bde} 
+void {\bfseries scene2} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_ae1fbc665974bd6dd94bd5f21017bee61}\label{classSdimpleRocket_1_1Engine_ae1fbc665974bd6dd94bd5f21017bee61} 
+void {\bfseries scene3} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_ae093d26e2f3ca61be9143b90f9f378a8}\label{classSdimpleRocket_1_1Engine_ae093d26e2f3ca61be9143b90f9f378a8} 
+\mbox{\hyperlink{structSdimpleRocket_1_1Screen}{Screen}} {\bfseries m\+\_\+screen1}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_ab7083b95ec01c10ae61791e4ca610a84}\label{classSdimpleRocket_1_1Engine_ab7083b95ec01c10ae61791e4ca610a84} 
+\mbox{\hyperlink{classSdimpleRocket_1_1OglDataCache}{Ogl\+Data\+Cache}} {\bfseries m\+\_\+cache}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a627f7d16229343bbbe36fe9504213d39}\label{classSdimpleRocket_1_1Engine_a627f7d16229343bbbe36fe9504213d39} 
+\mbox{\hyperlink{classSdimpleRocket_1_1Scene}{Scene}} {\bfseries m\+\_\+scene}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_aa6e418fd2391a883e027194294374d85}\label{classSdimpleRocket_1_1Engine_aa6e418fd2391a883e027194294374d85} 
+GLuint {\bfseries m\+\_\+texture} \mbox{[}1\mbox{]}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a57a59dfe6eb8fc2966f844e45305029d}\label{classSdimpleRocket_1_1Engine_a57a59dfe6eb8fc2966f844e45305029d} 
+GLint {\bfseries m\+\_\+start\+Time}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_afd343091c346b28ebdcfda96c2ab62d6}\label{classSdimpleRocket_1_1Engine_afd343091c346b28ebdcfda96c2ab62d6} 
+GLint {\bfseries m\+\_\+current\+Time}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_acfbdaf26696736f6b28c64b9a55a7a81}\label{classSdimpleRocket_1_1Engine_acfbdaf26696736f6b28c64b9a55a7a81} 
+GLint {\bfseries m\+\_\+frame\+Time}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a0e492dd0ddc958606e326bf92ea1bb39}\label{classSdimpleRocket_1_1Engine_a0e492dd0ddc958606e326bf92ea1bb39} 
+GLint {\bfseries m\+\_\+frames}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a3aba43382f743d67fe992932a5df952c}\label{classSdimpleRocket_1_1Engine_a3aba43382f743d67fe992932a5df952c} 
+GLint {\bfseries m\+\_\+p\+Frames}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a0c6d10c41aadbfb3e78119e10c6e584a}\label{classSdimpleRocket_1_1Engine_a0c6d10c41aadbfb3e78119e10c6e584a} 
+bool {\bfseries m\+\_\+thrust}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a9236cef371204590c34121f6cf053441}\label{classSdimpleRocket_1_1Engine_a9236cef371204590c34121f6cf053441} 
+Float {\bfseries m\+\_\+rotation}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_ac0cf51f9bca6efa3a0b09ae2a56ddbaa}\label{classSdimpleRocket_1_1Engine_ac0cf51f9bca6efa3a0b09ae2a56ddbaa} 
+Float {\bfseries m\+\_\+rotation\+Increase}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a28a20cf284692cf1f1c43bff2b579853}\label{classSdimpleRocket_1_1Engine_a28a20cf284692cf1f1c43bff2b579853} 
+bool {\bfseries m\+\_\+reset\+Rotation}
+\item 
+\Hypertarget{classSdimpleRocket_1_1Engine_a08120896efcaa5a0ff947bd58fac8ae4}\label{classSdimpleRocket_1_1Engine_a08120896efcaa5a0ff947bd58fac8ae4} 
+unsigned int {\bfseries m\+\_\+controlled\+Object}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/admin/github/comp-\/graphics-\/resources/\+Computer Graphics/\+Fii\+Materials/\+Grafica pe Calculator/\+Laborator/\+Tema 8 Learning\+Rockets-\/master/\+Learning\+Rockets-\/master/src/engine.\+h\item 
+/home/admin/github/comp-\/graphics-\/resources/\+Computer Graphics/\+Fii\+Materials/\+Grafica pe Calculator/\+Laborator/\+Tema 8 Learning\+Rockets-\/master/\+Learning\+Rockets-\/master/src/engine.\+cpp\end{DoxyCompactItemize}

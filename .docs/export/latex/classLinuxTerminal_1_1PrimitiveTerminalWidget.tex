@@ -1,0 +1,89 @@
+\doxysection{Linux\+Terminal.\+Primitive\+Terminal\+Widget Class Reference}
+\hypertarget{classLinuxTerminal_1_1PrimitiveTerminalWidget}{}\label{classLinuxTerminal_1_1PrimitiveTerminalWidget}\index{LinuxTerminal.PrimitiveTerminalWidget@{LinuxTerminal.PrimitiveTerminalWidget}}
+Inheritance diagram for Linux\+Terminal.\+Primitive\+Terminal\+Widget\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classLinuxTerminal_1_1PrimitiveTerminalWidget}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLinuxTerminal_1_1PrimitiveTerminalWidget_a15aa47587700ddb8221a4f14ce7c4f1b}\label{classLinuxTerminal_1_1PrimitiveTerminalWidget_a15aa47587700ddb8221a4f14ce7c4f1b} 
+{\bfseries \+\_\+\+\_\+init\+\_\+\+\_\+} (self, \texorpdfstring{$\ast$}{*}args, \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}kwargs)
+\item 
+\mbox{\hyperlink{classLinuxTerminal_1_1PrimitiveTerminalWidget_a4f41f04fc44f46d586fc6db4a28a3ec4}{cb\+\_\+echo}} (self, pty\+\_\+m)
+\item 
+\mbox{\hyperlink{classLinuxTerminal_1_1PrimitiveTerminalWidget_a257739dd4945eec25823f9ef13ced80f}{key\+Press\+Event}} (self, event)
+\item 
+\mbox{\hyperlink{classLinuxTerminal_1_1PrimitiveTerminalWidget_a607eae542acff241c2af108dbb31cb12}{resize\+Event}} (self, event)
+\item 
+\mbox{\hyperlink{classLinuxTerminal_1_1PrimitiveTerminalWidget_a397b8b4dcae1805f77d3484a0591ea1c}{spawn}} (self, argv)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLinuxTerminal_1_1PrimitiveTerminalWidget_aad041911f3938684c24b6cf4364e389e}\label{classLinuxTerminal_1_1PrimitiveTerminalWidget_aad041911f3938684c24b6cf4364e389e} 
+{\bfseries codec}
+\item 
+\Hypertarget{classLinuxTerminal_1_1PrimitiveTerminalWidget_a6e528a0d49904c7648445942a16dee02}\label{classLinuxTerminal_1_1PrimitiveTerminalWidget_a6e528a0d49904c7648445942a16dee02} 
+{\bfseries cb\+\_\+echo}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classLinuxTerminal_1_1PrimitiveTerminalWidget_a28e315a7605e16a9275e1f7d6151deb6}\label{classLinuxTerminal_1_1PrimitiveTerminalWidget_a28e315a7605e16a9275e1f7d6151deb6} 
+int {\bfseries backspace\+\_\+budget} = 0
+\item 
+\Hypertarget{classLinuxTerminal_1_1PrimitiveTerminalWidget_a68e91ad295c6468d7406c90c5aff3ad4}\label{classLinuxTerminal_1_1PrimitiveTerminalWidget_a68e91ad295c6468d7406c90c5aff3ad4} 
+{\bfseries pty\+\_\+m} = None
+\item 
+\Hypertarget{classLinuxTerminal_1_1PrimitiveTerminalWidget_ab35f033842c3a3ca4420e2683bd2d0c2}\label{classLinuxTerminal_1_1PrimitiveTerminalWidget_ab35f033842c3a3ca4420e2683bd2d0c2} 
+{\bfseries subproc} = None
+\item 
+\Hypertarget{classLinuxTerminal_1_1PrimitiveTerminalWidget_a0ccf7cf40e74118d7a05c5686cb15b87}\label{classLinuxTerminal_1_1PrimitiveTerminalWidget_a0ccf7cf40e74118d7a05c5686cb15b87} 
+{\bfseries notifier} = None
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Simple TERM=tty terminal emulator widget
+(Uses QTextEdit rather than QPlainTextEdit to leave the capability open to
+support colors.)
+\end{DoxyVerb}
+ 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLinuxTerminal_1_1PrimitiveTerminalWidget_a4f41f04fc44f46d586fc6db4a28a3ec4}\index{LinuxTerminal.PrimitiveTerminalWidget@{LinuxTerminal.PrimitiveTerminalWidget}!cb\_echo@{cb\_echo}}
+\index{cb\_echo@{cb\_echo}!LinuxTerminal.PrimitiveTerminalWidget@{LinuxTerminal.PrimitiveTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{cb\_echo()}{cb\_echo()}}
+{\footnotesize\ttfamily \label{classLinuxTerminal_1_1PrimitiveTerminalWidget_a4f41f04fc44f46d586fc6db4a28a3ec4} 
+Linux\+Terminal.\+Primitive\+Terminal\+Widget.\+cb\+\_\+echo (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{pty\+\_\+m}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Display output that arrives from the PTY\end{DoxyVerb}
+ \Hypertarget{classLinuxTerminal_1_1PrimitiveTerminalWidget_a257739dd4945eec25823f9ef13ced80f}\index{LinuxTerminal.PrimitiveTerminalWidget@{LinuxTerminal.PrimitiveTerminalWidget}!keyPressEvent@{keyPressEvent}}
+\index{keyPressEvent@{keyPressEvent}!LinuxTerminal.PrimitiveTerminalWidget@{LinuxTerminal.PrimitiveTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{keyPressEvent()}{keyPressEvent()}}
+{\footnotesize\ttfamily \label{classLinuxTerminal_1_1PrimitiveTerminalWidget_a257739dd4945eec25823f9ef13ced80f} 
+Linux\+Terminal.\+Primitive\+Terminal\+Widget.\+key\+Press\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Handler for all key presses delivered while the widget has focus\end{DoxyVerb}
+ \Hypertarget{classLinuxTerminal_1_1PrimitiveTerminalWidget_a607eae542acff241c2af108dbb31cb12}\index{LinuxTerminal.PrimitiveTerminalWidget@{LinuxTerminal.PrimitiveTerminalWidget}!resizeEvent@{resizeEvent}}
+\index{resizeEvent@{resizeEvent}!LinuxTerminal.PrimitiveTerminalWidget@{LinuxTerminal.PrimitiveTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{resizeEvent()}{resizeEvent()}}
+{\footnotesize\ttfamily \label{classLinuxTerminal_1_1PrimitiveTerminalWidget_a607eae542acff241c2af108dbb31cb12} 
+Linux\+Terminal.\+Primitive\+Terminal\+Widget.\+resize\+Event (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{event}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Handler to announce terminal size changes to child processes\end{DoxyVerb}
+ \Hypertarget{classLinuxTerminal_1_1PrimitiveTerminalWidget_a397b8b4dcae1805f77d3484a0591ea1c}\index{LinuxTerminal.PrimitiveTerminalWidget@{LinuxTerminal.PrimitiveTerminalWidget}!spawn@{spawn}}
+\index{spawn@{spawn}!LinuxTerminal.PrimitiveTerminalWidget@{LinuxTerminal.PrimitiveTerminalWidget}}
+\doxysubsubsection{\texorpdfstring{spawn()}{spawn()}}
+{\footnotesize\ttfamily \label{classLinuxTerminal_1_1PrimitiveTerminalWidget_a397b8b4dcae1805f77d3484a0591ea1c} 
+Linux\+Terminal.\+Primitive\+Terminal\+Widget.\+spawn (\begin{DoxyParamCaption}\item[{}]{self}{, }\item[{}]{argv}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Launch a child process in the terminal\end{DoxyVerb}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/admin/github/comp-\/graphics-\/resources/\+Py\+Qt/Linux\+Terminal.\+py\end{DoxyCompactItemize}

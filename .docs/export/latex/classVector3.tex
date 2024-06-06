@@ -1,0 +1,87 @@
+\doxysection{Vector3 Class Reference}
+\hypertarget{classVector3}{}\label{classVector3}\index{Vector3@{Vector3}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classVector3_a0f49191f7e001e7f7ae1cb49522118b4}\label{classVector3_a0f49191f7e001e7f7ae1cb49522118b4} 
+{\bfseries Vector3} ()
+\begin{DoxyCompactList}\small\item\em Default constructor initializing vector to (0,0,0,1). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVector3_a6ae111fc1e771ea180b09a1afa3cdf7e}{Vector3}} (double \+\_\+x, double \+\_\+y=0.\+0f, double \+\_\+z=0.\+0f, double \+\_\+w=1.\+0f)
+\begin{DoxyCompactList}\small\item\em Parameterized constructor for initializing vector components. \end{DoxyCompactList}\item 
+\Hypertarget{classVector3_a0e7eb0557486b19d8c2f38c6bbe0e068}\label{classVector3_a0e7eb0557486b19d8c2f38c6bbe0e068} 
+\mbox{\hyperlink{classVector3}{Vector3}} \& {\bfseries operator=} (const \mbox{\hyperlink{classVector3}{Vector3}} \&other)
+\item 
+\Hypertarget{classVector3_a9dbccb6721900d305483b20dfcfc5f45}\label{classVector3_a9dbccb6721900d305483b20dfcfc5f45} 
+\mbox{\hyperlink{classVector3}{Vector3}} \& {\bfseries operator+=} (const \mbox{\hyperlink{classVector3}{Vector3}} \&other)
+\item 
+\Hypertarget{classVector3_aa223c2a45df3d3f0d2ca8a3728eeee27}\label{classVector3_aa223c2a45df3d3f0d2ca8a3728eeee27} 
+\mbox{\hyperlink{classVector3}{Vector3}} \& {\bfseries operator\texorpdfstring{$\ast$}{*}=} (double scalar)
+\item 
+\Hypertarget{classVector3_ac563eef8f92d127f768f330bb5ea39fc}\label{classVector3_ac563eef8f92d127f768f330bb5ea39fc} 
+\mbox{\hyperlink{classVector3}{Vector3}} {\bfseries operator\texorpdfstring{$\ast$}{*}} (double scalar) const
+\item 
+\Hypertarget{classVector3_a15b8664404b17aecd37d44be761f3b72}\label{classVector3_a15b8664404b17aecd37d44be761f3b72} 
+\mbox{\hyperlink{classVector3}{Vector3}} {\bfseries operator-\/} (const \mbox{\hyperlink{classVector3}{Vector3}} \&other) const
+\item 
+\Hypertarget{classVector3_a9df9e4a930ba3d0d98aeec28430927de}\label{classVector3_a9df9e4a930ba3d0d98aeec28430927de} 
+\mbox{\hyperlink{classVector3}{Vector3}} {\bfseries operator+} (const \mbox{\hyperlink{classVector3}{Vector3}} \&other) const
+\item 
+\Hypertarget{classVector3_af105a4f2123a922450639640f04eb71b}\label{classVector3_af105a4f2123a922450639640f04eb71b} 
+double {\bfseries dot} (const \mbox{\hyperlink{classVector3}{Vector3}} \&other) const
+\item 
+\Hypertarget{classVector3_afb11e612d6f201cfd908b94b87ec115e}\label{classVector3_afb11e612d6f201cfd908b94b87ec115e} 
+\mbox{\hyperlink{classVector3}{Vector3}} {\bfseries operator/} (double scalar) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classVector3_a60aa84ebc037dec9faba617f8ddb231d}\label{classVector3_a60aa84ebc037dec9faba617f8ddb231d} 
+double {\bfseries x}
+\item 
+\Hypertarget{classVector3_ae4965693beffdb6069e0618222cae459}\label{classVector3_ae4965693beffdb6069e0618222cae459} 
+double {\bfseries y}
+\item 
+\Hypertarget{classVector3_aa5f4108b2839a110eeaec8606780eaff}\label{classVector3_aa5f4108b2839a110eeaec8606780eaff} 
+double {\bfseries z}
+\item 
+\Hypertarget{classVector3_a70fd3dabcb53da5e14e696a5bb9d13e3}\label{classVector3_a70fd3dabcb53da5e14e696a5bb9d13e3} 
+double {\bfseries w}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classVector3_aa41278d0d8be1611c927879d4c57dc41}\label{classVector3_aa41278d0d8be1611c927879d4c57dc41} 
+static \mbox{\hyperlink{classVector3}{Vector3}} {\bfseries zero}
+\item 
+\Hypertarget{classVector3_a1f11c3643c8ccf9c2a8852b945c3ef69}\label{classVector3_a1f11c3643c8ccf9c2a8852b945c3ef69} 
+static \mbox{\hyperlink{classVector3}{Vector3}} {\bfseries one}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVector3_a6ae111fc1e771ea180b09a1afa3cdf7e}\index{Vector3@{Vector3}!Vector3@{Vector3}}
+\index{Vector3@{Vector3}!Vector3@{Vector3}}
+\doxysubsubsection{\texorpdfstring{Vector3()}{Vector3()}}
+{\footnotesize\ttfamily \label{classVector3_a6ae111fc1e771ea180b09a1afa3cdf7e} 
+Vector3\+::\+Vector3 (\begin{DoxyParamCaption}\item[{double}]{\+\_\+x}{, }\item[{double}]{\+\_\+y}{ = {\ttfamily 0.0f}, }\item[{double}]{\+\_\+z}{ = {\ttfamily 0.0f}, }\item[{double}]{\+\_\+w}{ = {\ttfamily 1.0f}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parameterized constructor for initializing vector components. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+x} & X component. \\
+\hline
+{\em \+\_\+y} & Y component (default is 0.\+0). \\
+\hline
+{\em \+\_\+z} & Z component (default is 0.\+0). \\
+\hline
+{\em \+\_\+w} & W component (default is 1.\+0). \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+engine/\mbox{\hyperlink{engine_8h}{engine.\+h}}\end{DoxyCompactItemize}

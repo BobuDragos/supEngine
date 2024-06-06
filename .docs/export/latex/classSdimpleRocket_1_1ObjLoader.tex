@@ -1,0 +1,80 @@
+\doxysection{Sdimple\+Rocket\+::Obj\+Loader Class Reference}
+\hypertarget{classSdimpleRocket_1_1ObjLoader}{}\label{classSdimpleRocket_1_1ObjLoader}\index{SdimpleRocket::ObjLoader@{SdimpleRocket::ObjLoader}}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_a5eee73a5f412851cc88ba8cbdc1dc961}\label{classSdimpleRocket_1_1ObjLoader_a5eee73a5f412851cc88ba8cbdc1dc961} 
+{\bfseries Obj\+Loader} (std\+::string file\+Name)
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_a817ad4ee70e547cab9c528fd19994b88}\label{classSdimpleRocket_1_1ObjLoader_a817ad4ee70e547cab9c528fd19994b88} 
+{\bfseries Obj\+Loader} (std\+::string \texorpdfstring{$\ast$}{*}file\+Name)
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_a0f60c979f615a92e65a9505e926786fe}\label{classSdimpleRocket_1_1ObjLoader_a0f60c979f615a92e65a9505e926786fe} 
+{\bfseries Obj\+Loader} (const char \texorpdfstring{$\ast$}{*}file\+Name)
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_aecdaf9300199c32ccb6b8cadc22ba7d0}\label{classSdimpleRocket_1_1ObjLoader_aecdaf9300199c32ccb6b8cadc22ba7d0} 
+void {\bfseries load} (const char \texorpdfstring{$\ast$}{*}file\+Name)
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_ad309816ae23a1cfead87d3f9271ccc2a}\label{classSdimpleRocket_1_1ObjLoader_ad309816ae23a1cfead87d3f9271ccc2a} 
+void {\bfseries parse} (std\+::ifstream \texorpdfstring{$\ast$}{*}file)
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_aa1d2ebfb00c2ece5006511921ac9c778}\label{classSdimpleRocket_1_1ObjLoader_aa1d2ebfb00c2ece5006511921ac9c778} 
+void {\bfseries parse\+Vertices} (String\+Vect tokens)
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_ad1e5e05d90eec3988fde30bdc546e7e0}\label{classSdimpleRocket_1_1ObjLoader_ad1e5e05d90eec3988fde30bdc546e7e0} 
+void {\bfseries parse\+Texture} (String\+Vect tokens)
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_a5755b6e2ea0f3dfed5fd1d2057d509dd}\label{classSdimpleRocket_1_1ObjLoader_a5755b6e2ea0f3dfed5fd1d2057d509dd} 
+void {\bfseries parse\+Normals} (String\+Vect tokens)
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_af7e913d0f6a14f6f2778dd5706195a7b}\label{classSdimpleRocket_1_1ObjLoader_af7e913d0f6a14f6f2778dd5706195a7b} 
+void {\bfseries parse\+Faces} (String\+Vect tokens)
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_a03b80d23ceb9eb58957d75f201fa6d4e}\label{classSdimpleRocket_1_1ObjLoader_a03b80d23ceb9eb58957d75f201fa6d4e} 
+void {\bfseries compute\+Min\+Max} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_aae6e20f7788ff2c33bc835fbade4704b}\label{classSdimpleRocket_1_1ObjLoader_aae6e20f7788ff2c33bc835fbade4704b} 
+void {\bfseries normalise\+And\+Center} ()
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_a5c81bc085506ff1c0a215e94b094aa7f}\label{classSdimpleRocket_1_1ObjLoader_a5c81bc085506ff1c0a215e94b094aa7f} 
+std\+::string {\bfseries dump\+Vect} (std\+::vector$<$ GLfloat $>$ v, int group\+Size=3)
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_a7d0f11a2e6babda4021a0826964a87ea}\label{classSdimpleRocket_1_1ObjLoader_a7d0f11a2e6babda4021a0826964a87ea} 
+std\+::string {\bfseries dump} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_adbbc7ad2852abe5f4ab3e8ba790375ae}\label{classSdimpleRocket_1_1ObjLoader_adbbc7ad2852abe5f4ab3e8ba790375ae} 
+std\+::vector$<$ GLfloat $>$ {\bfseries m\+\_\+vertices}
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_a304a1debad02c6f52b9570f20a307d2b}\label{classSdimpleRocket_1_1ObjLoader_a304a1debad02c6f52b9570f20a307d2b} 
+std\+::vector$<$ GLfloat $>$ {\bfseries m\+\_\+texture}
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_a89553032efbaf12e38d417cd3dd6f217}\label{classSdimpleRocket_1_1ObjLoader_a89553032efbaf12e38d417cd3dd6f217} 
+std\+::vector$<$ GLfloat $>$ {\bfseries m\+\_\+normals}
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_ad356ded9367ccd8e5c13368b8d55f11d}\label{classSdimpleRocket_1_1ObjLoader_ad356ded9367ccd8e5c13368b8d55f11d} 
+\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}} {\bfseries m\+\_\+min}
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_ae7b825add27c57343a15f732148e177c}\label{classSdimpleRocket_1_1ObjLoader_ae7b825add27c57343a15f732148e177c} 
+\mbox{\hyperlink{classSdimpleRocket_1_1Vector3}{Vector3}} {\bfseries m\+\_\+max}
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_a240131d3563c89b4ad942987b56111c2}\label{classSdimpleRocket_1_1ObjLoader_a240131d3563c89b4ad942987b56111c2} 
+std\+::vector$<$ GLuint $>$ {\bfseries m\+\_\+faces}
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_a1d6092992798b374fd2ba9809c41bdfd}\label{classSdimpleRocket_1_1ObjLoader_a1d6092992798b374fd2ba9809c41bdfd} 
+bool {\bfseries m\+\_\+has\+Uv}
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_a4c08c7cd3afadc92c5cae7fc64f9c064}\label{classSdimpleRocket_1_1ObjLoader_a4c08c7cd3afadc92c5cae7fc64f9c064} 
+bool {\bfseries m\+\_\+has\+Normals}
+\item 
+\Hypertarget{classSdimpleRocket_1_1ObjLoader_a8d9b6938639db72a747e3d5f7e536966}\label{classSdimpleRocket_1_1ObjLoader_a8d9b6938639db72a747e3d5f7e536966} 
+unsigned int {\bfseries m\+\_\+vertices\+Per\+Face}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/admin/github/comp-\/graphics-\/resources/\+Computer Graphics/\+Fii\+Materials/\+Grafica pe Calculator/\+Laborator/\+Tema 8 Learning\+Rockets-\/master/\+Learning\+Rockets-\/master/src/obj\+Loader.\+h\item 
+/home/admin/github/comp-\/graphics-\/resources/\+Computer Graphics/\+Fii\+Materials/\+Grafica pe Calculator/\+Laborator/\+Tema 8 Learning\+Rockets-\/master/\+Learning\+Rockets-\/master/src/obj\+Loader.\+cpp\end{DoxyCompactItemize}
